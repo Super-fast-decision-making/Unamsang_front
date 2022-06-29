@@ -1,19 +1,127 @@
+body{
+    background-color: #080615;
+    font-family: 'Gowun Batang', serif;
+}
+
+
+nav{
+    width:100%;
+    height:35px;
+    background-color: #88f3ff;
+    justify-content: space-between;
+    display: flex;
+}
+
 
 .idx_head{
     width:100%;
     height:100%;
-    background-color: aqua;
+    background-color: #c7b0ff;
 }
 
-.search_box{
+.input_box{
     display: flex;
     justify-content: center;
     align-items:center;
     min-height: 100vh;
+    flex-direction: column;
+}
+#input_box{
+    height:3em;
+    width: 28em;
+    border-radius: 5px;
+}
+.input_box button{
+    height:3em;
+    border: 5px;
 }
 
 .idx_2nd_page{
-    width:100%;
+
     height:1000px;
-    background-color: gray;
+    background-color: #080615;
+}
+.idx_card{
+    margin-top:100px;
+    
+
+    /* display: flex;
+    justify-content: center;
+    align-items:center;
+    min-height: 100vh; */
+}
+
+.idx_crd_top{
+
+    height:40px;
+    background-color:whitesmoke;
+    
+}
+.idx_crd_body{
+    /* float:left; */
+    width:500px;
+    height:450px;
+    background-color:#c7b0ff; 
+    border: 2px solid black;
+    flex-shrink: 0;
+ }
+.idx_crd_bottom{
+
+    height:100px;
+    background-color:whitesmoke;
+}
+
+/* 캐러셀 연구 */
+@import url('https://use.fortawesome.com/99966411.js');
+.carousel-container{
+    width:1280px;
+    margin:50px auto;
+    /* background-color: #ccc; */
+    min-height:200px;
+
+    position:relative;
+}
+.carousel-inner{
+    overflow:hidden;
+}
+.track{
+    display:flex;
+    transition:transform 0.3s;
+}
+.card-container{
+    flex-shrink: 0;
+    width: 256px;
+    height:250px;
+    /* border:1px solid #aaa; */
+    padding-right:15px;
+    box-sizing: border-box;
+}
+.card {
+    width: 100%;
+    height:100%;
+    background-color:#c7b0ff; 
+    box-sizing: border-box;
+    border-radius:10px;
+
+}
+.crd_nav button {
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    border:1px solid #aaa;
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+}
+.prev{
+    left:-30px;
+}
+.next{
+    right:-30px;
+}
+.carousel-img{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    font-size:30px;
 }
