@@ -8,6 +8,9 @@
     <link rel="stylesheet" type="text/css" href="/static/css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap" rel="stylesheet">
     <script src="https://use.fortawesome.com/99966411.js"></script>
+    <script src="./static/js/article_create.js"></script>
+    <script src="./static/js/api.js"></script>
+
 </head>
 <body>
     <nav>
@@ -19,7 +22,6 @@
         <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
-
         </form>
         <div class="nav_right">
             <button><a href="/">로그아웃</a></button>
@@ -31,13 +33,13 @@
         <div class="input_box">
             <div>
                 <label for="공개 여부">공개 여부</label>
-                <input type="checkbox" name="공개 여부">
+                <input id="is_active" type="checkbox" name="공개 여부">
                 <label for="노출종료일">노출종료일</label>
-                <input type="date" name="노출종료일">
+                <input id="exposure_end_date" type="date" name="노출종료일">
             </div>
             <div>
-                <input  id="input_box" type="text" name="input_box" placeholder="키워드를 넣으세요">
-                <button type="submit">submit</button>
+                <input  id="title" type="text" name="input_box" placeholder="키워드를 넣으세요">
+                <button type="submit" onclick="handelArticleCreate()">submit</button>
             </div>
         
         </div>
@@ -117,6 +119,8 @@
             track.style.transform = `translateX(-${0}px)`;
         })
     </script>
+
+
 
 </body>
 </html>
