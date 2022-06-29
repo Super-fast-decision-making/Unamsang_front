@@ -1,0 +1,19 @@
+
+.idx_head{
+    width:100%;
+    height:100%;
+    background-color: aqua;
+}
+
+.search_box{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    min-height: 100vh;
+}
+
+.idx_2nd_page{
+    width:100%;
+    height:1000px;
+    background-color: gray;
+}
