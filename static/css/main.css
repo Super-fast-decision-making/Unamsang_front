@@ -26,7 +26,7 @@ nav{
     min-height: 100vh;
     flex-direction: column;
 }
-#input_box{
+#title{
     height:3em;
     width: 28em;
     border-radius: 5px;
