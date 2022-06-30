@@ -10,6 +10,7 @@
     <script src="https://use.fortawesome.com/99966411.js"></script>
     <script src="./static/js/article_create.js"></script>
     <script src="./static/js/api.js"></script>
+    <script src="./static/js/main.js"></script>
 
 </head>
 <body>
@@ -45,7 +46,19 @@
         </div>
     </div>
     <div class="idx_2nd_page">
+        
         <div class="carousel-container">
+            <ol id="articles" class="carousel-text">
+                <div>
+                    <h3>title : doge to the moon</h3>
+
+                </div>
+                <div>
+                    <p>auhor : hong gil dong</p>
+                    <p>scores</p>
+                    <p>icon</p>
+                </div>
+            </ol>
             <div class="carousel-inner">
                 <div class="track">
                     <div class="card-container">
@@ -56,6 +69,7 @@
                     <div class="card-container">
                         <div class="card">
                             <div class="carousel-img">2</div>
+
                         </div>
                     </div>
                     <div class="card-container">
@@ -104,6 +118,13 @@
                 <button class="next"><i class="fa fa-chevron-right"></i></button>
 
             </div>
+
+            <ol id="articles" class="carousel-text">
+                <input class="form-control"  placeholder="댓글 달기..." id="">
+                <button class="comment_button">게시</button>
+                <!-- onclick="save_comment('{{content.post_id}}')"
+             -->
+            </ol>
         </div>
 
     </div>
@@ -119,6 +140,7 @@
             track.style.transform = `translateX(-${0}px)`;
         })
     </script>
+
 
 
 
