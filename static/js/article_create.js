@@ -1,15 +1,36 @@
-function handelArticleCreate(){
+function handlePromptCreate(){
+    const prompt = document.getElementById("prompt").value
+    console.log(prompt)
+    startImageGenerator(prompt)
 
-    const title = document.getElementById("title").value
-    let is_active = document.getElementById("is_active").value
-    if(is_active=="on"){
-        is_active=true
-    }else{
-        is_active=false
-    }
-    const exposure_end_date = document.getElementById("exposure_end_date").value
-    postArticle(title,is_active, exposure_end_date)
+    const hidden_page = document.querySelector(".input_inner_box")
+    hidden_page.classList.remove('hidden_box')
+    hidden_page.classList.add('hidden_box')
+    const hid_box = document.querySelector(".hid_box")
+    hid_box.style.display="flex";
+
+
 }
+function showPromptImage(image_name){
+    console.log(image_name,10)
+    document.getElementById("main_img").src=image_name
+
+}
+
+
+
+// function handleArticleCreate(){
+
+//     const title = document.getElementById("title").value
+//     let is_active = document.getElementById("is_active").value
+//     if(is_active=="on"){
+//         is_active=true
+//     }else{
+//         is_active=false
+//     }
+//     const exposure_end_date = document.getElementById("exposure_end_date").value
+//     postArticle(title,is_active, exposure_end_date)
+// }
 
 async function loadArticles(){
     console.log("here")
