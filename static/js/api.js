@@ -14,6 +14,7 @@ async function startImageGenerator(prompt){
     })
     image_name = await response.json()
     console.log(image_name)
+    image_name=image_name['images']
     showPromptImage(image_name)
     
     if (response.status==200){
