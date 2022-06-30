@@ -54,7 +54,6 @@ nav{
 .idx_crd_top{
 
     height:40px;
-    background-color:whitesmoke;
     
 }
 .idx_crd_body{
@@ -68,7 +67,7 @@ nav{
 .idx_crd_bottom{
 
     height:100px;
-    background-color:whitesmoke;
+
 }
 
 /* 캐러셀 연구 */
@@ -124,4 +123,18 @@ nav{
     justify-content: center;
     align-items:center;
     font-size:30px;
+}
+.carousel-text{
+    justify-content: space-between;
+    display: flex;
+    color:white
+}
+.carousel-text div{
+    justify-content: space-between;
+    display: flex;
+    
+}
+.carousel-text div p{
+    padding-right:5px;
+    padding-left:5px;
 }
