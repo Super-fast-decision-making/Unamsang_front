@@ -26,7 +26,19 @@ nav{
     min-height: 100vh;
     flex-direction: column;
 }
-#title{
+.hidden_box{
+    display:none;
+
+}
+
+.hid_box{
+    display:none;
+    width: 500px;
+    height: 500px;
+    background-color: beige;
+}
+
+#prompt{
     height:3em;
     width: 28em;
     border-radius: 5px;
