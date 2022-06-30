@@ -13,6 +13,7 @@ function handlePromptCreate(){
 }
 function showPromptImage(image_name){
     console.log(image_name,10)
+    // image_name=image_name.items
     document.getElementById("main_img").src=image_name
 
 }
