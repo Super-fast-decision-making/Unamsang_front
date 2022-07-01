@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>You Know What I'm Saying</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="./static/css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap" rel="stylesheet">
     <script src="https://use.fortawesome.com/99966411.js"></script>
     <script src="./static/js/article_create.js"></script>
@@ -32,20 +32,30 @@
     <div class="idx_head">
 
         <div class="input_box">
-            <!-- <div>
-                <label for="공개 여부">공개 여부</label>
-                <input id="is_active" type="checkbox" name="공개 여부" checked="true">
-                <label for="노출종료일">노출종료일</label>
-                <input id="exposure_end_date" type="date" name="노출종료일">
-            </div> -->
+
             <div class="input_inner_box">
                 <input  id="prompt" type="text" name="input_box" placeholder="키워드를 넣으세요">
                 <button type="submit" onclick="handlePromptCreate()">submit</button>
             
             </div>
-            <div class="hid_box">
-                <img id="main_img" src="">
+            <div class="hid_box" id="hid_box" >
+                <div class="hid_img_box">
+                    <img id="main_img">
+                </div>
             </div>
+            <div class="hid_text_box" id="hid_text_box">
+                <div>
+                    <label for="공개 여부">공개 여부</label>
+                    <input id="is_active" type="checkbox" name="공개 여부" checked="true">
+                    <label for="노출종료일">노출종료일</label>
+                    <input id="exposure_end_date" type="date" name="노출종료일">
+                    <button type="submit" onclick="">submit</button>
+                </div>
+
+            </div>
+            
+
+
         
         </div>
 

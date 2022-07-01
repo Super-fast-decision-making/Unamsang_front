@@ -33,15 +33,28 @@ nav{
 
 .hid_box{
     display:none;
+
+}
+.hid_img_box{
     width: 500px;
     height: 500px;
     background-color: beige;
+}
+.hid_text_box{
+    display: none;
+    width: 500px;
+    height: 100px;
+    background-color: #aaa;
 }
 
 #prompt{
     height:3em;
     width: 28em;
     border-radius: 5px;
+}
+#main_img{
+    width:100%;
+    height:100%;
 }
 .input_box button{
     height:3em;

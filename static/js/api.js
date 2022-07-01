@@ -15,7 +15,18 @@ async function startImageGenerator(prompt){
     image_name = await response.json()
     console.log(image_name)
     image_name=image_name['images']
-    showPromptImage(image_name)
+    let path = '../unamsang-back/'+image_name    
+    showPromptImage(path)
+    ///여기서부터 수정된 버전
+    // let path = '../unamsang-back/'+image_name
+    // let path = '../unamsang-back/'+image_name
+    // let path_all = '+path+'
+    // console.log('path는!!'+path_all)
+    // document.getElementById("hid_box").style.backgroundImage = "url(' + path_all + ')"
+
+
+
+    ///여기까지 수정된 버전
     
     if (response.status==200){
         alert(response.status);//http://127.0.0.1:5500/main.html
