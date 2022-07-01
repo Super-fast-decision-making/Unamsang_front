@@ -25,7 +25,7 @@ function showPromptImage(path){
 
 function handleArticleCreate(){
 
-    // const title = document.getElementById("title").value
+    const title = document.getElementById("title").value
     const img_url = document.getElementById("main_img").src;
     let is_active = document.getElementById("is_active").value
     if(is_active=="on"){
@@ -35,9 +35,11 @@ function handleArticleCreate(){
     }
     const exposure_end_date = document.getElementById("exposure_end_date").value
     // postArticle(title,is_active, exposure_end_date)
+    console.log(title)
     console.log(img_url)
     console.log(is_active)
     console.log(exposure_end_date)
+    postArticle(title, img_url, is_active, exposure_end_date)
 }
 
 async function loadArticles(){
