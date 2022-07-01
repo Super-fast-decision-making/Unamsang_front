@@ -17,15 +17,15 @@ function showPromptImage(path){
     console.log(title)
     console.log(path,10)
     // image_name=image_name.items
-    document.getElementById("title").value = title
-    document.getElementById("main_img").src=path
+    document.getElementById("title").innerHTML = title;
+    document.getElementById("main_img").src=path;
 }
 
 
 
 function handleArticleCreate(){
 
-    const title = document.getElementById("title").value
+    const title = document.getElementById("title").innerText;
     const img_url = document.getElementById("main_img").src;
     let is_active = document.getElementById("is_active").value
     if(is_active=="on"){
@@ -35,22 +35,25 @@ function handleArticleCreate(){
     }
     const exposure_end_date = document.getElementById("exposure_end_date").value
     // postArticle(title,is_active, exposure_end_date)
-    console.log(title)
-    console.log(img_url)
-    console.log(is_active)
-    console.log(exposure_end_date)
     postArticle(title, img_url, is_active, exposure_end_date)
 }
 
-async function loadArticles(){
-    console.log("here")
-    articles= await getArticles()
+async function loadArticles(response_json){
+    console.log("title:"+response_json[0]['title'])
+    console.log("img_url:"+response_json[0]['image_location'])
+    const carousel_title = document.getElementById("carousel-title")
+    carousel_title.innerHTML = 'title: '+response_json[0]['title']
 
-    const article_list= document.getElementById("articles")
-    articles.forEach(element => {
-        const newArticle = document.createElement("li")
-        newArticle.setAttribute("id", article.id)
-        newArticle.innerText = article.titlearticle_list.append(newArticle)
+
+
+    
+
+
+    // const article_list= document.getElementById("articles")
+    // articles.forEach(element => {
+    //     const newArticle = document.createElement("li")
+    //     newArticle.setAttribute("id", article.id)
+    //     newArticle.innerText = article.titlearticle_list.append(newArticle)
         
-    });
+    // });
 }

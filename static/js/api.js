@@ -89,16 +89,6 @@ async function startImageGenerator(prompt) {
     console.log(path)
 
     showPromptImage(path)
-    ///여기서부터 수정된 버전
-    // let path = '../unamsang-back/'+image_name
-    // let path = '../unamsang-back/'+image_name
-    // let path_all = '+path+'
-    // console.log('path는!!'+path_all)
-    // document.getElementById("hid_box").style.backgroundImage = "url(' + path_all + ')"
-
-
-
-    ///여기까지 수정된 버전
 
     if (response.status == 200) {
         alert(response.status);//http://127.0.0.1:5500/main.html
@@ -141,14 +131,19 @@ async function postArticle(title, img_url, is_active, exposure_end_date){
 
 }
 
-// async function getArticles(){
-//     const response = await fetch('http://127.0.0.1:8000/article',{
-//         method:'GET',
-//     })
-//     response_json = await response.json()
-//     console.log(response._json)
-//     return response_json.articles
-// }
+window.onload = async function getArticles(){
+    const response = await fetch('http://127.0.0.1:8000/article/',{
+        method:'GET',
+        headers:{
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+            // 'Authorization':"Bearer "+localStorage.getItem("user_access_token")
+        },
+    })
+    response_json = await response.json()
+    console.log(response_json)
+    loadArticles(response_json)
+}
 
 
 
