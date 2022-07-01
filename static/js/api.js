@@ -81,11 +81,12 @@ async function startImageGenerator(prompt) {
         body: JSON.stringify(promptData)
     })
 
-    image_name = await response.json()
-    console.log(image_name)
-    image_name = image_name['images']
+    response_json = await response.json()//{'images':이미지주소, 'title':'kitty'}
+    console.log(response_json)
+    image_name = response_json['images']
     title = response_json['title']
-    let path = '../unamsang_back/' + image_name
+    let path = '127.0.0.1:8000/' + image_name
+    console.log(path)
 
     showPromptImage(path)
     ///여기서부터 수정된 버전
