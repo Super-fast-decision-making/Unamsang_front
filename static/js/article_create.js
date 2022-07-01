@@ -14,10 +14,11 @@ function handlePromptCreate(){
 
 }
 function showPromptImage(path){
+    console.log(title)
     console.log(path,10)
     // image_name=image_name.items
+    document.getElementById("title").value = title
     document.getElementById("main_img").src=path
-
 }
 
 

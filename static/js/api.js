@@ -12,9 +12,10 @@ async function startImageGenerator(prompt){
         },
         body:JSON.stringify(promptData)
     })
-    image_name = await response.json()
-    console.log(image_name)
-    image_name=image_name['images']
+    response_json = await response.json()
+    console.log(response_json)
+    image_name=response_json['images']
+    title = response_json['title']
     let path = '../unamsang-back/'+image_name    
     showPromptImage(path)
     ///여기서부터 수정된 버전
