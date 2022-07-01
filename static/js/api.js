@@ -146,7 +146,3 @@ async function startImageGenerator(prompt) {
 //     console.log(response._json)
 //     return response_json.articles
 // }
-
-
-
-
