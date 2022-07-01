@@ -6,33 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up | You Know What I'm Saying</title>
+    <script src="./static/js/api.js"></script>
 
-    <script>
-        // 회원가입
-        async function handleSignup() {
 
-            const signupData = {
-                username: document.getElementById("username").value,
-                email: document.getElementById("email").value,
-                password: document.getElementById("password").value
-            }
-            const response = await fetch(`http://127.0.0.1:8000/user/`, {
-                headers: {
-                    Accept: 'application/json',
-                    'Content-type': 'application/json'
-                },
-                method: 'POST',
-                body: JSON.stringify(signupData) // js object를 json형식으로 바꿔주어야함.
-            })
-            response_json = await response.json()
-
-            if (response.status == 200) {
-                window.location.replace(`http://127.0.0.1:5500/login.html`);
-            } else {
-                alert(response.status)
-            }
-        }
-    </script>
 </head>
 
 <body>
