@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +14,7 @@
     <script src="./static/js/main.js"></script>
 
 </head>
+
 <body>
     <nav>
         <div class="nav_left">
@@ -25,22 +27,18 @@
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
         <div class="nav_right">
-            <button><a href="/">로그아웃</a></button>
+            <button type="button" onclick="logout()">로그아웃</button>
         </div>
     </nav>
 
     <div class="idx_head">
-        <img src="http://127.0.0.1:8000/static/images/_20220701144005_0.png">
-
         <div class="input_box">
-
             <div class="input_inner_box">
-                <input  id="prompt" type="text" name="input_box" placeholder="키워드를 넣으세요">
+                <input id="prompt" type="text" name="input_box" placeholder="키워드를 넣으세요">
                 <button type="submit" onclick="handlePromptCreate()">submit</button>
-            
             </div>
-            <div class="hid_box" id="hid_box" >
-                
+            <div class="hid_box" id="hid_box">
+
                 <div class="hid_img_box">
                     <img id="main_img">
                 </div>
@@ -55,15 +53,9 @@
                     <button type="submit" onclick="handleArticleCreate()">submit</button>
                 </div>
             </div>
-            
-
-
-        
         </div>
-
     </div>
     <div class="idx_2nd_page">
-        
         <div class="carousel-container">
             <ol id="articles" class="carousel-text">
                 <div>
@@ -125,7 +117,7 @@
                         </div>
                     </div>
 
-    
+
                 </div>
 
             </div>
@@ -137,7 +129,7 @@
             </div>
 
             <ol id="articles" class="carousel-text">
-                <input class="form-control"  placeholder="댓글 달기..." id="">
+                <input class="form-control" placeholder="댓글 달기..." id="">
                 <button class="comment_button">게시</button>
                 <!-- onclick="save_comment('{{content.post_id}}')"
              -->
@@ -150,10 +142,10 @@
         const next = document.querySelector('.next');
         const track = document.querySelector('.track');
         const carouselWidth = document.querySelector('.carousel-container').offsetWidth;
-        next.addEventListener('click', ()=>{
+        next.addEventListener('click', () => {
             track.style.transform = `translateX(-${carouselWidth}px)`;
         })
-        prev.addEventListener('click', ()=>{
+        prev.addEventListener('click', () => {
             track.style.transform = `translateX(-${0}px)`;
         })
     </script>
@@ -162,4 +154,5 @@
 
 
 </body>
+
 </html>
