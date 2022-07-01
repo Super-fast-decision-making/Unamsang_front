@@ -1,22 +1,93 @@
-async function startImageGenerator(prompt){
-    const promptData={
-        prompt:prompt,
-    }
-    console.log(promptData)
+const backend_base_url = "http://127.0.0.1:8000"
+const frontend_base_url = "http://127.0.0.1:5500"
 
-    const response = await fetch('http://127.0.0.1:8000/article/text/',{
-        method:'POST',
-        headers:{
+
+// 회원가입
+async function handleSignup() {
+
+    const signupData = {
+        username: document.getElementById("username").value,
+        email: document.getElementById("email").value,
+        password: document.getElementById("password").value
+    }
+    const response = await fetch(`${backend_base_url}/user/`, {
+        headers: {
             Accept: 'application/json',
             'Content-type': 'application/json'
         },
-        body:JSON.stringify(promptData)
+        method: 'POST',
+        body: JSON.stringify(signupData) // js object를 json형식으로 바꿔주어야함.
     })
     response_json = await response.json()
+
+    if (response.status == 200) {
+        window.location.replace(`${frontend_base_url}/login.html`);
+    } else {
+        alert(response.status)
+    }
+}
+
+
+// 로그인
+async function handleLogin() {
+
+    const loginData = {
+        username: document.getElementById("username").value,
+        password: document.getElementById('password').value
+    }
+    const response = await fetch(`${backend_base_url}/user/login/`, {
+        headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify(loginData)
+    })
+    response_json = await response.json()
+
+    if (response.status == 200) {
+        localStorage.setItem("user_access_token", response_json.access)
+        localStorage.setItem("user_refresh_token", response_json.refresh)
+
+
+        const base64Url = response_json.access.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+
+        localStorage.setItem("payload", jsonPayload)
+        window.location.replace(`${frontend_base_url}/main.html`)
+    } else {
+        alert(response.status)
+    }
+}
+
+
+
+// 이미지 생성
+async function startImageGenerator(prompt) {
+    const promptData = {
+        prompt: prompt,
+    }
+    console.log(promptData)
+
+    const response = await fetch(`${backend_base_url}/article/text/`, {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(promptData)
+    })
+
+    response_json = await response.json()//{'images':이미지주소, 'title':'kitty'}
     console.log(response_json)
-    image_name=response_json['images']
+    image_name = response_json['images']
     title = response_json['title']
-    let path = '../unamsang-back/'+image_name    
+    let path = '127.0.0.1:8000/' + image_name
+    console.log(path)
+
     showPromptImage(path)
     ///여기서부터 수정된 버전
     // let path = '../unamsang-back/'+image_name
@@ -28,16 +99,14 @@ async function startImageGenerator(prompt){
 
 
     ///여기까지 수정된 버전
-    
-    if (response.status==200){
+
+    if (response.status == 200) {
         alert(response.status);//http://127.0.0.1:5500/main.html
-    }else{
+    } else {
         alert(response.status);
     }
 
 }
-
-
 
 
 
@@ -60,7 +129,7 @@ async function startImageGenerator(prompt){
 //     })
 //     response_json = await response.json()
 //     console.log(response_json)
-    
+
 //     if (response.status==200){
 //         alert(response.status);//http://127.0.0.1:5500/main.html
 //     }else{
@@ -77,3 +146,7 @@ async function startImageGenerator(prompt){
 //     console.log(response._json)
 //     return response_json.articles
 // }
+
+
+
+
