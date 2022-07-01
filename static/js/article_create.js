@@ -8,13 +8,15 @@ function handlePromptCreate(){
     hidden_page.classList.add('hidden_box')
     const hid_box = document.querySelector(".hid_box")
     hid_box.style.display="flex";
+    const hid_text_box = document.querySelector(".hid_text_box")
+    hid_text_box.style.display="flex";
 
 
 }
-function showPromptImage(image_name){
-    console.log(image_name,10)
+function showPromptImage(path){
+    console.log(path,10)
     // image_name=image_name.items
-    document.getElementById("main_img").src=image_name
+    document.getElementById("main_img").src=path
 
 }
 
