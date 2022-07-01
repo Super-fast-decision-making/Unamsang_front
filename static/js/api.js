@@ -92,20 +92,10 @@ async function startImageGenerator(prompt) {
     console.log(response_json)
     image_name = response_json['images']
     title = response_json['title']
-    let path = '127.0.0.1:8000/' + image_name
+    let path = 'http://127.0.0.1:8000/' + image_name
     console.log(path)
 
     showPromptImage(path)
-    ///여기서부터 수정된 버전
-    // let path = '../unamsang-back/'+image_name
-    // let path = '../unamsang-back/'+image_name
-    // let path_all = '+path+'
-    // console.log('path는!!'+path_all)
-    // document.getElementById("hid_box").style.backgroundImage = "url(' + path_all + ')"
-
-
-
-    ///여기까지 수정된 버전
 
     if (response.status == 200) {
         alert(response.status);//http://127.0.0.1:5500/main.html
@@ -115,41 +105,47 @@ async function startImageGenerator(prompt) {
 
 }
 
+async function postArticle(title, img_url, is_active, exposure_end_date){
+    const articleData={
+        title:title,
+        image_location:img_url,
+        is_active:is_active,
+        exposure_end_date:exposure_end_date,
+    }
+    console.log(articleData)
+    console.log("*************")
 
+    const response = await fetch('http://127.0.0.1:8000/article/',{
+        method:'POST',
+        headers:{
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+            'Authorization':localStorage.getItem("user_access_token")
 
-// async function postArticle(title, is_active, exposure_end_date){
-//     const articleData={
-//         title:title,
-//         is_active:is_active,
-//         exposure_end_date:exposure_end_date,
-//     }
-//     console.log(articleData)
-//     console.log("*************")
+        },
+        body:JSON.stringify(articleData)
+    })
+    response_json = await response.json()
+    console.log(response_json)
 
-//     const response = await fetch('http://127.0.0.1:00/article',{
-//         method:'POST',
-//         headers:{
-//             Accept: 'application/json',
-//             'Content-type': 'application/json'
-//         },
-//         body:JSON.stringify(articleData)
-//     })
-//     response_json = await response.json()
-//     console.log(response_json)
+    if (response.status==200){
+        alert(response.status);//http://127.0.0.1:5500/main.html
+    }else{
+        alert(response.status);
+    }
 
-//     if (response.status==200){
-//         alert(response.status);//http://127.0.0.1:5500/main.html
-//     }else{
-//         alert(response.status);
-//     }
+}
 
-// }
-
-// async function getArticles(){
-//     const response = await fetch('http://127.0.0.1:8000/article',{
-//         method:'GET',
-//     })
-//     response_json = await response.json()
-//     console.log(response._json)
-//     return response_json.articles
-// }
+window.onload = async function getArticles(){
+    const response = await fetch('http://127.0.0.1:8000/article/',{
+        method:'GET',
+        headers:{
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+            // 'Authorization':"Bearer "+localStorage.getItem("user_access_token")
+        },
+    })
+    response_json = await response.json()
+    console.log(response_json)
+    loadArticles(response_json)
+}
