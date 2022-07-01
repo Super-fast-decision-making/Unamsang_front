@@ -22,18 +22,22 @@ function showPromptImage(path){
 
 
 
-// function handleArticleCreate(){
+function handleArticleCreate(){
 
-//     const title = document.getElementById("title").value
-//     let is_active = document.getElementById("is_active").value
-//     if(is_active=="on"){
-//         is_active=true
-//     }else{
-//         is_active=false
-//     }
-//     const exposure_end_date = document.getElementById("exposure_end_date").value
-//     postArticle(title,is_active, exposure_end_date)
-// }
+    // const title = document.getElementById("title").value
+    const img_url = document.getElementById("main_img").src;
+    let is_active = document.getElementById("is_active").value
+    if(is_active=="on"){
+        is_active=true
+    }else{
+        is_active=false
+    }
+    const exposure_end_date = document.getElementById("exposure_end_date").value
+    // postArticle(title,is_active, exposure_end_date)
+    console.log(img_url)
+    console.log(is_active)
+    console.log(exposure_end_date)
+}
 
 async function loadArticles(){
     console.log("here")
