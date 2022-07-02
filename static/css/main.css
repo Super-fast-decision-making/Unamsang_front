@@ -7,7 +7,7 @@ body{
 nav{
     width:100%;
     height:35px;
-    background-color: #88f3ff;
+    background-color: #000000;
     justify-content: space-between;
     display: flex;
 }
@@ -16,7 +16,7 @@ nav{
 .idx_head{
     width:100%;
     height:100%;
-    background-color: #c7b0ff;
+    background-color: #ffffff;
 }
 
 .input_box{
@@ -39,13 +39,28 @@ nav{
     width: 500px;
     height: 500px;
     background-color: beige;
+    border-radius:5px;
 }
 .hid_text_box{
     display: none;
     width: 500px;
-    height: 100px;
+    height: 30px;
     background-color: #aaa;
+    padding: 0 10px;
+
+    
 }
+.hid_text_box div{
+    display:flex;
+    justify-content: space-between;
+}
+.hid_text_box div div{
+    margin:0 10px;
+}
+.hid_text_box div button{
+    margin: 0 10px;
+}
+
 
 #prompt{
     height:3em;
@@ -85,7 +100,7 @@ nav{
     /* float:left; */
     width:500px;
     height:450px;
-    background-color:#c7b0ff; 
+    background-color:#7a7a7a; 
     border: 2px solid black;
     flex-shrink: 0;
  }
@@ -114,8 +129,10 @@ nav{
 }
 .card-container{
     flex-shrink: 0;
-    width: 256px;
-    height:250px;
+    /* width: 256px;
+    height:250px; */
+    width:500px;
+    height:500px;
     /* border:1px solid #aaa; */
     padding-right:15px;
     box-sizing: border-box;
@@ -123,7 +140,7 @@ nav{
 .card {
     width: 100%;
     height:100%;
-    background-color:#c7b0ff; 
+    background-color:#ffffff; 
     box-sizing: border-box;
     border-radius:10px;
 
@@ -162,4 +179,51 @@ nav{
 .carousel-text div p{
     padding-right:5px;
     padding-left:5px;
+}
+.carouselimg{
+    width:100%;
+    height:100%;
+
+}
+
+/* 모달 CSS */
+.modal-bg{
+    position:fixed;
+    width:100%;
+    height:100vh;
+    top:0;
+    left:0;
+    background-color: rgba(0,0,0,0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+}
+.modal{
+    background-color: whitesmoke;
+    width:60%;
+    height:80%;
+    display:flex;
+    justify-content: space-around;
+    z-index: 1000;
+    flex-direction: row;
+    float: left;
+
+}
+.modal-left{
+    width:65%;
+    height:100%;
+    float: left;
+}
+.modal-right{
+    width:35%;
+    height:100%;
+}
+.modal-right button{
+    float:right;
+    right:0;
+}
+.modal-img{
+    width: 100%;
+    height: 100%;
 }

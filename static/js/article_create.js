@@ -1,3 +1,4 @@
+//프리뷰 이미지 만들기+프리뷰 이미지 div 보이기
 function handlePromptCreate(){
     const prompt = document.getElementById("prompt").value
     console.log(prompt)
@@ -13,19 +14,21 @@ function handlePromptCreate(){
 
 
 }
+
+//프리뷰 이미지 구현
 function showPromptImage(path){
     console.log(title)
     console.log(path,10)
     // image_name=image_name.items
-    document.getElementById("title").value = title
-    document.getElementById("main_img").src=path
+    document.getElementById("title").innerHTML = title;
+    document.getElementById("main_img").src=path;
 }
 
 
-
+//아티클 생성
 function handleArticleCreate(){
 
-    // const title = document.getElementById("title").value
+    const title = document.getElementById("title").innerText;
     const img_url = document.getElementById("main_img").src;
     let is_active = document.getElementById("is_active").value
     if(is_active=="on"){
@@ -35,20 +38,32 @@ function handleArticleCreate(){
     }
     const exposure_end_date = document.getElementById("exposure_end_date").value
     // postArticle(title,is_active, exposure_end_date)
-    console.log(img_url)
-    console.log(is_active)
-    console.log(exposure_end_date)
+    postArticle(title, img_url, is_active, exposure_end_date)
 }
 
-async function loadArticles(){
-    console.log("here")
-    articles= await getArticles()
 
-    const article_list= document.getElementById("articles")
-    articles.forEach(element => {
-        const newArticle = document.createElement("li")
-        newArticle.setAttribute("id", article.id)
-        newArticle.innerText = article.titlearticle_list.append(newArticle)
+//아티클 불러오기
+async function loadArticles(response_json){
+    console.log("title:"+response_json[0]['title'])
+    console.log("img_url:"+response_json[0]['image_location'])
+    for (var i=0;i<=2;i++){
+        let imgs =response_json[i]['image_location'].split('final')[0]
+        document.getElementById("carousel-title"+i).innerHTML = 'title: '+response_json[i]['title']
+        document.getElementById("carousel-author"+i).innerHTML = 'author: '+response_json[i]['user']
+        for (var j=0;j<=3;j++){
+            document.getElementById("carouselimg"+i+"_"+(j+1)).src = imgs+j+'.png'
+        }
+        document.getElementById("carouselimg"+i+"_5").src= response_json[i]['image_location']
         
-    });
+    }
+}
+
+//모달 내용 불러오기
+async function loadModals(response_json){
+    for (var i=0;i<=2;i++){
+        document.getElementById('modal-img'+i).src = response_json[i]['image_location']
+        document.getElementById('modal-title'+i).innerHTML = response_json[i]['title']
+        document.getElementById("modal-author"+i).innerHTML = 'author: '+response_json[i]['user']
+    }
+
 }
