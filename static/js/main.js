@@ -39,7 +39,7 @@ document.getElementById('prev0').addEventListener('click', () => {
 
 // })
 
-// $('#')
+
     
 
 //모달 온오프
