@@ -85,7 +85,7 @@ async function startImageGenerator(prompt) {
     console.log(response_json)
     image_name = response_json['images']
     title = response_json['title']
-    let path = 'http://127.0.0.1:8000/' + image_name
+    let path = 'http://127.0.0.1:8000/' + image_name +'_finalgrid.png'
     console.log(path)
 
     showPromptImage(path)
@@ -115,7 +115,7 @@ async function postArticle(title, img_url, is_active, exposure_end_date){
         headers:{
             Accept: 'application/json',
             'Content-type': 'application/json',
-            'Authorization':localStorage.getItem("user_access_token")
+            'Authorization':"Bearer "+localStorage.getItem("user_access_token")
 
         },
         body:JSON.stringify(articleData)
@@ -142,7 +142,9 @@ window.onload = async function getArticles(){
     })
     response_json = await response.json()
     console.log(response_json)
-    loadArticles(response_json)
+    console.log(response_json.length)//아티클 갯수
+    a_length=response_json.length
+    loadArticles(response_json,a_length )
 }
 
 
