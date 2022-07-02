@@ -22,12 +22,14 @@
             <button><a href="/">마이페이지</a></button>
             <button><a href="/">랭킹</a></button>
         </div>
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+
         <div class="nav_right">
-            <button type="button" onclick="logout()">로그아웃</button>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+                <button><a href="/">로그아웃</a></button>
+            </form>
+            
         </div>
     </nav>
 
@@ -46,16 +48,20 @@
             <div class="hid_text_box" id="hid_text_box">
                 <div>
                     <h4 id="title"></h4>
-                    <label for="공개 여부">공개 여부</label>
-                    <input id="is_active" type="checkbox" name="공개 여부" checked="true">
-                    <label for="노출종료일">노출종료일</label>
-                    <input id="exposure_end_date" type="date" name="노출종료일">
-                    <button type="submit" onclick="handleArticleCreate()">submit</button>
+                    <div>
+                        <label for="공개 여부">공개 여부</label>
+                        <input id="is_active" type="checkbox" name="공개 여부" checked="true"> 
+                    </div>
+                    <div>
+                        <label for="노출종료일">노출종료일</label>
+                        <input id="exposure_end_date" type="date" name="노출종료일">
+                    </div>            
+                    <button type="submit" onclick="handleArticleCreate()" style="height:30px;">submit</button>
                 </div>
-            </div>
+            </div>  
         </div>
     </div>
-    <div class="idx_2nd_page">
+    <div class="idx_2nd_page">   
         <div class="carousel-container">
             <ol id="articles" class="carousel-text">
                 <div>
@@ -65,7 +71,7 @@
                 <div>
                     <p id="carousel-author"></p>
                     <p id="carousel-scores"></p>
-                    <p>icon</p>
+                    <p><i class="fa fa-star-fas"></i>icon</p>
                 </div>
             </ol>
             <div class="carousel-inner">
@@ -73,51 +79,34 @@
                     <div class="card-container">
                         <div class="card">
                             <div class="carousel-img">1</div>
+                            <img class=carouselimg id=carouselimg1 src="">
+                            
                         </div>
                     </div>
                     <div class="card-container">
                         <div class="card">
                             <div class="carousel-img">2</div>
-
+                            <img class=carouselimg id=carouselimg2 src="">
                         </div>
                     </div>
                     <div class="card-container">
                         <div class="card">
                             <div class="carousel-img">3</div>
+                            <img class=carouselimg id=carouselimg3 src="">
                         </div>
                     </div>
                     <div class="card-container">
                         <div class="card">
                             <div class="carousel-img">4</div>
+                            <img class=carouselimg id=carouselimg4 src="">
                         </div>
                     </div>
                     <div class="card-container">
                         <div class="card">
                             <div class="carousel-img">5</div>
+                            <img class=carouselimg id=carouselimg5 src="">
                         </div>
                     </div>
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="carousel-img">6</div>
-                        </div>
-                    </div>
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="carousel-img">7</div>
-                        </div>
-                    </div>
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="carousel-img">8</div>
-                        </div>
-                    </div>
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="carousel-img">9</div>
-                        </div>
-                    </div>
-
-
                 </div>
 
             </div>
@@ -129,15 +118,16 @@
             </div>
 
             <ol id="articles" class="carousel-text">
-                <input class="form-control" placeholder="댓글 달기..." id="">
+                <input class="form-control"  placeholder="댓글 달기..." id="" style="width:1150px; height:30px" >
                 <button class="comment_button">게시</button>
                 <!-- onclick="save_comment('{{content.post_id}}')"
              -->
             </ol>
-        </div>
+    </div>
 
     </div>
     <script>
+        //캐로셀 움직이는 식
         const prev = document.querySelector('.prev');
         const next = document.querySelector('.next');
         const track = document.querySelector('.track');
