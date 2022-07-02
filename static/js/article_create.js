@@ -39,46 +39,15 @@ function handleArticleCreate(){
 }
 
 async function loadArticles(response_json, a_length){
-    console.log("title:"+response_json[1]['title'])
-    console.log("img_url:"+response_json[1]['image_location'])//.substring(0,-13)
-    const imgs=response_json[1]['image_location'].split('final')[0]
-    console.log(typeof imgs)
-    console.log(imgs)
-
-    // console.log(imgs.substring(str.length()-13,str.length()))
-    const carousel_title = document.getElementById("carousel-title")
-    carousel_title.innerHTML = 'title: '+response_json[1]['title']
-    console.log(imgs+'0.png')
-    document.getElementById("carouselimg1").src = imgs+'0.png'
-    document.getElementById("carouselimg2").src = imgs+'1.png'
-    document.getElementById("carouselimg3").src = imgs+'2.png'
-    document.getElementById("carouselimg4").src = imgs+'3.png'
-    document.getElementById("carouselimg5").src= response_json[1]['image_location']
-
-    //[imgs+'0.png'], [imgs+'1.png'], [imgs+'2.png'],[imgs+'3.png'],[response_json[0]['image_location']]
-
-
-    for(i;i<10;i++){
-
-
-}
-
-
-
-    
-
-
-//캐로셀 컨테이너 전체를 반복해서 그리고 싶음
-
-
-    
-
-
-    // const article_list= document.getElementById("articles")
-    // articles.forEach(element => {
-    //     const newArticle = document.createElement("li")
-    //     newArticle.setAttribute("id", article.id)
-    //     newArticle.innerText = article.titlearticle_list.append(newArticle)
+    console.log("title:"+response_json[0]['title'])
+    console.log("img_url:"+response_json[0]['image_location'])
+    for (var i=0;i<=2;i++){
+        let imgs =response_json[i]['image_location'].split('final')[0]
+        document.getElementById("carousel-title"+i).innerHTML = 'title: '+response_json[i]['title']
+        for (var j=0;j<=3;j++){
+            document.getElementById("carouselimg"+i+"_"+(j+1)).src = imgs+j+'.png'
+        }
+        document.getElementById("carouselimg"+i+"_5").src= response_json[a_length-(i+1)]['image_location']
         
-    // });
-}
+    }
+}   
