@@ -23,14 +23,14 @@ async function search() {
 //캐로셀 움직이는 식
 
 
-let carouselWidth = document.getElementById('carousel-container0').offsetWidth;
-console.log('width:'+ carouselWidth)
-document.getElementById('next0').addEventListener('click', () => {
-    document.getElementById('track0').style.transform = `translateX(-${carouselWidth0}px)`;
-})
-document.getElementById('prev0').addEventListener('click', () => {
-    document.getElementById('track0').style.transform = `translateX(-${0}px)`;
-})
+// let carouselWidth = document.getElementById('carousel-container0').offsetWidth;
+// console.log('width:'+ carouselWidth)
+// document.getElementById('next0').addEventListener('click', () => {
+//     document.getElementById('track0').style.transform = `translateX(-${carouselWidth0}px)`;
+// })
+// document.getElementById('prev0').addEventListener('click', () => {
+//     document.getElementById('track0').style.transform = `translateX(-${0}px)`;
+// })
 
 // window.addEventListener("load", function(){
 //     document.getElementById("modal-btn"+0).onclick=function(){

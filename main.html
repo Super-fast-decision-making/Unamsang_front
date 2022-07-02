@@ -120,8 +120,7 @@
             <ol id="articles" class="carousel-text">
                 <input class="form-control"  placeholder="댓글 달기..." id="" style="width:1150px; height:30px" >
                 <button class="comment_button">게시</button>
-                <!-- onclick="save_comment('{{content.post_id}}')"
-             -->
+
             </ol>
 
         </div>
@@ -184,8 +183,6 @@
             <ol id="articles" class="carousel-text">
                 <input class="form-control"  placeholder="댓글 달기..." id="" style="width:1150px; height:30px" >
                 <button class="comment_button">게시</button>
-                <!-- onclick="save_comment('{{content.post_id}}')"
-             -->
             </ol>
 
         </div>
@@ -247,8 +244,7 @@
             <ol id="articles" class="carousel-text">
                 <input class="form-control"  placeholder="댓글 달기..." id="" style="width:1150px; height:30px" >
                 <button class="comment_button">게시</button>
-                <!-- onclick="save_comment('{{content.post_id}}')"
-             -->
+
             </ol>
             <!-------------------디테일 모달---------------------->
             <div id="modal-bg0" class="modal-bg">
@@ -302,16 +298,27 @@
     </div>
     <script>
         //캐로셀 움직이는 식
-        const prev = document.querySelector('.prev');
-        const next = document.querySelector('.next');
-        const track = document.querySelector('.track');
         const carouselWidth = document.querySelector('.carousel-container').offsetWidth;
-        next.addEventListener('click', () => {
-            track.style.transform = `translateX(-${carouselWidth}px)`;
+        document.querySelector('#next'+0).addEventListener('click', () => {
+            document.querySelector('#track'+0).style.transform = `translateX(-${carouselWidth}px)`;
         })
-        prev.addEventListener('click', () => {
-            track.style.transform = `translateX(-${0}px)`;
+        document.querySelector('#prev'+0).addEventListener('click', () => {
+            document.querySelector('#track'+0).style.transform = `translateX(-${0}px)`;
         })
+        document.querySelector('#next'+1).addEventListener('click', () => {
+            document.querySelector('#track'+1).style.transform = `translateX(-${carouselWidth}px)`;
+        })
+        document.querySelector('#prev'+1).addEventListener('click', () => {
+            document.querySelector('#track'+1).style.transform = `translateX(-${0}px)`;
+        })
+        document.querySelector('#next'+2).addEventListener('click', () => {
+            document.querySelector('#track'+2).style.transform = `translateX(-${carouselWidth}px)`;
+        })
+        document.querySelector('#prev'+2).addEventListener('click', () => {
+            document.querySelector('#track'+2).style.transform = `translateX(-${0}px)`;
+        })
+
+
         //모달 온오프
         function modalOn(){
             document.getElementById('modal-bg').style.display="flex"
@@ -319,9 +326,6 @@
         function modalOff(){
             document.getElementById('modal-bg').style.display="none"
         };
-
-
-
 
 
     </script>
