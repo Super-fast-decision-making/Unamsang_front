@@ -54,7 +54,6 @@ async function loadArticles(response_json){
             document.getElementById("carouselimg"+i+"_"+(j+1)).src = imgs+j+'.png'
         }
         document.getElementById("carouselimg"+i+"_5").src= response_json[i]['image_location']
-        
     }
 }
 

@@ -40,25 +40,15 @@ document.getElementById('prev0').addEventListener('click', () => {
 // })
 
 
-    
+
+
 
 //모달 온오프
-function modalOn0(){
-    document.getElementById('modal-bg'+0).style.display="flex"
-};
-function modalOn1(){
-    document.getElementById('modal-bg'+1).style.display="flex"
-};
-function modalOn2(){
-    document.getElementById('modal-bg'+2).style.display="flex"
+function modalOn(id){
+    document.getElementById('modal-bg'+id).style.display="flex"
 };
 
-function modalOff0(){
-    document.getElementById('modal-bg'+0).style.display="none"
-};
-function modalOff1(){
-    document.getElementById('modal-bg'+1).style.display="none"
-};
-function modalOff2(){
-    document.getElementById('modal-bg'+2).style.display="none"
+
+function modalOff(id){
+    document.getElementById('modal-bg'+id).style.display="none"
 };
