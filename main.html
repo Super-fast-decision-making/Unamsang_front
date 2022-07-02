@@ -72,6 +72,7 @@
                     <p id="carousel-author"></p>
                     <p id="carousel-scores"></p>
                     <p><i class="fa fa-star-fas"></i>icon</p>
+                    <button class="modal-btn" onclick="modalOn()">모달</button>
                 </div>
             </ol>
             <div class="carousel-inner">
@@ -123,6 +124,21 @@
                 <!-- onclick="save_comment('{{content.post_id}}')"
              -->
             </ol>
+
+            <!-------------------디테일 모달---------------------->
+            <div id="modal-bg" class="modal-bg">
+                <div class="modal">
+                    <div class="modal-left" style=" background-color: aquamarine;"></div>
+                    <div class="modal-right" style="background-color: beige;float: left;">
+                        <button onclick="modalOff()"><i class="fa fa-x"></i></button>
+                        <h2>title</h2>
+                        <label for ="name">Name:</label>
+                        <input type="text" name="name">
+                    </div>
+
+                </div>
+
+            </div>
     </div>
 
     </div>
@@ -138,6 +154,12 @@
         prev.addEventListener('click', () => {
             track.style.transform = `translateX(-${0}px)`;
         })
+        function modalOn(){
+            document.getElementById('modal-bg').style.display="flex"
+        };
+        function modalOff(){
+            document.getElementById('modal-bg').style.display="none"
+        };
     </script>
 
 

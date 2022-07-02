@@ -121,7 +121,6 @@ async function postArticle(title, img_url, is_active, exposure_end_date){
             Accept: 'application/json',
             'Content-type': 'application/json',
             'Authorization':"Bearer "+localStorage.getItem("user_access_token")
-
         },
         body:JSON.stringify(articleData)
     })
