@@ -63,6 +63,13 @@ async function handleLogin() {
     }
 }
 
+// 로그아웃
+function logout() {
+    localStorage.removeItem("user_access_token")
+    localStorage.removeItem("user_refresh_token")
+    localStorage.removeItem("payload")
+    window.location.replace(`http://127.0.0.1:5500/main.html`);
+}
 
 
 // 이미지 생성
@@ -97,8 +104,6 @@ async function startImageGenerator(prompt) {
     }
 
 }
-
-
 
 async function postArticle(title, img_url, is_active, exposure_end_date){
     const articleData={
