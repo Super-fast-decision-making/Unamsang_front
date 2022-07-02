@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyPage|You Know What I'm Saying</title>
+    <link rel="stylesheet" type="text/css" href="./static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="./static/css/mypage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap" rel="stylesheet">
+    <script src="https://use.fortawesome.com/99966411.js"></script>
+    <script src="./static/js/api.js"></script>
+    <script src="./static/js/mypage.js"></script>
+    <style>
+        body{
+            background-color: #f1f1f1;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <nav>
+        <div class="nav_left">
+            <button><a href="/main.html">메인페이지(로고)</a></button>
+            <button><a href="/mypage.html">마이페이지</a></button>
+            <button><a href="/ranking.html">랭킹</a></button>
+        </div>
+
+        <div class="nav_right">
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+                <button><a href="/login.html">로그아웃</a></button>
+            </form>
+            
+        </div>
+
+    </nav>
+    <div class="wrapper">
+        <div style="background-color: aliceblue;width:40%;height:100vh;">
+            <!-- Tab links -->
+            <div class="tab">
+                <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">London</button>
+                <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
+                <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+            </div>
+            
+            <!-- Tab content -->
+            <div id="London" class="tabcontent">
+                <h3>London</h3>
+                <p>London is the capital city of England.</p>
+            </div>
+            
+            <div id="Paris" class="tabcontent">
+                <h3>Paris</h3>
+                <p>Paris is the capital of France.</p>
+            </div>
+            
+            <div id="Tokyo" class="tabcontent">
+                <h3>Tokyo</h3>
+                <p>Tokyo is the capital of Japan.</p>
+            </div>
+    
+        </div>
+
+    </div>
+    <script>
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+
+
+</body>
+</html>
