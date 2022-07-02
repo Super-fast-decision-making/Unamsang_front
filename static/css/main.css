@@ -185,3 +185,41 @@ nav{
     height:100%;
 
 }
+
+/* 모달 CSS */
+.modal-bg{
+    position:fixed;
+    width:100%;
+    height:100vh;
+    top:0;
+    left:0;
+    background-color: rgba(0,0,0,0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+}
+.modal{
+    background-color: whitesmoke;
+    width:60%;
+    height:80%;
+    display:flex;
+    justify-content: space-around;
+
+    flex-direction: row;
+    float: left;
+
+}
+.modal-left{
+    width:65%;
+    height:100%;
+    float: left;
+}
+.modal-right{
+    width:35%;
+    height:100%;
+}
+.modal-right button{
+    float:right;
+    right:0;
+}
