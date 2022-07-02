@@ -99,12 +99,13 @@ async function startImageGenerator(prompt) {
 
     if (response.status == 200) {
         alert(response.status);//http://127.0.0.1:5500/main.html
+
     } else {
         alert(response.status);
     }
 
 }
-
+//아티클 생성
 async function postArticle(title, img_url, is_active, exposure_end_date){
     const articleData={
         title:title,
@@ -129,12 +130,14 @@ async function postArticle(title, img_url, is_active, exposure_end_date){
 
     if (response.status==200){
         alert(response.status);//http://127.0.0.1:5500/main.html
+        window.location.reload()
     }else{
         alert(response.status);
     }
 
 }
 
+//아티클 불러오기
 window.onload = async function getArticles(){
     const response = await fetch('http://127.0.0.1:8000/article/',{
         method:'GET',
@@ -148,7 +151,8 @@ window.onload = async function getArticles(){
     console.log(response_json)
     console.log(response_json.length)//아티클 갯수
     a_length=response_json.length
-    loadArticles(response_json,a_length )
+    loadArticles(response_json)
+    loadModals(response_json)
 }
 
 

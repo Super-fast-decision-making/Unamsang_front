@@ -18,7 +18,7 @@
 <body>
     <nav>
         <div class="nav_left">
-            <button><a href="/">메인페이지(로고)</a></button>
+            <button><a href="/main.html">메인페이지(로고)</a></button>
             <button><a href="/">마이페이지</a></button>
             <button><a href="/">랭킹</a></button>
         </div>
@@ -27,7 +27,7 @@
             <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
-                <button><a href="/">로그아웃</a></button>
+                <button><a href="/login.html">로그아웃</a></button>
             </form>
             
         </div>
@@ -62,50 +62,50 @@
         </div>
     </div>
     <div class="idx_2nd_page">   
-        <div class="carousel-container">
+        <div id="carousel-container0" class="carousel-container">
             <ol id="articles" class="carousel-text">
                 <div>
-                    <h2 id="carousel-title"></h2>
+                    <h2 id="carousel-title0"></h2>
 
                 </div>
                 <div>
-                    <p id="carousel-author"></p>
-                    <p id="carousel-scores"></p>
+                    <p id="carousel-author0"></p>
+                    <p id="carousel-scores0"></p>
                     <p><i class="fa fa-star-fas"></i>icon</p>
-                    <button class="modal-btn" onclick="modalOn()">모달</button>
+                    <button class="modal-btn" onclick="modalOn0()">모달</button>
                 </div>
             </ol>
             <div class="carousel-inner">
-                <div class="track">
+                <div id="track0" class="track">
                     <div class="card-container">
                         <div class="card">
                             <div class="carousel-img">1</div>
-                            <img class=carouselimg id=carouselimg1 src="">
+                            <img class=carouselimg id=carouselimg0_1 src="">
                             
                         </div>
                     </div>
                     <div class="card-container">
                         <div class="card">
                             <div class="carousel-img">2</div>
-                            <img class=carouselimg id=carouselimg2 src="">
+                            <img class=carouselimg id=carouselimg0_2 src="">
                         </div>
                     </div>
                     <div class="card-container">
                         <div class="card">
                             <div class="carousel-img">3</div>
-                            <img class=carouselimg id=carouselimg3 src="">
+                            <img class=carouselimg id=carouselimg0_3 src="">
                         </div>
                     </div>
                     <div class="card-container">
                         <div class="card">
                             <div class="carousel-img">4</div>
-                            <img class=carouselimg id=carouselimg4 src="">
+                            <img class=carouselimg id=carouselimg0_4 src="">
                         </div>
                     </div>
                     <div class="card-container">
                         <div class="card">
                             <div class="carousel-img">5</div>
-                            <img class=carouselimg id=carouselimg5 src="">
+                            <img class=carouselimg id=carouselimg0_5 src="">
                         </div>
                     </div>
                 </div>
@@ -113,8 +113,8 @@
             </div>
 
             <div class="crd_nav">
-                <button class="prev"><i class="fa fa-chevron-left"></i></button>
-                <button class="next"><i class="fa fa-chevron-right"></i></button>
+                <button id="prev0" class="prev"><i class="fa fa-chevron-left"></i></button>
+                <button id="next0" class="next"><i class="fa fa-chevron-right"></i></button>
 
             </div>
 
@@ -125,13 +125,140 @@
              -->
             </ol>
 
+        </div>
+        <div class="carousel-container">
+            <ol id="articles" class="carousel-text">
+                <div>
+                    <h2 id="carousel-title1"></h2>
+
+                </div>
+                <div>
+                    <p id="carousel-author1"></p>
+                    <p id="carousel-scores1"></p>
+                    <p><i class="fa fa-star-fas"></i>icon</p>
+                    <button class="modal-btn" onclick="modalOn1()">모달</button>
+                </div>
+            </ol>
+            <div class="carousel-inner">
+                <div id="track1" class="track">
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="carousel-img">1</div>
+                            <img class=carouselimg id=carouselimg1_1 src="">
+                            
+                        </div>
+                    </div>
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="carousel-img">2</div>
+                            <img class=carouselimg id=carouselimg1_2 src="">
+                        </div>
+                    </div>
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="carousel-img">3</div>
+                            <img class=carouselimg id=carouselimg1_3 src="">
+                        </div>
+                    </div>
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="carousel-img">4</div>
+                            <img class=carouselimg id=carouselimg1_4 src="">
+                        </div>
+                    </div>
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="carousel-img">5</div>
+                            <img class=carouselimg id=carouselimg1_5 src="">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="crd_nav">
+                <button id="prev1" class="prev"><i class="fa fa-chevron-left"></i></button>
+                <button id="next1" class="next"><i class="fa fa-chevron-right"></i></button>
+
+            </div>
+
+            <ol id="articles" class="carousel-text">
+                <input class="form-control"  placeholder="댓글 달기..." id="" style="width:1150px; height:30px" >
+                <button class="comment_button">게시</button>
+                <!-- onclick="save_comment('{{content.post_id}}')"
+             -->
+            </ol>
+
+        </div>
+        <div class="carousel-container">
+            <ol id="articles" class="carousel-text">
+                <div>
+                    <h2 id="carousel-title2"></h2>
+
+                </div>
+                <div>
+                    <p id="carousel-author2"></p>
+                    <p id="carousel-scores2"></p>
+                    <p><i class="fa fa-star-fas"></i>icon</p>
+                    <button id="modal-btn2" class="modal-btn" onclick="modalOn2()">모달</button>
+                </div>
+            </ol>
+            <div class="carousel-inner">
+                <div id="track2" class="track">
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="carousel-img">1</div>
+                            <img class=carouselimg id=carouselimg2_1 src="">
+                            
+                        </div>
+                    </div>
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="carousel-img">2</div>
+                            <img class=carouselimg id=carouselimg2_2 src="">
+                        </div>
+                    </div>
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="carousel-img">3</div>
+                            <img class=carouselimg id=carouselimg2_3 src="">
+                        </div>
+                    </div>
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="carousel-img">4</div>
+                            <img class=carouselimg id=carouselimg2_4 src="">
+                        </div>
+                    </div>
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="carousel-img">5</div>
+                            <img class=carouselimg id=carouselimg2_5 src="">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="crd_nav">
+                <button id="prev2" class="prev"><i class="fa fa-chevron-left"></i></button>
+                <button id="next2" class="next"><i class="fa fa-chevron-right"></i></button>
+
+            </div>
+
+            <ol id="articles" class="carousel-text">
+                <input class="form-control"  placeholder="댓글 달기..." id="" style="width:1150px; height:30px" >
+                <button class="comment_button">게시</button>
+                <!-- onclick="save_comment('{{content.post_id}}')"
+             -->
+            </ol>
             <!-------------------디테일 모달---------------------->
-            <div id="modal-bg" class="modal-bg">
+            <div id="modal-bg0" class="modal-bg">
                 <div class="modal">
-                    <div class="modal-left" style=" background-color: aquamarine;"></div>
+                    <div class="modal-left" style=" background-color: aquamarine;"><img class="modal-img" id=modal-img0 src=""></div>
                     <div class="modal-right" style="background-color: beige;float: left;">
-                        <button onclick="modalOff()"><i class="fa fa-x"></i></button>
-                        <h2>title</h2>
+                        <button onclick="modalOff0()"><i class="fa fa-x"></i></button>
+                        <h2 id="modal-title0">title</h2>
+                        <p id="modal-author0">author</p>
                         <label for ="name">Name:</label>
                         <input type="text" name="name">
                     </div>
@@ -139,7 +266,39 @@
                 </div>
 
             </div>
-    </div>
+            <!-------------------디테일 모달---------------------->
+            <div id="modal-bg1" class="modal-bg">
+                <div class="modal">
+                    <div class="modal-left" style=" background-color: aquamarine;"><img class="modal-img" id=modal-img1 src=""></div>
+                    <div class="modal-right" style="background-color: beige;float: left;">
+                        <button onclick="modalOff1()"><i class="fa fa-x"></i></button>
+                        <h2 id="modal-title1">title</h2>
+                        <p id="modal-author1">author</p>
+                        <label for ="name">Name:</label>
+                        <input type="text" name="name">
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-------------------디테일 모달---------------------->
+            <div id="modal-bg2" class="modal-bg">
+                <div class="modal">
+                    <div class="modal-left" style=" background-color: aquamarine;"><img class="modal-img" id=modal-img2 src=""></div>
+                    <div class="modal-right" style="background-color: beige;float: left;">
+                        <button onclick="modalOff2()"><i class="fa fa-x"></i></button>
+                        <h2 id="modal-title2">title</h2>
+                        <p id="modal-author2">author</p>
+                        <label for ="name">Name:</label>
+                        <input type="text" name="name">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
     <script>
@@ -154,12 +313,19 @@
         prev.addEventListener('click', () => {
             track.style.transform = `translateX(-${0}px)`;
         })
+        //모달 온오프
         function modalOn(){
             document.getElementById('modal-bg').style.display="flex"
         };
         function modalOff(){
             document.getElementById('modal-bg').style.display="none"
         };
+
+
+
+        function search(){
+            window.location.replace(`url)
+        }
     </script>
 
 
