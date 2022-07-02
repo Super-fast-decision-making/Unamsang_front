@@ -151,7 +151,8 @@ window.onload = async function getArticles(){
     console.log(response_json)
     console.log(response_json.length)//아티클 갯수
     a_length=response_json.length
-    loadArticles(response_json,a_length )
+    loadArticles(response_json)
+    loadModals(response_json)
 }
 
 

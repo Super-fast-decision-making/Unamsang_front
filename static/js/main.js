@@ -10,6 +10,16 @@ document.getElementById('prev0').addEventListener('click', () => {
     document.getElementById('track0').style.transform = `translateX(-${0}px)`;
 })
 
+// window.addEventListener("load", function(){
+//     document.getElementById("modal-btn"+0).onclick=function(){
+//         document.getElementById('modal-bg'+0).style.display="flex"
+//     }
+
+// })
+
+// $('#')
+    
+
 //모달 온오프
 function modalOn0(){
     document.getElementById('modal-bg'+0).style.display="flex"
