@@ -103,8 +103,8 @@ async function startImageGenerator(prompt) {
     } else {
         alert(response.status);
     }
-
 }
+
 //아티클 생성
 async function postArticle(title, img_url, is_active, exposure_end_date) {
     const articleData = {
@@ -134,8 +134,8 @@ async function postArticle(title, img_url, is_active, exposure_end_date) {
     } else {
         alert(response.status);
     }
-
 }
+
 
 //아티클 불러오기
 window.onload = async function getArticles() {
@@ -151,6 +151,7 @@ window.onload = async function getArticles() {
     console.log(response_json)
     console.log(response_json.length)//아티클 갯수
     a_length = response_json.length
+    console.log(response_json[0]['image_location'])
     // loadArticles(response_json)
     //로드 아티클
     for (var i = 0; i <= 2; i++) {
@@ -162,8 +163,9 @@ window.onload = async function getArticles() {
         }
         document.getElementById("carouselimg" + i + "_5").src = response_json[i]['image_location']
         document.getElementById("carousel-id" + i).innerHTML = response_json[i]['id']
-
     }
+    loadRatings(response_json)
+
     //로드모달
     // loadModals(response_json)
     for (var i = 0; i <= 2; i++) {
@@ -200,6 +202,7 @@ async function postComment(comment, article_id){
     }
 
 }
+
 //코멘트 불러오기
 function loadComments(response_json){
     comment_len=response_json[0]['comments'].length
@@ -208,13 +211,27 @@ function loadComments(response_json){
     comment0 = response_json[0]['comments']
 
 
-    for (let i=0;i<article_len;i++){
-        for (let j=0; j<comment_len;j++){
-            let comment_section = document.getElementById("comment-list"+i)
+    for (let i = 0; i < article_len; i++) {
+        for (let j = 0; j < comment_len; j++) {
+            let comment_section = document.getElementById("comment-list" + i)
             let newComment = document.createElement("li")
             newComment.innerText = response_json[i]['comments'][j]['comment']
             console.log(response_json[i]['comments'][j]['comment'])
             comment_section.appendChild(newComment)
+        }
     }
 }
+
+function loadRatings(response_json) {
+    rating_len = response_json[0]['rating'].length
+    article_len = response_json.length
+
+    rating0 = response_json[0]['rating']
+
+    for (let i = 0; i < article_len; i++) {
+        let rating_avg = response_json[i].rating.rating_.rating__avg
+        if (rating_avg != null) {
+            document.getElementById("carousel-rating" + i).innerHTML = rating_avg
+        }
+    }
 }
