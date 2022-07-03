@@ -171,7 +171,7 @@ window.onload = async function getArticles(){
         document.getElementById('modal-title'+i).innerHTML = response_json[i]['title']
         document.getElementById("modal-author"+i).innerHTML = 'author: '+response_json[i]['user']
     }
-
+    loadComments(response_json)
 }
 
 async function postComment(comment, article_id){
@@ -201,6 +201,20 @@ async function postComment(comment, article_id){
 
 }
 
+function loadComments(response_json){
+    comment_len=response_json[0]['comments'].length
+    article_len=response_json.length
+
+    comment0 = response_json[0]['comments']
 
 
-
+    for (let i=0;i<article_len;i++){
+        for (let j=0; j<comment_len;j++){
+            let comment_section = document.getElementById("comment-list"+i)
+            let newComment = document.createElement("li")
+            newComment.innerText = response_json[i]['comments'][j]['comment']
+            console.log(response_json[i]['comments'][j]['comment'])
+            comment_section.appendChild(newComment)
+    }
+}
+}
