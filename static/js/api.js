@@ -163,8 +163,9 @@ window.onload = async function getArticles() {
         }
         document.getElementById("carouselimg" + i + "_5").src = response_json[i]['image_location']
         document.getElementById("carousel-id" + i).innerHTML = response_json[i]['id']
-
     }
+    loadRatings(response_json)
+
     //로드모달
     // loadModals(response_json)
     for (var i = 0; i <= 2; i++) {
@@ -216,6 +217,20 @@ function loadComments(response_json) {
             newComment.innerText = response_json[i]['comments'][j]['comment']
             console.log(response_json[i]['comments'][j]['comment'])
             comment_section.appendChild(newComment)
+        }
+    }
+}
+
+function loadRatings(response_json) {
+    rating_len = response_json[0]['rating'].length
+    article_len = response_json.length
+
+    rating0 = response_json[0]['rating']
+
+    for (let i = 0; i < article_len; i++) {
+        let rating_avg = response_json[i].rating.rating_.rating__avg
+        if (rating_avg != null) {
+            document.getElementById("carousel-rating" + i).innerHTML = rating_avg
         }
     }
 }
