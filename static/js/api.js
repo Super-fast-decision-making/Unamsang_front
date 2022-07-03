@@ -175,8 +175,8 @@ window.onload = async function getArticles() {
     }
     loadComments(response_json)
 }
-
-async function postComment(comment, article_id) {
+//코멘트 생성
+async function postComment(comment, article_id){
     const commentData = {
         article: article_id,
         comment: comment,
@@ -203,9 +203,10 @@ async function postComment(comment, article_id) {
 
 }
 
-function loadComments(response_json) {
-    comment_len = response_json[0]['comments'].length
-    article_len = response_json.length
+//코멘트 불러오기
+function loadComments(response_json){
+    comment_len=response_json[0]['comments'].length
+    article_len=response_json.length
 
     comment0 = response_json[0]['comments']
 
