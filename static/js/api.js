@@ -92,7 +92,7 @@ async function startImageGenerator(prompt) {
     console.log(response_json)
     image_name = response_json['images']
     title = response_json['title']
-    let path = 'http://127.0.0.1:8000/' + image_name +'_finalgrid.png'
+    let path = 'http://127.0.0.1:8000/' + image_name + '_finalgrid.png'
     console.log(path)
 
     showPromptImage(path)
@@ -106,42 +106,42 @@ async function startImageGenerator(prompt) {
 
 }
 //아티클 생성
-async function postArticle(title, img_url, is_active, exposure_end_date){
-    const articleData={
-        title:title,
-        image_location:img_url,
-        is_active:is_active,
-        exposure_end_date:exposure_end_date,
+async function postArticle(title, img_url, is_active, exposure_end_date) {
+    const articleData = {
+        title: title,
+        image_location: img_url,
+        is_active: is_active,
+        exposure_end_date: exposure_end_date,
     }
     console.log(articleData)
     console.log("*************")
 
-    const response = await fetch('http://127.0.0.1:8000/article/',{
-        method:'POST',
-        headers:{
+    const response = await fetch('http://127.0.0.1:8000/article/', {
+        method: 'POST',
+        headers: {
             Accept: 'application/json',
             'Content-type': 'application/json',
-            'Authorization':"Bearer "+localStorage.getItem("user_access_token")
+            'Authorization': "Bearer " + localStorage.getItem("user_access_token")
         },
-        body:JSON.stringify(articleData)
+        body: JSON.stringify(articleData)
     })
     response_json = await response.json()
     console.log(response_json)
 
-    if (response.status==200){
+    if (response.status == 200) {
         alert(response.status);//http://127.0.0.1:5500/main.html
         window.location.reload()
-    }else{
+    } else {
         alert(response.status);
     }
 
 }
 
 //아티클 불러오기
-window.onload = async function getArticles(){
-    const response = await fetch('http://127.0.0.1:8000/article/',{
-        method:'GET',
-        headers:{
+window.onload = async function getArticles() {
+    const response = await fetch('http://127.0.0.1:8000/article/', {
+        method: 'GET',
+        headers: {
             Accept: 'application/json',
             'Content-type': 'application/json',
             // 'Authorization':"Bearer "+localStorage.getItem("user_access_token")
@@ -150,52 +150,52 @@ window.onload = async function getArticles(){
     response_json = await response.json()
     console.log(response_json)
     console.log(response_json.length)//아티클 갯수
-    a_length=response_json.length
+    a_length = response_json.length
     // loadArticles(response_json)
     //로드 아티클
-    for (var i=0;i<=2;i++){
-        let imgs =response_json[i]['image_location'].split('final')[0]
-        document.getElementById("carousel-title"+i).innerHTML = 'title: '+response_json[i]['title']
-        document.getElementById("carousel-author"+i).innerHTML = 'author: '+response_json[i]['user']
-        for (var j=0;j<=3;j++){
-            document.getElementById("carouselimg"+i+"_"+(j+1)).src = imgs+j+'.png'
+    for (var i = 0; i <= 2; i++) {
+        let imgs = response_json[i]['image_location'].split('final')[0]
+        document.getElementById("carousel-title" + i).innerHTML = 'title: ' + response_json[i]['title']
+        document.getElementById("carousel-author" + i).innerHTML = 'author: ' + response_json[i]['user']
+        for (var j = 0; j <= 3; j++) {
+            document.getElementById("carouselimg" + i + "_" + (j + 1)).src = imgs + j + '.png'
         }
-        document.getElementById("carouselimg"+i+"_5").src = response_json[i]['image_location']
-        document.getElementById("carousel-id"+i).innerHTML = response_json[i]['id']
-    
+        document.getElementById("carouselimg" + i + "_5").src = response_json[i]['image_location']
+        document.getElementById("carousel-id" + i).innerHTML = response_json[i]['id']
+
     }
     //로드모달
     // loadModals(response_json)
-    for (var i=0;i<=2;i++){
-        document.getElementById('modal-img'+i).src = response_json[i]['image_location']
-        document.getElementById('modal-title'+i).innerHTML = response_json[i]['title']
-        document.getElementById("modal-author"+i).innerHTML = 'author: '+response_json[i]['user']
+    for (var i = 0; i <= 2; i++) {
+        document.getElementById('modal-img' + i).src = response_json[i]['image_location']
+        document.getElementById('modal-title' + i).innerHTML = response_json[i]['title']
+        document.getElementById("modal-author" + i).innerHTML = 'author: ' + response_json[i]['user']
     }
 
 }
 
-async function postComment(comment, article_id){
+async function postComment(comment, article_id) {
     const commentData = {
         article: article_id,
-        comment : comment,
+        comment: comment,
     }
     console.log(commentData)
-    const response = await fetch('http://127.0.0.1:8000/article/comment/',{
-        method:'POST',
-        headers:{
+    const response = await fetch('http://127.0.0.1:8000/article/comment/', {
+        method: 'POST',
+        headers: {
             Accept: 'application/json',
             'Content-type': 'application/json',
-            'Authorization':"Bearer "+localStorage.getItem("user_access_token")
+            'Authorization': "Bearer " + localStorage.getItem("user_access_token")
         },
-        body:JSON.stringify(commentData)
+        body: JSON.stringify(commentData)
     })
     response_json = await response.json()
     console.log(response_json)
 
-    if (response.status==200){
+    if (response.status == 200) {
         alert(response.status);//http://127.0.0.1:5500/main.html
         window.location.reload()
-    }else{
+    } else {
         alert(response.status);
     }
 
