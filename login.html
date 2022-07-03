@@ -7,17 +7,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | You Know What I'm Saying</title>
     <script src="./static/js/api.js"></script>
-
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="./static/css/sign.css">
 </head>
 
 <body>
-    <div>
-        <div>
-            <form>
-                <input type="text" id="username" placeholder="username"/>
-                <input type="password" id="password" placeholder="Password"/>
-                <button type="button" onclick="handleLogin()">로그인</button>
-            </form>
+    <div class="container">
+        <div class="input-form-backgroud row">
+            <div class="input-form col-md-12 mx-auto">
+                <h4 class="mb-3">로그인</h4>
+                <form class="validation-form" novalidate>
+                    <div class="mb-3">
+                        <label for="name">ID</label>
+                        <input type="text" class="form-control" id="username" placeholder="" required>
+                        <div class="invalid-feedback">
+                            아이디를 입력해주세요.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Password">Password</label>
+                        <input type="Password" class="form-control" id="password" placeholder="" required>
+                        <div class="invalid-feedback">
+                            비밀번호를 입력해주세요.
+                        </div>
+                    </div>
+                    <hr class="mb-4">
+                    <button class="btn btn-primary btn-lg btn-block" type="button" onclick="handleLogin()">로그인</button>
+                    <div class="to_signup"><a href="signup.html">회원가입</a></div>
+                </form>
+            </div>
         </div>
     </div>
 </body>

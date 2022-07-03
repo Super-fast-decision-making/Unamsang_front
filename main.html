@@ -25,11 +25,12 @@
         </div>
         <div class="nav_right">
             <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="words_for_search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                    id="words_for_search">
                 <button class="btn btn-outline-success" type="button" onclick="search()">Search</button>
-                <button><a href="/login.html">로그아웃</a></button>
+                <button type="button" onclick="logout()">로그아웃</button>
             </form>
-            
+
         </div>
     </nav>
 
@@ -50,18 +51,18 @@
                     <h4 id="title"></h4>
                     <div>
                         <label for="공개 여부">공개 여부</label>
-                        <input id="is_active" type="checkbox" name="공개 여부" checked="true"> 
+                        <input id="is_active" type="checkbox" name="공개 여부" checked="true">
                     </div>
                     <div>
                         <label for="노출종료일">노출종료일</label>
                         <input id="exposure_end_date" type="date" name="노출종료일">
-                    </div>            
+                    </div>
                     <button type="submit" onclick="handleArticleCreate()" style="height:30px;">submit</button>
                 </div>
-            </div>  
+            </div>
         </div>
     </div>
-    <div id="idx_2nd_page" class="idx_2nd_page">   
+    <div id="idx_2nd_page" class="idx_2nd_page">
         <div id="carousel-container0" class="carousel-container">
             <ol id="articles" class="carousel-text">
                 <div>
@@ -82,7 +83,7 @@
                         <div class="card">
                             <div class="carousel-img">1</div>
                             <img class=carouselimg id=carouselimg0_1 src="">
-                            
+
                         </div>
                     </div>
                     <div class="card-container">
@@ -119,7 +120,7 @@
 
             </div>
             <ol id="articles" class="carousel-text">
-                <input class="form-control"  placeholder="댓글 달기..." id="idx-comment0" style="width:95%; height:30px" >
+                <input class="form-control" placeholder="댓글 달기..." id="idx-comment0" style="width:95%; height:30px">
                 <button class="comment_button" style="width:5%" onclick="handleCommentCreate(0)">게시</button>
             </ol>
         </div>
@@ -143,7 +144,7 @@
                         <div class="card">
                             <div class="carousel-img">1</div>
                             <img class=carouselimg id=carouselimg1_1 src="">
-                            
+
                         </div>
                     </div>
                     <div class="card-container">
@@ -179,7 +180,7 @@
                 <button id="next1" class="next"><i class="fa fa-chevron-right"></i></button>
             </div>
             <ol id="articles" class="carousel-text">
-                <input class="form-control"  placeholder="댓글 달기..." id="idx-comment1" style="width:95%; height:30px" >
+                <input class="form-control" placeholder="댓글 달기..." id="idx-comment1" style="width:95%; height:30px">
                 <button class="comment_button" style="width:5%" onclick="handleCommentCreate(1)">게시</button>
             </ol>
         </div>
@@ -238,15 +239,15 @@
             </div>
 
             <ol id="articles" class="carousel-text">
-                <input class="form-control"  placeholder="댓글 달기..." id="idx-comment2" style="width:95%; height:30px" >
+                <input class="form-control" placeholder="댓글 달기..." id="idx-comment2" style="width:95%; height:30px">
                 <button class="comment_button" style="width:5%" onclick="handleCommentCreate(2)">게시</button>
 
             </ol>
             <!-------------------디테일 모달---------------------->
             <div id="modal-bg0" class="modal-bg">
                 <div class="modal">
-                    <div class="modal-left" ><img class="modal-img" id=modal-img0 src=""></div>
-                    <div class="modal-right" >
+                    <div class="modal-left"><img class="modal-img" id=modal-img0 src=""></div>
+                    <div class="modal-right">
                         <button onclick="modalOff(0)"><i class="fa fa-x"></i></button>
                         <h2 id="modal-title0">title</h2>
                         <p id="modal-author0">author</p>
@@ -262,8 +263,8 @@
             <!-------------------디테일 모달---------------------->
             <div id="modal-bg1" class="modal-bg">
                 <div class="modal">
-                    <div class="modal-left" ><img class="modal-img" id=modal-img1 src=""></div>
-                    <div class="modal-right" >
+                    <div class="modal-left"><img class="modal-img" id=modal-img1 src=""></div>
+                    <div class="modal-right">
                         <button onclick="modalOff(1)"><i class="fa fa-x"></i></button>
                         <h2 id="modal-title1">title</h2>
                         <p id="modal-author1">author</p>
@@ -280,8 +281,8 @@
             <!-------------------디테일 모달---------------------->
             <div id="modal-bg2" class="modal-bg">
                 <div class="modal">
-                    <div class="modal-left" ><img class="modal-img" id=modal-img2 src=""></div>
-                    <div class="modal-right" >
+                    <div class="modal-left"><img class="modal-img" id=modal-img2 src=""></div>
+                    <div class="modal-right">
                         <button onclick="modalOff(2)"><i class="fa fa-x"></i></button>
                         <h2 id="modal-title2">title</h2>
                         <p id="modal-author2">author</p>
@@ -301,23 +302,23 @@
     <script>
         //캐로셀 움직이는 식
         const carouselWidth = document.querySelector('.carousel-container').offsetWidth;
-        document.querySelector('#next'+0).addEventListener('click', () => {
-            document.querySelector('#track'+0).style.transform = `translateX(-${carouselWidth}px)`;
+        document.querySelector('#next' + 0).addEventListener('click', () => {
+            document.querySelector('#track' + 0).style.transform = `translateX(-${carouselWidth}px)`;
         })
-        document.querySelector('#prev'+0).addEventListener('click', () => {
-            document.querySelector('#track'+0).style.transform = `translateX(-${0}px)`;
+        document.querySelector('#prev' + 0).addEventListener('click', () => {
+            document.querySelector('#track' + 0).style.transform = `translateX(-${0}px)`;
         })
-        document.querySelector('#next'+1).addEventListener('click', () => {
-            document.querySelector('#track'+1).style.transform = `translateX(-${carouselWidth}px)`;
+        document.querySelector('#next' + 1).addEventListener('click', () => {
+            document.querySelector('#track' + 1).style.transform = `translateX(-${carouselWidth}px)`;
         })
-        document.querySelector('#prev'+1).addEventListener('click', () => {
-            document.querySelector('#track'+1).style.transform = `translateX(-${0}px)`;
+        document.querySelector('#prev' + 1).addEventListener('click', () => {
+            document.querySelector('#track' + 1).style.transform = `translateX(-${0}px)`;
         })
-        document.querySelector('#next'+2).addEventListener('click', () => {
-            document.querySelector('#track'+2).style.transform = `translateX(-${carouselWidth}px)`;
+        document.querySelector('#next' + 2).addEventListener('click', () => {
+            document.querySelector('#track' + 2).style.transform = `translateX(-${carouselWidth}px)`;
         })
-        document.querySelector('#prev'+2).addEventListener('click', () => {
-            document.querySelector('#track'+2).style.transform = `translateX(-${0}px)`;
+        document.querySelector('#prev' + 2).addEventListener('click', () => {
+            document.querySelector('#track' + 2).style.transform = `translateX(-${0}px)`;
         })
     </script>
 
