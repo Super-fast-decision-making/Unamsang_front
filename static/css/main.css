@@ -218,10 +218,28 @@ nav{
 .modal-right{
     width:35%;
     height:100%;
+    position:relative;
+    padding:0px 5px;
 }
 .modal-right button{
     float:right;
     right:0;
+}
+.modal-right div{
+    position:absolute;
+    bottom:0;
+    display: flex;
+    width:100%;
+    height:40px
+}
+.modal-right div input{
+    width:75%; 
+    float:left
+}
+.modal-right div button{
+    width:20%; 
+    margin:0; 
+    float:left
 }
 .modal-img{
     width: 100%;
