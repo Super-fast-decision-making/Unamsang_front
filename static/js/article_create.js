@@ -40,7 +40,7 @@ function handleArticleCreate(){
 }
 //댓글 생성
 function handleCommentCreate(id){
-    const comment = document.getElementById("idx-comment"+id).value;
+    const comment = document.getElementById("idx-comment"+id).value || document.getElementById("modal-comment"+id).value
     const article_id = document.getElementById("carousel-id"+id).innerText;
     postComment(comment, article_id)
     
