@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <!-- <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>You Know What I'm Saying</title>
@@ -11,15 +11,21 @@
     <script src="https://use.fortawesome.com/99966411.js"></script>
     <script src="./static/js/article_create.js"></script>
     <script src="./static/js/api.js"></script>
-    <script src="./static/js/main.js"></script> -->
+    <script src="./static/js/main.js"></script>
+    <style>
+        body{
+            background-color: white;
+        }
+    </style>
+
 
 </head>
 <body>
-    <!-- <nav>
+    <nav>
         <div class="nav_left">
-            <button><a href="/">메인페이지(로고)</a></button>
-            <button><a href="/">마이페이지</a></button>
-            <button><a href="/">랭킹</a></button>
+            <button><a href="/main.html">메인페이지(로고)</a></button>
+            <button><a href="/mypage.html">마이페이지</a></button>
+            <button><a href="/ranking.html">랭킹</a></button>
         </div>
         <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="words_for_search">
@@ -28,7 +34,7 @@
         <div class="nav_right">
             <button type="button" onclick="logout()">로그아웃</button>
         </div>
-    </nav> -->
+    </nav>
 <ul id="search-result-list"></ul>
 
 <script>
@@ -50,5 +56,5 @@ async function loadSearchResults(){
     localStorage.removeItem('search_results');
 }
 loadSearchResults();
-</script>
+</scrip>
 
