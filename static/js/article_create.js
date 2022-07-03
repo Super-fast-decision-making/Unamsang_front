@@ -19,7 +19,6 @@ function handlePromptCreate(){
 function showPromptImage(path){
     console.log(title)
     console.log(path,10)
-    // image_name=image_name.items
     document.getElementById("title").innerHTML = title;
     document.getElementById("main_img").src=path;
 }
@@ -37,8 +36,14 @@ function handleArticleCreate(){
         is_active=false
     }
     const exposure_end_date = document.getElementById("exposure_end_date").value
-    // postArticle(title,is_active, exposure_end_date)
     postArticle(title, img_url, is_active, exposure_end_date)
+}
+//댓글 생성
+function handleCommentCreate(id){
+    const comment = document.getElementById("idx-comment"+id).value || document.getElementById("modal-comment"+id).value
+    const article_id = document.getElementById("carousel-id"+id).innerText;
+    postComment(comment, article_id)
+    
 }
 
 
@@ -53,8 +58,8 @@ async function loadArticles(response_json){
         for (var j=0;j<=3;j++){
             document.getElementById("carouselimg"+i+"_"+(j+1)).src = imgs+j+'.png'
         }
-        document.getElementById("carouselimg"+i+"_5").src= response_json[i]['image_location']
-        
+        document.getElementById("carouselimg"+i+"_5").src = response_json[i]['image_location']
+        // document.getElementById("carousel-id"+i).innerHTML = "id: "+response_json[i]['id']
     }
 }
 
@@ -65,5 +70,18 @@ async function loadModals(response_json){
         document.getElementById('modal-title'+i).innerHTML = response_json[i]['title']
         document.getElementById("modal-author"+i).innerHTML = 'author: '+response_json[i]['user']
     }
-
+    for (var i=0; i<=2;i++){
+        // let comments =response_json[i]['comments']
+        // let comment_list =document.getElementById("comment-list"+i)
+        // comments.forEach(comment=>{
+        //     let newComment = document.createElement("li")
+        //     newComment.innerText = comment['comment']
+        //     comment_list.appendChild(newComment)
+        // })
+        
+    }
 }
+
+
+
+

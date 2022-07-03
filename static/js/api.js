@@ -151,8 +151,54 @@ window.onload = async function getArticles(){
     console.log(response_json)
     console.log(response_json.length)//아티클 갯수
     a_length=response_json.length
-    loadArticles(response_json)
-    loadModals(response_json)
+    // loadArticles(response_json)
+    //로드 아티클
+    for (var i=0;i<=2;i++){
+        let imgs =response_json[i]['image_location'].split('final')[0]
+        document.getElementById("carousel-title"+i).innerHTML = 'title: '+response_json[i]['title']
+        document.getElementById("carousel-author"+i).innerHTML = 'author: '+response_json[i]['user']
+        for (var j=0;j<=3;j++){
+            document.getElementById("carouselimg"+i+"_"+(j+1)).src = imgs+j+'.png'
+        }
+        document.getElementById("carouselimg"+i+"_5").src = response_json[i]['image_location']
+        document.getElementById("carousel-id"+i).innerHTML = "id: "+response_json[i]['id']
+    
+    }
+    //로드모달
+    // loadModals(response_json)
+    for (var i=0;i<=2;i++){
+        document.getElementById('modal-img'+i).src = response_json[i]['image_location']
+        document.getElementById('modal-title'+i).innerHTML = response_json[i]['title']
+        document.getElementById("modal-author"+i).innerHTML = 'author: '+response_json[i]['user']
+    }
+
+}
+
+async function postComment(comment, article_id){
+    const commentData = {
+        article_id: article_id,
+        comment : comment,
+    }
+    console.log(commentData)
+    const response = await fetch('http://127.0.0.1:8000/article/comment/',{
+        method:'POST',
+        headers:{
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+            'Authorization':"Bearer "+localStorage.getItem("user_access_token")
+        },
+        body:JSON.stringify(commentData)
+    })
+    response_json = await response.json()
+    console.log(response_json)
+
+    if (response.status==200){
+        alert(response.status);//http://127.0.0.1:5500/main.html
+        window.location.reload()
+    }else{
+        alert(response.status);
+    }
+
 }
 
 
