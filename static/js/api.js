@@ -161,7 +161,7 @@ window.onload = async function getArticles(){
             document.getElementById("carouselimg"+i+"_"+(j+1)).src = imgs+j+'.png'
         }
         document.getElementById("carouselimg"+i+"_5").src = response_json[i]['image_location']
-        document.getElementById("carousel-id"+i).innerHTML = "id: "+response_json[i]['id']
+        document.getElementById("carousel-id"+i).innerHTML = response_json[i]['id']
     
     }
     //로드모달
@@ -176,7 +176,7 @@ window.onload = async function getArticles(){
 
 async function postComment(comment, article_id){
     const commentData = {
-        article_id: article_id,
+        article: article_id,
         comment : comment,
     }
     console.log(commentData)
