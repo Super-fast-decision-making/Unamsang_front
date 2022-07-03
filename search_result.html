@@ -6,12 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>You Know What I'm Saying</title>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
     <link rel="stylesheet" type="text/css" href="./static/css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap" rel="stylesheet">
     <script src="https://use.fortawesome.com/99966411.js"></script>
-    <script src="./static/js/article_create.js"></script>
-    <script src="./static/js/api.js"></script>
+    <link rel="stylesheet" type="text/css" href="./static/css/search_result.css">
+
+    <!-- <script src="jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+
+
+
     <script src="./static/js/main.js"></script>
+    <script src="./static/js/search_result.js"></script>
+    
     <style>
         body{
             background-color: white;
@@ -35,26 +48,74 @@
             <button type="button" onclick="logout()">로그아웃</button>
         </div>
     </nav>
-<ul id="search-result-list"></ul>
+    <ul id="search-result-list"></ul>
+    <div class="page" style="display: flex;justify-content: center;">
+        <div id="row" class="row" style="width:57rem; height:100vh; background-color: aquamarine; padding-top:30px;">
+
+            <!-- <div class="card" style="width: 18rem; height:20rem;float:left">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+            -->
+        </div>
+
+    </div>
+
+
+
 
 <script>
 
-async function loadSearchResults(){
-    var search_results = await JSON.parse(localStorage.getItem('search_results'));
-    console.log(search_results);
-    console.log(typeof(search_results));
-    const search_results_list = document.getElementById("search-result-list");
 
-    search_results.forEach(search_result => {
-        const newResult = document.createElement("li");
-        const anchor = document.createElement("a");
-        anchor.href = '#';
-        anchor.innerText = search_result.title;
-        search_results_list.appendChild(newResult);
-        newResult.appendChild(anchor);
-    });
-    localStorage.removeItem('search_results');
-}
-loadSearchResults();
+
+    function appendTempHtml(id, title, img){
+            // var search_results = await JSON.parse(localStorage.getItem('search_results'));
+            // console.log('search_results:'+search_results);
+            let temp_html=`
+                <div id="search-card${id}" class="card" style="width: 18rem; height:20rem;float:left;margin-right:1rem;">
+                    <img id="search-img${id}" src="${img}" class="card-img-top" alt="..." style="width:100%;height:70%;border-radius:10px">
+                    <div class="card-body">
+                        <a><p id="search-title${id}" class="card-title" style="2rem">${title}</p></a>
+                    </div>
+                </div>
+            ` 
+            $('#row').append(temp_html)
+        }
+
+
+    
+    async function loadSearchResults(){
+        var search_results = await JSON.parse(localStorage.getItem('search_results'));
+        console.log(search_results);
+        console.log(typeof(search_results));
+        console.log('length: '+search_results.length)
+        let len= search_results.length
+        const search_results_list = document.getElementById("search-result-list");
+
+        search_results.forEach(search_result => {
+            const newResult = document.createElement("li");
+            const anchor = document.createElement("a");
+            anchor.href = '#';
+            anchor.innerText = search_result.title;
+            search_results_list.appendChild(newResult);
+            newResult.appendChild(anchor);
+        });
+        for (let i=0; i<len; i++){
+            appendTempHtml(i, search_results[i]['title'], search_results[i]['image_location']);
+        }
+              
+        localStorage.removeItem('search_results');
+    }
+    loadSearchResults();
+
+
+
+    //id 갯수만큼 0,1,2
+
+
 </script>
 
