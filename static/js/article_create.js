@@ -11,10 +11,9 @@ function handlePromptCreate() {
     const hid_box = document.querySelector(".hid_box")
     hid_box.style.display = "flex";
     const hid_text_box = document.querySelector(".hid_text_box")
-
-    hid_text_box.style.display="flex";
-
+    hid_text_box.style.display = "flex";
 }
+
 //프리뷰 이미지 구현
 function showPromptImage(path) {
     console.log(title)
@@ -22,6 +21,8 @@ function showPromptImage(path) {
     document.getElementById("title").innerHTML = title;
     document.getElementById("main_img").src = path;
 }
+
+
 //아티클 생성
 function handleArticleCreate() {
 
@@ -38,7 +39,6 @@ function handleArticleCreate() {
 }
 
 //댓글 생성
-
 function handleCommentCreate(id) {
     const comment = document.getElementById("idx-comment" + id).value || document.getElementById("modal-comment" + id).value
     const article_id = document.getElementById("carousel-id" + id).innerText;
@@ -72,4 +72,5 @@ async function loadModals(response_json) {
         document.getElementById("modal-author" + i).innerHTML = 'author: ' + response_json[i]['user']
     }
 }
+
 
