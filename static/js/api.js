@@ -103,8 +103,8 @@ async function startImageGenerator(prompt) {
     } else {
         alert(response.status);
     }
-
 }
+
 //아티클 생성
 async function postArticle(title, img_url, is_active, exposure_end_date) {
     const articleData = {
@@ -134,8 +134,8 @@ async function postArticle(title, img_url, is_active, exposure_end_date) {
     } else {
         alert(response.status);
     }
-
 }
+
 
 //아티클 불러오기
 window.onload = async function getArticles() {
@@ -151,6 +151,7 @@ window.onload = async function getArticles() {
     console.log(response_json)
     console.log(response_json.length)//아티클 갯수
     a_length = response_json.length
+    console.log(response_json[0]['image_location'])
     // loadArticles(response_json)
     //로드 아티클
     for (var i = 0; i <= 2; i++) {
