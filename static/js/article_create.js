@@ -1,4 +1,5 @@
 //프리뷰 이미지 만들기+프리뷰 이미지 div 보이기
+
 function handlePromptCreate() {
     const prompt = document.getElementById("prompt").value
     console.log(prompt)
