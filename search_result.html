@@ -57,7 +57,7 @@
     </div>
 
 
-    <div id="modal-bg" class="modal-bg" style="display:flex">
+    <!-- <div id="modal-bg" class="modal-bg" style="display:flex">
         <div class="modal">
             <div class="modal-left"><img class="modal-img" id=modal-img src=""></div>
             <div class="modal-right">
@@ -71,49 +71,67 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
 
 
 <script>
 
-    function appendTempHtml(id, title, img){
+    function appendTempHtml(id, title, img, author){
             let temp_html=`
                 <div id="search-card${id}" class="card" style="width: 18rem; height:20rem;float:left;margin-right:1rem;margin-bottom:20px">
-                    <img id="search-img${id}" src="${img}" class="card-img-top" alt="..." style="width:100%;height:70%;border-radius:10px">
-                    <div class="card-body">
-                        <a href='/'><p id="search-title${id}" onclick="loadSearchModal(${id})" class="card-title" style="2rem">${title}</p></a>
+                    <img id="search-img${id}" src="${img}" class="card-img-top"  onclick="modalOn(${id})" style="width:100%;height:70%;border-radius:10px">
+                    <div class="card-body"  onclick="modalOn(${id})">
+                        <a ><p id="search-title${id}" class="card-title" style="2rem">${title}</p></a>
                     </div>
                 </div>
-            ` 
-            $('#row').append(temp_html)
-        }
-
-    function appendModalTempHtml(id){
-        
-        let temp_html=`
-            <div id="modal-bg" class="modal-bg" style="display:flex">
-                <div class="modal">
-                    <div class="modal-left"><img class="modal-img" id=modal-img$ src=""></div>
-                    <div class="modal-right">
-                        <button ><i class="fa fa-x"></i></button>
-                        <h2 id="modal-title">title</h2>
-                        <p id="modal-author">author</p>
-                        <ol id="comment-list" class="comment-list"> </ol>
-                        <div >
-                            <input class="form-control"  placeholder="댓글 달기..." id="modal-comment" >
-                            <button class="comment_button" onclick="handleCommentCreate()">게시</button>
+                <div id="modal-bg${id}" class="modal-bg" style="display:none">
+                    <div class="modal">
+                        <div class="modal-left"><img class="modal-img" id=modal-img${id} src="${img}"></div>
+                        <div class="modal-right">
+                            <button onclick=modalOff(${id}) ><i class="fa fa-x"></i></button>
+                            <h2 id="modal-title${id}">${title}</h2>
+                            <p id="modal-author">${author}</p>
+                            <ol id="comment-list" class="comment-list"> </ol>
+                            <div >
+                                <input class="form-control"  placeholder="댓글 달기..." id="modal-comment" >
+                                <button class="comment_button" onclick="handleCommentCreate()">게시</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        `
-        console.log("22")
-        $('#page').append(temp_html)
-        console.log("33")
-    }
-    appendModalTempHtml(1)
+            `
+            
+            $('#row').append(temp_html)
+        }
+    
+    // function appendModalTempHtml(){        
+    //         let temp_html=`
+    //             <div id="modal-bg" class="modal-bg" style="display:flex">
+    //                 <div class="modal">
+    //                     <div class="modal-left"><img class="modal-img" id=modal-img$ src=""></div>
+    //                     <div class="modal-right">
+    //                         <button ><i class="fa fa-x"></i></button>
+    //                         <h2 id="modal-title">title</h2>
+    //                         <p id="modal-author">author</p>
+    //                         <ol id="comment-list" class="comment-list"> </ol>
+    //                         <div >
+    //                             <input class="form-control"  placeholder="댓글 달기..." id="modal-comment" >
+    //                             <button class="comment_button" onclick="handleCommentCreate()">게시</button>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //         `
+    //         console.log("22")
+    //         $('#row').append(temp_html)
+    //         console.log("33")
+    //     }
+    // appendModalTempHtml()
+
+    
+
 
 
     
@@ -126,7 +144,7 @@
         const search_results_list = document.getElementById("search-result-list");
 
         for (let i=0; i<len; i++){
-            appendTempHtml(i, search_results[i]['title'], search_results[i]['image_location']);
+            appendTempHtml(i, search_results[i]['title'], search_results[i]['image_location'], search_results[i]['user']);
         }
               
         localStorage.removeItem('search_results');
