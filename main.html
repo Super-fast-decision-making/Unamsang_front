@@ -20,20 +20,78 @@
     <script src="./static/js/api.js"></script>
     <script src="./static/js/main.js"></script>
     <style>
+        .nav_left {
+            display: flex;
+        }
+
+        .log_box {
+            margin-left: 10px;
+            display: flex;
+            padding: 10px;
+        }
+
+        .logo_link {
+            color: #ffffff;
+            font-size: 30px;
+        }
+
+        .nav_center {
+            display: flex;
+
+        }
+
+        .search_box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .search_input {
+            border-radius: 5px;
+            height: 35px;
+        }
+
+        .search_button {
+            margin-left: 4px;
+            font-size: 15px;
+            font-weight: 400;
+            background-color: rgb(199, 199, 199);
+            border-radius: 5px;
+            height: 35px;
+        }
+
+        .nav_right {
+            display: flex;
+        }
+
+        .log_box {
+            padding: 10px;
+            align-items: center;
+        }
+
         .log_info {
             display: flex;
             justify-content: center;
         }
 
         .login_link {
-            color: black;
-
+            color: #ffffff;
+            font-size: 17px;
             margin: 10px;
+            text-decoration: none;
         }
 
         .logout_button {
             display: none;
             margin: 10px;
+        }
+
+        .main_title {
+            margin: 40px auto 20px auto;
+            font-size: 60px;
+            font-weight: 500;
+            color: #ffffff;
         }
     </style>
 
@@ -42,29 +100,39 @@
 <body>
     <nav>
         <div class="nav_left">
-            <button><a href="/main.html">메인페이지(로고)</a></button>
-            <button><a href="/mypage.html">마이페이지</a></button>
-            <button><a href="/ranking.html">랭킹</a></button>
+            <div class="log_box">
+                <a class="logo_link" href="/main.html">유남생</a>
+            </div>
+            <!-- <div>
+                <button><a href="/ranking.html">랭킹</a></button>
+            </div> -->
+        </div>
+        <div class="nav_center">
+            <form class="d-flex search_box" role="search">
+                <input class="form-control me-2 search_input" type="search" placeholder="" aria-label="Search"
+                    id="words_for_search">
+                <button class="btn btn-outline-success search_button" type="button" onclick="search()">검색</button>
+            </form>
         </div>
         <div class="nav_right">
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-                    id="words_for_search">
-                <button class="btn btn-outline-success" type="button" onclick="search()">Search</button>
+            <div class="log_box">
                 <div class="log_info">
                     <a class="login_link" id="login_link" href="/login.html">로그인하기</a>
                     <button class="logout_button" id="logout_button" type="button" onclick="userLogout()">로그아웃</button>
                 </div>
-            </form>
+            </div>
 
         </div>
     </nav>
 
     <div class="idx_head">
+        <div class="main_title">
+            YOU KNOW WHAT I'M SAYING?
+        </div>
         <div class="input_box">
             <div class="input_inner_box">
                 <input id="prompt" type="text" name="input_box" placeholder="키워드를 넣으세요">
-                <button type="submit" onclick="handlePromptCreate()">submit</button>
+                <button type="submit" onclick="handlePromptCreate()">생성</button>
             </div>
             <div class="hid_box" id="hid_box">
 

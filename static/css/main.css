@@ -1,89 +1,123 @@
-body{
-    background-color: #080615;
+body {
+    /* background-color: #080615; */
+    background: -webkit-gradient(linear, left bottom, right top, from(#192c3e), to(#09141f));
+    background: -webkit-linear-gradient(bottom left, #192c3e 0%, #09141f 100%);
+    background: -moz-linear-gradient(bottom left, #192c3e 0%, #09141f 100%);
+    background: -o-linear-gradient(bottom left, #192c3e 0%, #09141f 100%);
+    background: linear-gradient(to top right, #192c3e 0%, #09141f 100%);
     font-family: 'Gowun Batang', serif;
+    margin: 0;
+    padding: 0;
 }
 
+a {
+    text-decoration: none;
+}
 
-nav{
-    width:100%;
-    height:35px;
-    background-color: #000000;
+button {
+    cursor: pointer;
+}
+
+nav {
+    width: 100%;
+    height: 60px;
+    /* background-color: #000000; */
     justify-content: space-between;
     display: flex;
 }
 
 
-.idx_head{
-    width:100%;
-    height:100%;
-    background-color: #ffffff;
-}
+.idx_head {
+    width: 100%;
+    margin-top: 40px;
 
-.input_box{
     display: flex;
     justify-content: center;
-    align-items:center;
-    min-height: 100vh;
+    align-items: center;
     flex-direction: column;
 }
-.hidden_box{
-    display:none;
+
+.input_box {
+    margin: 40px auto 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10px;
 
 }
 
-.hid_box{
-    display:none;
+.hidden_box {
+    display: none;
 
 }
-.hid_img_box{
+
+.hid_box {
+    display: none;
+
+}
+
+.hid_img_box {
     width: 500px;
     height: 500px;
     background-color: beige;
-    border-radius:5px;
+    border-radius: 5px;
 }
-.hid_text_box{
+
+.hid_text_box {
     display: none;
     width: 500px;
     height: 30px;
     background-color: #aaa;
     padding: 0 10px;
 
-    
+
 }
-.hid_text_box div{
-    display:flex;
+
+.hid_text_box div {
+    display: flex;
     justify-content: space-between;
 }
-.hid_text_box div div{
-    margin:0 10px;
+
+.hid_text_box div div {
+    margin: 0 10px;
 }
-.hid_text_box div button{
+
+.hid_text_box div button {
     margin: 0 10px;
 }
 
 
-#prompt{
-    height:3em;
+#prompt {
+    height: 50px;
     width: 28em;
-    border-radius: 5px;
-}
-#main_img{
-    width:100%;
-    height:100%;
-}
-.input_box button{
-    height:3em;
-    border: 5px;
+    border-radius: 7px;
 }
 
-.idx_2nd_page{
-
-    height:1000px;
-    background-color: #080615;
+#main_img {
+    width: 100%;
+    height: 100%;
 }
-.idx_card{
-    margin-top:100px;
-    
+
+.input_box button {
+    width: 60px;
+    height: 50px;
+    border-radius: 7px;
+    padding: 2px;
+    font-size: 17px;
+    font-weight: 500;
+    color: #ffffff;
+    background-color: rgb(0, 132, 255);
+}
+
+.idx_2nd_page {
+
+    height: 1000px;
+    /* background-color: #080615; */
+}
+
+.idx_card {
+    margin-top: 100px;
+
 
     /* display: flex;
     justify-content: center;
@@ -91,157 +125,180 @@ nav{
     min-height: 100vh; */
 }
 
-.idx_crd_top{
+.idx_crd_top {
 
-    height:40px;
-    
+    height: 40px;
+
 }
-.idx_crd_body{
+
+.idx_crd_body {
     /* float:left; */
-    width:500px;
-    height:450px;
-    background-color:#7a7a7a; 
+    width: 500px;
+    height: 450px;
+    background-color: #7a7a7a;
     border: 2px solid black;
     flex-shrink: 0;
- }
-.idx_crd_bottom{
+}
 
-    height:100px;
+.idx_crd_bottom {
+
+    height: 100px;
 
 }
 
 /* 캐러셀 연구 */
 @import url('https://use.fortawesome.com/99966411.js');
-.carousel-container{
-    width:1280px;
-    margin:50px auto;
-    /* background-color: #ccc; */
-    min-height:200px;
 
-    position:relative;
+.carousel-container {
+    width: 1280px;
+    margin: 50px auto;
+    /* background-color: #ccc; */
+    min-height: 200px;
+
+    position: relative;
 }
-.carousel-inner{
-    overflow:hidden;
+
+.carousel-inner {
+    overflow: hidden;
 }
-.track{
-    display:flex;
-    transition:transform 0.3s;
+
+.track {
+    display: flex;
+    transition: transform 0.3s;
 }
-.card-container{
+
+.card-container {
     flex-shrink: 0;
     /* width: 256px;
     height:250px; */
-    width:500px;
-    height:500px;
+    width: 500px;
+    height: 500px;
     /* border:1px solid #aaa; */
-    padding-right:15px;
+    padding-right: 15px;
     box-sizing: border-box;
 }
+
 .card {
     width: 100%;
-    height:100%;
-    background-color:#ffffff; 
+    height: 100%;
+    background-color: #ffffff;
     box-sizing: border-box;
-    border-radius:10px;
+    border-radius: 10px;
 
 }
+
 .crd_nav button {
-    width:60px;
-    height:60px;
-    border-radius:50%;
-    border:1px solid #aaa;
-    position:absolute;
-    top:50%;
-    transform:translateY(-50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid #aaa;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
-.prev{
-    left:-30px;
+
+.prev {
+    left: -30px;
 }
-.next{
-    right:-30px;
+
+.next {
+    right: -30px;
 }
-.carousel-img{
+
+.carousel-img {
     display: flex;
     justify-content: center;
-    align-items:center;
-    font-size:30px;
+    align-items: center;
+    font-size: 30px;
 }
-.carousel-text{
+
+.carousel-text {
     justify-content: space-between;
     display: flex;
-    color:white
+    color: white
 }
-.carousel-text div{
+
+.carousel-text div {
     justify-content: space-between;
     display: flex;
-    
+
 }
-.carousel-text div p{
-    padding-right:5px;
-    padding-left:5px;
+
+.carousel-text div p {
+    padding-right: 5px;
+    padding-left: 5px;
 }
-.carouselimg{
-    width:100%;
-    height:100%;
+
+.carouselimg {
+    width: 100%;
+    height: 100%;
 
 }
 
 /* 모달 CSS */
-.modal-bg{
-    position:fixed;
-    width:100%;
-    height:100vh;
-    top:0;
-    left:0;
-    background-color: rgba(0,0,0,0.7);
+.modal-bg {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
     display: none;
     justify-content: center;
     align-items: center;
 
 }
-.modal{
+
+.modal {
     background-color: whitesmoke;
-    width:60%;
-    height:80%;
-    display:flex;
+    width: 60%;
+    height: 80%;
+    display: flex;
     justify-content: space-around;
     z-index: 1000;
     flex-direction: row;
     float: left;
 
 }
-.modal-left{
-    width:65%;
-    height:100%;
+
+.modal-left {
+    width: 65%;
+    height: 100%;
     float: left;
 }
-.modal-right{
-    width:35%;
-    height:100%;
-    position:relative;
-    padding:0px 5px;
+
+.modal-right {
+    width: 35%;
+    height: 100%;
+    position: relative;
+    padding: 0px 5px;
 }
-.modal-right button{
-    float:right;
-    right:0;
+
+.modal-right button {
+    float: right;
+    right: 0;
 }
-.modal-right div{
-    position:absolute;
-    bottom:0;
+
+.modal-right div {
+    position: absolute;
+    bottom: 0;
     display: flex;
-    width:100%;
-    height:40px
+    width: 100%;
+    height: 40px
 }
-.modal-right div input{
-    width:75%; 
-    float:left
+
+.modal-right div input {
+    width: 75%;
+    float: left
 }
-.modal-right div button{
-    width:20%; 
-    margin:0; 
-    float:left
+
+.modal-right div button {
+    width: 20%;
+    margin: 0;
+    float: left
 }
-.modal-img{
+
+.modal-img {
     width: 100%;
     height: 100%;
 }
