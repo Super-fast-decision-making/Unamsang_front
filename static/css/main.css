@@ -1,5 +1,5 @@
 body {
-    /* background-color: #080615; */
+    min-height: 100vh;
     background: -webkit-gradient(linear, left bottom, right top, from(#192c3e), to(#09141f));
     background: -webkit-linear-gradient(bottom left, #192c3e 0%, #09141f 100%);
     background: -moz-linear-gradient(bottom left, #192c3e 0%, #09141f 100%);
@@ -25,7 +25,6 @@ input:focus {
 nav {
     width: 100%;
     height: 90px;
-    /* background-color: #000000; */
     justify-content: space-between;
     display: flex;
 }
@@ -125,17 +124,10 @@ nav {
 .idx_2nd_page {
 
     height: 1000px;
-    /* background-color: #080615; */
 }
 
 .idx_card {
     margin-top: 100px;
-
-
-    /* display: flex;
-    justify-content: center;
-    align-items:center;
-    min-height: 100vh; */
 }
 
 .idx_crd_top {
@@ -145,7 +137,6 @@ nav {
 }
 
 .idx_crd_body {
-    /* float:left; */
     width: 500px;
     height: 450px;
     background-color: #7a7a7a;
