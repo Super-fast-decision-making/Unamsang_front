@@ -19,6 +19,7 @@
     <script src="./static/js/article_create.js"></script>
     <script src="./static/js/api.js"></script>
     <script src="./static/js/main.js"></script>
+    <!-- <script src="https://kit.fontawesome.com/049cd78faf.js" crossorigin="anonymous"></script> -->
     <style>
         .nav_left {
             display: flex;
@@ -28,46 +29,54 @@
             margin-left: 10px;
             display: flex;
             padding: 10px;
+
         }
 
         .logo_link {
+            line-height: 70px;
             color: #ffffff;
             font-size: 30px;
         }
 
         .nav_center {
             display: flex;
+            align-items: center;
 
         }
 
         .search_box {
+            height: 35px;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 10px;
+            padding: 0px 10px 0px 10px;
+            background-color: #0d233b;
+            border: 3px solid #040a11;
         }
 
         .search_input {
             border-radius: 5px;
             height: 35px;
+            background-color: #0d233b;
+            border: 0;
         }
 
         .search_button {
-            margin-left: 4px;
-            font-size: 15px;
-            font-weight: 400;
-            background-color: rgb(199, 199, 199);
-            border-radius: 5px;
+            margin-left: 10px;
+            color: #030823;
+            background-color: initial;
+            border: 0;
+            border-radius: 17px;
             height: 35px;
         }
 
         .nav_right {
             display: flex;
+            align-items: center;
         }
 
         .log_box {
             padding: 10px;
-            align-items: center;
         }
 
         .log_info {
@@ -77,14 +86,22 @@
 
         .login_link {
             color: #ffffff;
-            font-size: 17px;
+            font-size: 20px;
+            font-weight: 600;
             margin: 10px;
             text-decoration: none;
         }
 
         .logout_button {
+            width: 90px;
+            height: 33px;
             display: none;
             margin: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #e6eadd;
+            background-color: initial;
+            border: 3px solid #000409;
         }
 
         .main_title {
@@ -111,14 +128,16 @@
             <form class="d-flex search_box" role="search">
                 <input class="form-control me-2 search_input" type="search" placeholder="" aria-label="Search"
                     id="words_for_search">
-                <button class="btn btn-outline-success search_button" type="button" onclick="search()">검색</button>
+                <button class="search_button" type="button" onclick="search()"><i
+                        class="fa fa-arrow-right"></i>></button>
             </form>
         </div>
-        <div class="nav_right">
+        <div class=" nav_right">
             <div class="log_box">
                 <div class="log_info">
                     <a class="login_link" id="login_link" href="/login.html">로그인하기</a>
-                    <button class="logout_button" id="logout_button" type="button" onclick="userLogout()">로그아웃</button>
+                    <button class="logout_button" id="logout_button" type="button"
+                        onclick="userLogout()">Logout</button>
                 </div>
             </div>
 
@@ -131,8 +150,8 @@
         </div>
         <div class="input_box">
             <div class="input_inner_box">
-                <input id="prompt" type="text" name="input_box" placeholder="키워드를 넣으세요">
-                <button type="submit" onclick="handlePromptCreate()">생성</button>
+                <input id="prompt" type="text" name="input_box" placeholder="Insert the keyworkds">
+                <button type="submit" onclick="handlePromptCreate()">CREATE</button>
             </div>
             <div class="hid_box" id="hid_box">
 
@@ -266,6 +285,7 @@
         changeWidth= carouselWidth*counter            
             document.querySelector('#track').style.transform = `translateX(-${changeWidth}px)`;
             document.querySelector('#track').style.transform = `translateX(-${0}px)`;
+
 
 
 
