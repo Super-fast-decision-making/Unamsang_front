@@ -34,4 +34,7 @@ window.onload = async function getArticles() {
   // console.log(response_json.length)//아티클 갯수
   // a_length = response_json.length
   // console.log(response_json[0]['image_location'])
+  console.log(response_json['article'][0]['title'])
+
 }
+
