@@ -12,8 +12,7 @@ function handlePromptCreate() {
     hidden_page.classList.add('hidden_box')
     const hid_box = document.querySelector(".hid_box")
     hid_box.style.display = "flex";
-    const hid_text_box = document.querySelector(".hid_text_box")
-    hid_text_box.style.display = "flex";
+   
 }
 
 //프리뷰 이미지 구현
@@ -22,7 +21,12 @@ function showPromptImage(path) {
     console.log(path, 10)
     document.getElementById("title").innerHTML = title;
     document.getElementById("main_img").src = path;
+    const hid_text_box = document.querySelector(".hid_text_box")
+    hid_text_box.style.display = "flex";
 }
+
+
+/////여기까지 프리뷰 이미지가 생성되는 시점
 
 
 //아티클 생성
