@@ -147,12 +147,12 @@ window.onload = async function getArticles() {
     console.log(response_json[0]['image_location'])
 
     //메인페이지 캐로셀 생성
-    
-    console.log("여기"+response_json.length)
-    for (var i=0;i<=response_json.length;i++){
-        let title=response_json[i]['title']
-        let image=response_json[i]['image_location']
-        let article_id =response_json[i]['id']
+
+    console.log("여기" + response_json.length)
+    for (var i = 0; i <= response_json.length; i++) {
+        let title = response_json[i]['title']
+        let image = response_json[i]['image_location']
+        let article_id = response_json[i]['id']
         let author = response_json[i]['user']
         let comments = response_json[i]['comments']
         appendTempHtml(i, title, image, article_id, author, comments)
@@ -182,7 +182,7 @@ window.onload = async function getArticles() {
     loadComments(response_json)
     loadMainPage(response_json)
 }
-    
+
 
 
 //코멘트 생성
@@ -192,7 +192,7 @@ async function postComment(comment, article_id) {
         article: article_id,
         comment: comment,
     }
-    
+
     console.log(commentData)
     const response = await fetch('http://127.0.0.1:8000/article/comment/', {
         method: 'POST',
