@@ -89,7 +89,7 @@ async function startImageGenerator(prompt) {
     showPromptImage(path)
 
     if (response.status == 200) {
-        alert(response.status);//http://127.0.0.1:5500/main.html
+        alert(response.status);
 
     } else {
         alert(response.status);
@@ -120,7 +120,7 @@ async function postArticle(title, img_url, is_active, exposure_end_date) {
     console.log(response_json)
 
     if (response.status == 200) {
-        alert(response.status);//http://127.0.0.1:5500/main.html
+        alert(response.status);
         window.location.reload()
     } else {
         alert(response.status);
@@ -143,6 +143,8 @@ window.onload = async function getArticles() {
     console.log(response_json.length)//아티클 갯수
     a_length = response_json.length
     console.log(response_json[0]['image_location'])
+    
+
     // loadArticles(response_json)
     //로드 아티클
     for (var i = 0; i <= 2; i++) {
@@ -154,12 +156,8 @@ window.onload = async function getArticles() {
         }
         document.getElementById("carouselimg" + i + "_5").src = response_json[i]['image_location']
         document.getElementById("carousel-id" + i).innerHTML = response_json[i]['id']
-
-
     }
     loadRatings(response_json)
-
-
     //로드모달
     // loadModals(response_json)
     for (var i = 0; i <= 2; i++) {
@@ -168,7 +166,6 @@ window.onload = async function getArticles() {
         document.getElementById("modal-author" + i).innerHTML = 'author: ' + response_json[i]['user']
     }
     loadComments(response_json)
-
 }
 
 //코멘트 생성
@@ -191,23 +188,21 @@ async function postComment(comment, article_id) {
     console.log(response_json)
 
     if (response.status == 200) {
-        alert(response.status);//http://127.0.0.1:5500/main.html
+        alert(response.status);
         window.location.reload()
     } else {
         alert(response.status);
     }
-
 }
 
 //코멘트 불러오기
-function loadComments(response_json) {
-    comment_len = response_json[0]['comments'].length
-    article_len = response_json.length
-
+function loadComments(response_json){
+    comment_len=response_json[0]['comments'].length
+    article_len=response_json.length
     comment0 = response_json[0]['comments']
 
-
-    for (let i = 0; i < article_len; i++) {
+    for (let i = 0; i <article_len; i++) {
+        comment_len=response_json[i]['comments'].length
         for (let j = 0; j < comment_len; j++) {
             let comment_section = document.getElementById("comment-list" + i)
             let newComment = document.createElement("li")
@@ -222,7 +217,6 @@ function loadComments(response_json) {
 function loadRatings(response_json) {
     rating_len = response_json[0]['rating'].length
     article_len = response_json.length
-
     rating0 = response_json[0]['rating']
 
     for (let i = 0; i < article_len; i++) {
