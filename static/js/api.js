@@ -189,7 +189,7 @@ async function postComment(comment, article_id) {
         article: article_id,
         comment: comment,
     }
-    
+
     console.log(commentData)
     const response = await fetch('http://127.0.0.1:8000/article/comment/', {
         method: 'POST',
@@ -265,4 +265,26 @@ async function getName() {
 }
 
 
+<<<<<<< HEAD
+=======
+// 마이페이지 아티클 불러오기
+async function getMypage() {
+    const response = await fetch('http://127.0.0.1:8000/user/mypage/', {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+            'Authorization': "Bearer " + localStorage.getItem("user_access_token")
+        },
+    })
+    response_json = await response.json()
+    console.log(response_json)
+    console.log(response_json.length)//아티클 갯수
+    a_length = response_json.length
+    // console.log(response_json[0]['image_location'])
+    return response_json
+}
+
+
+>>>>>>> 9e13443 (저장용)
 
