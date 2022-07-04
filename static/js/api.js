@@ -62,14 +62,6 @@ async function handleLogin() {
     }
 }
 
-// 로그아웃
-function logout() {
-    localStorage.removeItem("user_access_token")
-    localStorage.removeItem("user_refresh_token")
-    localStorage.removeItem("payload")
-    window.location.replace(`http://127.0.0.1:5500/main.html`);
-}
-
 
 // 이미지 생성
 async function startImageGenerator(prompt) {
@@ -97,7 +89,7 @@ async function startImageGenerator(prompt) {
     showPromptImage(path)
 
     if (response.status == 200) {
-        alert(response.status);//http://127.0.0.1:5500/main.html
+        alert(response.status);
 
     } else {
         alert(response.status);
@@ -128,7 +120,7 @@ async function postArticle(title, img_url, is_active, exposure_end_date) {
     console.log(response_json)
 
     if (response.status == 200) {
-        alert(response.status);//http://127.0.0.1:5500/main.html
+        alert(response.status);
         window.location.reload()
     } else {
         alert(response.status);
@@ -177,7 +169,7 @@ window.onload = async function getArticles() {
 }
 
 //코멘트 생성
-async function postComment(comment, article_id){
+async function postComment(comment, article_id) {
     const commentData = {
         article: article_id,
         comment: comment,
@@ -196,7 +188,7 @@ async function postComment(comment, article_id){
     console.log(response_json)
 
     if (response.status == 200) {
-        alert(response.status);//http://127.0.0.1:5500/main.html
+        alert(response.status);
         window.location.reload()
     } else {
         alert(response.status);
@@ -221,7 +213,7 @@ function loadComments(response_json){
     }
 }
 
-
+//  불러오기
 function loadRatings(response_json) {
     rating_len = response_json[0]['rating'].length
     article_len = response_json.length
@@ -232,5 +224,27 @@ function loadRatings(response_json) {
         if (rating_avg != null) {
             document.getElementById("carousel-rating" + i).innerHTML = rating_avg
         }
+    }
+}
+
+// 유저 이름 가져오기
+async function getName() {
+
+    token = localStorage.getItem("user_access_token")
+
+    const response = await fetch(`http://127.0.0.1:8000/user/api/authonly/`, {
+        headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+            'Authorization': "Bearer " + localStorage.getItem("user_access_token")
+        },
+    })
+
+    if (response.status == 200) {
+        response_json = await response.json()
+
+        return response_json
+    } else {
+        return null
     }
 }
