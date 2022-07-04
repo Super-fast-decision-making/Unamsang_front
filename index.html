@@ -132,9 +132,6 @@
             <div class="log_box">
                 <a class="logo_link" href="/index.html">유남생</a>
             </div>
-            <!-- <div>
-                <button><a href="/ranking.html">랭킹</a></button>
-            </div> -->
         </div>
         <div class="nav_center">
             <form class="d-flex search_box" role="search">
@@ -218,7 +215,7 @@
         </div>
     </div>
     <script>
-        console.log()
+
         //캐로셀 움직이는 식
 
         //i는 i번째 항 
@@ -238,7 +235,17 @@
                             <div class="modal-left" style="overflow:hidden;"><img class="modal-img" id=modal-img src="${image}" style="object-fit:cover;""></div>
                             <div class="modal-right" style="margin-top:10px">
                                 <button onclick=mainModalOff(${i}) style='background-color:transparent;border:none;'><i class="fa fa-x"></i></button>
-                                <span style='margin-left:15px'><h2 id="modal-title" >${title}</h2>${author}</span>
+                                <span style='margin-left:15px'><h2 id="modal-title" >${title}</h2>
+                                    ${author}
+                                    <select name="score" id="score" onclick="uploadScore(${article_id})">
+                                        <option disabled selected value>점수</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                    </span>
                                 <hr>
                                 <ol id="comment-list${i}" class="comment-list" style='list-style:none;margin-left:15px;padding:0;'>
                                     
@@ -256,11 +263,8 @@
             $('#idx_head').append(temp_html2)
             //댓글
             for (let j = 0; j < comments.length; j++) {
-                console.log("여기")
-                console.log(comments.length)
                 $(`#comment-list${i}`).append(`<li>${comments[j].comment}</li><hr style="margin-right: 10px">`)
             }
-
         }
 
 
@@ -278,7 +282,7 @@
             postComment(comment, article_id)
 
         }
-
+        //캐로셀 움직이기
         let counter = 1;
         const carouselWidth = document.querySelector('.carousel-container').offsetWidth;
         document.querySelector('#next').addEventListener('click', () => {
@@ -289,6 +293,17 @@
         document.querySelector('#prev').addEventListener('click', () => {
             document.querySelector('#track').style.transform = `translateX(-${0}px)`;
         })
+
+
+
+
+        function uploadScore(id){
+            console.log(document.getElementById('score').value)
+            var score = document.getElementById('score').value
+            //id=아티클 아이디
+            console.log(score, id)
+            postScore(score, id)
+        }
 
     </script>
 
