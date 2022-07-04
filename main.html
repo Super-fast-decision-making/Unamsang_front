@@ -79,6 +79,13 @@
             display: none;
             margin: 10px;
         }
+
+        .main_title {
+            margin: 40px auto 20px auto;
+            font-size: 60px;
+            font-weight: 500;
+            color: #ffffff;
+        }
     </style>
 
 </head>
@@ -112,10 +119,13 @@
     </nav>
 
     <div class="idx_head">
+        <div class="main_title">
+            YOU KNOW WHAT I'M SAYING?
+        </div>
         <div class="input_box">
             <div class="input_inner_box">
                 <input id="prompt" type="text" name="input_box" placeholder="키워드를 넣으세요">
-                <button type="submit" onclick="handlePromptCreate()">submit</button>
+                <button type="submit" onclick="handlePromptCreate()">생성</button>
             </div>
             <div class="hid_box" id="hid_box">
 
