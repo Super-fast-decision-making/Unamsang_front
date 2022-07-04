@@ -41,8 +41,6 @@ function handleArticleCreate() {
 //댓글 생성
 function handleCommentCreate(id) {
     var comment = document.getElementById("search-modal-comment" + id).value
-
-    // let comment = document.getElementById("idx-comment" + id).value || document.getElementById("modal-comment" + id).value || document.getElementById("search-modal-comment" + id).value
     let article_id = id
     console.log(comment,article_id)
     postComment(comment, article_id)

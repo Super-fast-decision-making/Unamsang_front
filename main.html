@@ -207,16 +207,9 @@
     <script>
         console.log()
         //캐로셀 움직이는 식
-        const carouselWidth = document.querySelector('.carousel-container').offsetWidth;
-        document.querySelector('#next').addEventListener('click', () => {
-            document.querySelector('#track').style.transform = `translateX(-${carouselWidth}px)`;
-        })
-        document.querySelector('#prev').addEventListener('click', () => {
-            document.querySelector('#track').style.transform = `translateX(-${0}px)`;
-        })
 
-    //i는 i번째 항
-   function appendTempHtml(i, title, image, article_id, author, comments){
+        //i는 i번째 항 
+        function appendTempHtml(i, title, image, article_id, author, comments){
                 let temp_html=`
                     <div class="card-container">
                         <div class="card" >
@@ -260,7 +253,38 @@
             document.getElementById('modal-bg' + id).style.display = "none"
         };
 
+        function handleCommentCreate(id) {
+            var comment = document.getElementById("main-modal-comment" + id).value         
+            let article_id = id
+            console.log(comment,article_id)
+            postComment(comment, article_id)
 
+        }
+        
+        let counter =1;
+        const carouselWidth = document.querySelector('.carousel-container').offsetWidth;
+        // document.querySelector('#next').addEventListener('click', () => {
+        //     counter++;
+        //     changeWidth= carouselWidth*counter            
+        //     document.querySelector('#track').style.transform = `translateX(-${changeWidth}px)`;
+        // })
+        // document.querySelector('#prev').addEventListener('click', () => {
+        //     document.querySelector('#track').style.transform = `translateX(-${0}px)`;
+        // })
+
+        let r_count=0
+        let l_count=0
+
+        document.querySelector('#next').addEventListener('click', () => {r_count++;})
+        document.querySelector('#prev').addEventListener('click', () => {l_count++;})
+
+
+
+
+
+        changeWidth= carouselWidth*counter            
+            document.querySelector('#track').style.transform = `translateX(-${changeWidth}px)`;
+            document.querySelector('#track').style.transform = `translateX(-${0}px)`;
 
 
 
