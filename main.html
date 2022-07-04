@@ -6,6 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>You Know What I'm Saying</title>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+
     <link rel="stylesheet" type="text/css" href="./static/css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap" rel="stylesheet">
     <script src="https://use.fortawesome.com/99966411.js"></script>
@@ -85,262 +92,59 @@
         <div id="carousel-container0" class="carousel-container">
             <ol id="articles" class="carousel-text">
                 <div>
-                    <h2 id="carousel-title0"></h2>
+                    <h2 id="carousel-title"></h2>
 
                 </div>
                 <div>
-                    <p id="carousel-rating0"></p>
-                    <p id="carousel-id0"></p>
-                    <p id="carousel-author0"></p>
-                    <p id="carousel-scores0"></p>
-                    <p><i class="fa fa-star-fas"></i>icon</p>
-                    <button class="modal-btn" onclick="modalOn(0)">모달</button>
+                    <p id="carousel-rating"></p>
+                    <p id="carousel-id"></p>
+                    <p id="carousel-author"></p>
+                    <p id="carousel-scores"></p>
+                    <p><i class="fa fa-star-fas"></i></p>
                 </div>
             </ol>
-            <div class="carousel-inner">
-                <div id="track0" class="track">
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="carousel-img">1</div>
-                            <img class=carouselimg id=carouselimg0_1 src="">
+            <div id="carousel-inner" class="carousel-inner">
+                <div id="track" class="track">
 
-                        </div>
-                    </div>
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="carousel-img">2</div>
-                            <img class=carouselimg id=carouselimg0_2 src="">
-                        </div>
-                    </div>
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="carousel-img">3</div>
-                            <img class=carouselimg id=carouselimg0_3 src="">
-                        </div>
-                    </div>
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="carousel-img">4</div>
-                            <img class=carouselimg id=carouselimg0_4 src="">
-                        </div>
-                    </div>
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="carousel-img">5</div>
-                            <img class=carouselimg id=carouselimg0_5 src="">
-                        </div>
-                    </div>
                 </div>
 
             </div>
 
             <div class="crd_nav">
-                <button id="prev0" class="prev"><i class="fa fa-chevron-left"></i></button>
-                <button id="next0" class="next"><i class="fa fa-chevron-right"></i></button>
+                <button id="prev" class="prev"><i class="fa fa-chevron-left"></i></button>
+                <button id="next" class="next"><i class="fa fa-chevron-right"></i></button>
 
             </div>
-            <ol id="articles" class="carousel-text">
-                <input class="form-control" placeholder="댓글 달기..." id="idx-comment0" style="width:95%; height:30px">
-                <button class="comment_button" style="width:5%" onclick="handleCommentCreate(0)">게시</button>
-            </ol>
         </div>
-        <div class="carousel-container">
-            <ol id="articles" class="carousel-text">
-                <div>
-                    <h2 id="carousel-title1"></h2>
-
-                </div>
-                <div>
-                    <p id="carousel-rating1"></p>
-                    <p id="carousel-id1"></p>
-                    <p id="carousel-author1"></p>
-                    <p id="carousel-scores1"></p>
-                    <p><i class="fa fa-star-fas"></i>icon</p>
-                    <button class="modal-btn" onclick="modalOn(1)">모달</button>
-                </div>
-            </ol>
-            <div class="carousel-inner">
-                <div id="track1" class="track">
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="carousel-img">1</div>
-                            <img class=carouselimg id=carouselimg1_1 src="">
-
-                        </div>
-                    </div>
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="carousel-img">2</div>
-                            <img class=carouselimg id=carouselimg1_2 src="">
-                        </div>
-                    </div>
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="carousel-img">3</div>
-                            <img class=carouselimg id=carouselimg1_3 src="">
-                        </div>
-                    </div>
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="carousel-img">4</div>
-                            <img class=carouselimg id=carouselimg1_4 src="">
-                        </div>
-                    </div>
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="carousel-img">5</div>
-                            <img class=carouselimg id=carouselimg1_5 src="">
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="crd_nav">
-                <button id="prev1" class="prev"><i class="fa fa-chevron-left"></i></button>
-                <button id="next1" class="next"><i class="fa fa-chevron-right"></i></button>
-            </div>
-            <ol id="articles" class="carousel-text">
-                <input class="form-control" placeholder="댓글 달기..." id="idx-comment1" style="width:95%; height:30px">
-                <button class="comment_button" style="width:5%" onclick="handleCommentCreate(1)">게시</button>
-            </ol>
-        </div>
-        <div class="carousel-container">
-            <ol id="articles" class="carousel-text">
-                <div>
-                    <h2 id="carousel-title2"></h2>
-                </div>
-                <div>
-                    <p id="carousel-rating2"></p>
-                    <p id="carousel-id2"></p>
-                    <p id="carousel-author2"></p>
-                    <p id="carousel-scores2"></p>
-                    <p><i class="fa fa-star-fas"></i>icon</p>
-                    <button id="modal-btn2" class="modal-btn" onclick="modalOn(2)">모달</button>
-                </div>
-            </ol>
-            <div class="carousel-inner">
-                <div id="track2" class="track">
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="carousel-img">1</div>
-                            <img class=carouselimg id=carouselimg2_1 src="">
-                        </div>
-                    </div>
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="carousel-img">2</div>
-                            <img class=carouselimg id=carouselimg2_2 src="">
-                        </div>
-                    </div>
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="carousel-img">3</div>
-                            <img class=carouselimg id=carouselimg2_3 src="">
-                        </div>
-                    </div>
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="carousel-img">4</div>
-                            <img class=carouselimg id=carouselimg2_4 src="">
-                        </div>
-                    </div>
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="carousel-img">5</div>
-                            <img class=carouselimg id=carouselimg2_5 src="">
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="crd_nav">
-                <button id="prev2" class="prev"><i class="fa fa-chevron-left"></i></button>
-                <button id="next2" class="next"><i class="fa fa-chevron-right"></i></button>
-
-            </div>
-
-            <ol id="articles" class="carousel-text">
-                <input class="form-control" placeholder="댓글 달기..." id="idx-comment2" style="width:95%; height:30px">
-                <button class="comment_button" style="width:5%" onclick="handleCommentCreate(2)">게시</button>
-
-            </ol>
-            <!-------------------디테일 모달---------------------->
-            <div id="modal-bg0" class="modal-bg">
-                <div class="modal">
-                    <div class="modal-left"><img class="modal-img" id=modal-img0 src=""></div>
-                    <div class="modal-right">
-                        <button onclick="modalOff(0)"><i class="fa fa-x"></i></button>
-                        <h2 id="modal-title0">title</h2>
-                        <p id="modal-author0">author</p>
-                        <ol id="comment-list0" class="comment-list"> </ol>
-                        <div>
-                            <input class="form-control" placeholder="댓글 달기..." id="modal-comment0">
-                            <button class="comment_button" onclick="handleCommentCreate(0)">게시</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-------------------디테일 모달---------------------->
-            <div id="modal-bg1" class="modal-bg">
-                <div class="modal">
-                    <div class="modal-left"><img class="modal-img" id=modal-img1 src=""></div>
-                    <div class="modal-right">
-                        <button onclick="modalOff(1)"><i class="fa fa-x"></i></button>
-                        <h2 id="modal-title1">title</h2>
-                        <p id="modal-author1">author</p>
-                        <ol id="comment-list1" class="comment-list"> </ol>
-                        <div>
-                            <input class="form-control" placeholder="댓글 달기..." id="modal-comment1">
-                            <button class="comment_button" onclick="handleCommentCreate(1)">게시</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-------------------디테일 모달---------------------->
-            <div id="modal-bg2" class="modal-bg">
-                <div class="modal">
-                    <div class="modal-left"><img class="modal-img" id=modal-img2 src=""></div>
-                    <div class="modal-right">
-                        <button onclick="modalOff(2)"><i class="fa fa-x"></i></button>
-                        <h2 id="modal-title2">title</h2>
-                        <p id="modal-author2">author</p>
-                        <ol id="comment-list2" class="comment-list"> </ol>
-                        <div>
-                            <input class="form-control" placeholder="댓글 달기..." id="modal-comment2">
-                            <button class="comment_button" onclick="handleCommentCreate(2)">게시</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
     </div>
     <script>
+        console.log()
         //캐로셀 움직이는 식
         const carouselWidth = document.querySelector('.carousel-container').offsetWidth;
-        document.querySelector('#next' + 0).addEventListener('click', () => {
-            document.querySelector('#track' + 0).style.transform = `translateX(-${carouselWidth}px)`;
+        document.querySelector('#next').addEventListener('click', () => {
+            document.querySelector('#track').style.transform = `translateX(-${carouselWidth}px)`;
         })
-        document.querySelector('#prev' + 0).addEventListener('click', () => {
-            document.querySelector('#track' + 0).style.transform = `translateX(-${0}px)`;
+        document.querySelector('#prev').addEventListener('click', () => {
+            document.querySelector('#track').style.transform = `translateX(-${0}px)`;
         })
-        document.querySelector('#next' + 1).addEventListener('click', () => {
-            document.querySelector('#track' + 1).style.transform = `translateX(-${carouselWidth}px)`;
-        })
-        document.querySelector('#prev' + 1).addEventListener('click', () => {
-            document.querySelector('#track' + 1).style.transform = `translateX(-${0}px)`;
-        })
-        document.querySelector('#next' + 2).addEventListener('click', () => {
-            document.querySelector('#track' + 2).style.transform = `translateX(-${carouselWidth}px)`;
-        })
-        document.querySelector('#prev' + 2).addEventListener('click', () => {
-            document.querySelector('#track' + 2).style.transform = `translateX(-${0}px)`;
-        })
+        //i는 i번째 항
+        function appendTempHtml(i, title, image){
+                let temp_html=`
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="carousel-img">${title}</div>
+                            <img class=carouselimg id=carouselimg${i} src="${image}">
+                        </div>
+                    </div>
+                
+                `
+                $('#track').append(temp_html)
+            }
+
+
+
+
+
     </script>
 
 
