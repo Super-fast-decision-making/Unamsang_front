@@ -51,137 +51,20 @@
             <!-- Tab content -->
             <div id="London" class="tabcontent">
                 <h3>my article</h3>
-                <div id="idx_2nd_page" class="idx_2nd_page">
-                    <div id="my_carousel-container0" class="carousel-container">
-                        <ol id="my_articles" class="carousel-text">
-                            <div>
-                                <h2 id="my_carousel-title0"></h2>
-
-                            </div>
-                            <div>
-                                <p id="my_carousel-rating0"></p>
-                                <p id="my_carousel-id0"></p>
-                                <p id="my_carousel-author0"></p>
-                                <p id="my_carousel-scores0"></p>
-                                <p><i class="fa fa-star-fas"></i>icon</p>
-                                <button class="modal-btn" onclick="modalOn(0)">모달</button>
-                            </div>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div id="track0" class="track">
-                                <div class="card-container">
-                                    <div class="card">
-                                        <div class="carousel-img">1</div>
-                                        <img class=carouselimg id=my_carouselimg0_1 src="">
-
-                                    </div>
-                                </div>
-                                <div class="card-container">
-                                    <div class="card">
-                                        <div class="carousel-img">2</div>
-                                        <img class=carouselimg id=my_carouselimg0_2 src="">
-                                    </div>
-                                </div>
-                                <div class="card-container">
-                                    <div class="card">
-                                        <div class="carousel-img">3</div>
-                                        <img class=carouselimg id=my_carouselimg0_3 src="">
-                                    </div>
-                                </div>
-                                <div class="card-container">
-                                    <div class="card">
-                                        <div class="carousel-img">4</div>
-                                        <img class=carouselimg id=my_carouselimg0_4 src="">
-                                    </div>
-                                </div>
-                                <div class="card-container">
-                                    <div class="card">
-                                        <div class="carousel-img">5</div>
-                                        <img class=carouselimg id=my_carouselimg0_5 src="">
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="crd_nav">
-                            <button id="prev0" class="prev"><i class="fa fa-chevron-left"></i></button>
-                            <button id="next0" class="next"><i class="fa fa-chevron-right"></i></button>
-
-                        </div>
-                        <ol id="articles" class="carousel-text">
-                            <input class="form-control" placeholder="댓글 달기..." id="idx-comment0"
-                                style="width:95%; height:30px">
-                            <button class="comment_button" style="width:5%" onclick="handleCommentCreate(0)">게시</button>
-                        </ol>
-                        <!--  -->
-                        <div id="modal-bg0" class="modal-bg">
-                            <div class="modal">
-                                <div class="modal-left"><img class="modal-img" id=modal-img0 src=""></div>
-                                <div class="modal-right">
-                                    <button onclick="modalOff(0)"><i class="fa fa-x"></i></button>
-                                    <h2 id="modal-title0">title</h2>
-                                    <p id="modal-author0">author</p>
-                                    <ol id="comment-list0" class="comment-list"> </ol>
-                                    <div>
-                                        <input class="form-control" placeholder="댓글 달기..." id="modal-comment0">
-                                        <button class="comment_button" onclick="handleCommentCreate(0)">게시</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="Paris" class="tabcontent">
-                    <h3>Paris</h3>
-                    <p>Paris is the capital of France.</p>
-                    <ol id="articles"></ol>
-                </div>
-
-                <div id="Tokyo" class="tabcontent">
-                    <h3>Tokyo</h3>
-                    <p>Tokyo is the capital of Japan.</p>
-                </div>
-
             </div>
 
+            <div id="Paris" class="tabcontent">
+                <h3>Paris</h3>
+                <p>Paris is the capital of France.</p>
+                <ol id="articles"></ol>
+            </div>
+
+            <div id="Tokyo" class="tabcontent">
+                <h3>Tokyo</h3>
+                <p>Tokyo is the capital of Japan.</p>
+            </div>
         </div>
-        <script>
-            // Get the element with id="defaultOpen" and click on it
-            document.getElementById("defaultOpen").click();
-            //캐로셀 움직이는 식
-            const carouselWidth = document.querySelector('.carousel-container').offsetWidth;
-            document.querySelector('#next' + 0).addEventListener('click', () => {
-                document.querySelector('#track' + 0).style.transform = `translateX(-${carouselWidth}px)`;
-            })
-            document.querySelector('#prev' + 0).addEventListener('click', () => {
-                document.querySelector('#track' + 0).style.transform = `translateX(-${0}px)`;
-            })
-            document.querySelector('#next' + 1).addEventListener('click', () => {
-                document.querySelector('#track' + 1).style.transform = `translateX(-${carouselWidth}px)`;
-            })
-            document.querySelector('#prev' + 1).addEventListener('click', () => {
-                document.querySelector('#track' + 1).style.transform = `translateX(-${0}px)`;
-            })
-            document.querySelector('#next' + 2).addEventListener('click', () => {
-                document.querySelector('#track' + 2).style.transform = `translateX(-${carouselWidth}px)`;
-            })
-            document.querySelector('#prev' + 2).addEventListener('click', () => {
-                document.querySelector('#track' + 2).style.transform = `translateX(-${0}px)`;
-            })
-
-            async function loadArticles() {
-
-            }
-
-
-
-
-
-        </script>
-
-
+    </div>
 </body>
 
 </html>
