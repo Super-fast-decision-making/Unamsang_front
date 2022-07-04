@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="./static/css/mypage.css">
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap" rel="stylesheet">
     <script src="https://use.fortawesome.com/99966411.js"></script>
-    <script src="./static/js/api.js"></script>
+    <!-- <script src="./static/js/api.js"></script> -->
     <script src="./static/js/mypage.js"></script>
     <style>
         body {
@@ -52,17 +52,17 @@
             <div id="London" class="tabcontent">
                 <h3>my article</h3>
                 <div id="idx_2nd_page" class="idx_2nd_page">
-                    <div id="carousel-container0" class="carousel-container">
-                        <ol id="articles" class="carousel-text">
+                    <div id="my_carousel-container0" class="carousel-container">
+                        <ol id="my_articles" class="carousel-text">
                             <div>
-                                <h2 id="carousel-title0"></h2>
+                                <h2 id="my_carousel-title0"></h2>
 
                             </div>
                             <div>
-                                <p id="carousel-rating0"></p>
-                                <p id="carousel-id0"></p>
-                                <p id="carousel-author0"></p>
-                                <p id="carousel-scores0"></p>
+                                <p id="my_carousel-rating0"></p>
+                                <p id="my_carousel-id0"></p>
+                                <p id="my_carousel-author0"></p>
+                                <p id="my_carousel-scores0"></p>
                                 <p><i class="fa fa-star-fas"></i>icon</p>
                                 <button class="modal-btn" onclick="modalOn(0)">모달</button>
                             </div>
@@ -72,32 +72,32 @@
                                 <div class="card-container">
                                     <div class="card">
                                         <div class="carousel-img">1</div>
-                                        <img class=carouselimg id=carouselimg0_1 src="">
+                                        <img class=carouselimg id=my_carouselimg0_1 src="">
 
                                     </div>
                                 </div>
                                 <div class="card-container">
                                     <div class="card">
                                         <div class="carousel-img">2</div>
-                                        <img class=carouselimg id=carouselimg0_2 src="">
+                                        <img class=carouselimg id=my_carouselimg0_2 src="">
                                     </div>
                                 </div>
                                 <div class="card-container">
                                     <div class="card">
                                         <div class="carousel-img">3</div>
-                                        <img class=carouselimg id=carouselimg0_3 src="">
+                                        <img class=carouselimg id=my_carouselimg0_3 src="">
                                     </div>
                                 </div>
                                 <div class="card-container">
                                     <div class="card">
                                         <div class="carousel-img">4</div>
-                                        <img class=carouselimg id=carouselimg0_4 src="">
+                                        <img class=carouselimg id=my_carouselimg0_4 src="">
                                     </div>
                                 </div>
                                 <div class="card-container">
                                     <div class="card">
                                         <div class="carousel-img">5</div>
-                                        <img class=carouselimg id=carouselimg0_5 src="">
+                                        <img class=carouselimg id=my_carouselimg0_5 src="">
                                     </div>
                                 </div>
                             </div>
@@ -170,9 +170,9 @@
             document.querySelector('#prev' + 2).addEventListener('click', () => {
                 document.querySelector('#track' + 2).style.transform = `translateX(-${0}px)`;
             })
-        
-            async function loadArticles(){
-                
+
+            async function loadArticles() {
+
             }
 
 

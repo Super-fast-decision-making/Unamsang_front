@@ -143,7 +143,7 @@ window.onload = async function getArticles() {
     console.log(response_json.length)//아티클 갯수
     a_length = response_json.length
     console.log(response_json[0]['image_location'])
-    
+
 
     // loadArticles(response_json)
     //로드 아티클
@@ -198,13 +198,13 @@ async function postComment(comment, article_id) {
 }
 
 //코멘트 불러오기
-function loadComments(response_json){
-    comment_len=response_json[0]['comments'].length
-    article_len=response_json.length
+function loadComments(response_json) {
+    comment_len = response_json[0]['comments'].length
+    article_len = response_json.length
     comment0 = response_json[0]['comments']
 
-    for (let i = 0; i <article_len; i++) {
-        comment_len=response_json[i]['comments'].length
+    for (let i = 0; i < article_len; i++) {
+        comment_len = response_json[i]['comments'].length
         for (let j = 0; j < comment_len; j++) {
             let comment_section = document.getElementById("comment-list" + i)
             let newComment = document.createElement("li")
