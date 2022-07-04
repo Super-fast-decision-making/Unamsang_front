@@ -144,7 +144,7 @@
         </div>
     </nav>
 
-    <div class="idx_head">
+    <div class="idx_head" id="idx_head">
         <div class="main_title">
             YOU KNOW WHAT I'M SAYING?
         </div>
@@ -217,7 +217,25 @@
                             <img class="carouselimg" id="carouselimg${i}" src="${image}" style="object-fit:cover" onclick=mainModalOn(${i})>
                         </div>
                     </div>
-
+                `
+                    // <div id="modal-bg${i}" class="modal-bg" style="display:none;z-index:1000">
+                    //     <div class="modal">
+                    //         <div class="modal-left"><img class="modal-img" id=modal-img src="${image}"></div>
+                    //         <div class="modal-right">
+                    //             <button onclick=mainModalOff(${i}) style='background-color:transparent;border:none;'><i class="fa fa-x"></i></button>
+                    //             <span><h2 id="modal-title" >${title}</h2>${author}</span>
+                    //             <hr>
+                    //             <ol id="comment-list${i}" class="comment-list" style='list-style:none'>
+                                    
+                    //             </ol>
+                    //             <div >
+                    //                 <input class="form-control"  placeholder="댓글 달기..." id="main-modal-comment${article_id}" >
+                    //                 <button class="comment_button" onclick="handleCommentCreate(${article_id})">게시</button>
+                    //             </div>
+                    //         </div>
+                    //     </div>
+                    // </div>
+                let temp_html2=`
                     <div id="modal-bg${i}" class="modal-bg" style="display:none;z-index:1000">
                         <div class="modal">
                             <div class="modal-left"><img class="modal-img" id=modal-img src="${image}"></div>
@@ -234,10 +252,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                
+                    </div>                
                 `
+
                 $('#track').append(temp_html)
+                $('#idx_head').append(temp_html2)
                 //댓글
                 for (let j=0;j<comments.length;j++){
                     console.log("여기")
@@ -263,31 +282,14 @@
         
         let counter =1;
         const carouselWidth = document.querySelector('.carousel-container').offsetWidth;
-        // document.querySelector('#next').addEventListener('click', () => {
-        //     counter++;
-        //     changeWidth= carouselWidth*counter            
-        //     document.querySelector('#track').style.transform = `translateX(-${changeWidth}px)`;
-        // })
-        // document.querySelector('#prev').addEventListener('click', () => {
-        //     document.querySelector('#track').style.transform = `translateX(-${0}px)`;
-        // })
-
-        let r_count=0
-        let l_count=0
-
-        document.querySelector('#next').addEventListener('click', () => {r_count++;})
-        document.querySelector('#prev').addEventListener('click', () => {l_count++;})
-
-
-
-
-
-        changeWidth= carouselWidth*counter            
+        document.querySelector('#next').addEventListener('click', () => {
+            counter++;
+            changeWidth= carouselWidth*counter            
             document.querySelector('#track').style.transform = `translateX(-${changeWidth}px)`;
+        })
+        document.querySelector('#prev').addEventListener('click', () => {
             document.querySelector('#track').style.transform = `translateX(-${0}px)`;
-
-
-
+        })
 
     </script>
 
