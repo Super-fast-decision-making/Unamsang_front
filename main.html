@@ -59,6 +59,16 @@
             height: 35px;
             background-color: #0d233b;
             border: 0;
+            text-align: center;
+        }
+
+        .search_input:focus {
+            outline: none;
+            background-color: initial;
+        }
+
+        .search_input::placeholder {
+            color: #9596a9;
         }
 
         .search_button {
@@ -126,7 +136,7 @@
         </div>
         <div class="nav_center">
             <form class="d-flex search_box" role="search">
-                <input class="form-control me-2 search_input" type="search" placeholder="" aria-label="Search"
+                <input class="form-control me-2 search_input" type="search" placeholder="Search" aria-label="Search"
                     id="words_for_search">
                 <button class="search_button" type="button" onclick="search()"><i
                         class="fa fa-arrow-right"></i></button>
@@ -146,7 +156,7 @@
 
     <div class="idx_head">
         <div class="main_title">
-            YOU KNOW WHAT I'M SAYING?
+            U KNOW WHAT I'M SAY'IN?
         </div>
         <div class="input_box">
             <div class="input_inner_box">
