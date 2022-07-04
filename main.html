@@ -12,7 +12,23 @@
     <script src="./static/js/article_create.js"></script>
     <script src="./static/js/api.js"></script>
     <script src="./static/js/main.js"></script>
+    <style>
+        .log_info {
+            display: flex;
+            justify-content: center;
+        }
 
+        .login_link {
+            color: black;
+
+            margin: 10px;
+        }
+
+        .logout_button {
+            display: none;
+            margin: 10px;
+        }
+    </style>
 
 </head>
 
@@ -28,7 +44,10 @@
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
                     id="words_for_search">
                 <button class="btn btn-outline-success" type="button" onclick="search()">Search</button>
-                <button type="button" onclick="logout()">로그아웃</button>
+                <div class="log_info">
+                    <a class="login_link" id="login_link" href="/login.html">로그인하기</a>
+                    <button class="logout_button" id="logout_button" type="button" onclick="userLogout()">로그아웃</button>
+                </div>
             </form>
 
         </div>

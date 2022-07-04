@@ -62,14 +62,6 @@ async function handleLogin() {
     }
 }
 
-// 로그아웃
-function logout() {
-    localStorage.removeItem("user_access_token")
-    localStorage.removeItem("user_refresh_token")
-    localStorage.removeItem("payload")
-    window.location.replace(`http://127.0.0.1:5500/main.html`);
-}
-
 
 // 이미지 생성
 async function startImageGenerator(prompt) {
@@ -179,6 +171,7 @@ window.onload = async function getArticles() {
 
 }
 
+//코멘트 생성
 async function postComment(comment, article_id) {
     const commentData = {
         article: article_id,
@@ -206,6 +199,7 @@ async function postComment(comment, article_id) {
 
 }
 
+//코멘트 불러오기
 function loadComments(response_json) {
     comment_len = response_json[0]['comments'].length
     article_len = response_json.length
@@ -221,5 +215,42 @@ function loadComments(response_json) {
             console.log(response_json[i]['comments'][j]['comment'])
             comment_section.appendChild(newComment)
         }
+    }
+}
+
+//  불러오기
+function loadRatings(response_json) {
+    rating_len = response_json[0]['rating'].length
+    article_len = response_json.length
+
+    rating0 = response_json[0]['rating']
+
+    for (let i = 0; i < article_len; i++) {
+        let rating_avg = response_json[i].rating.rating_.rating__avg
+        if (rating_avg != null) {
+            document.getElementById("carousel-rating" + i).innerHTML = rating_avg
+        }
+    }
+}
+
+// 유저 이름 가져오기
+async function getName() {
+
+    token = localStorage.getItem("user_access_token")
+
+    const response = await fetch(`http://127.0.0.1:8000/user/api/authonly/`, {
+        headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+            'Authorization': "Bearer " + localStorage.getItem("user_access_token")
+        },
+    })
+
+    if (response.status == 200) {
+        response_json = await response.json()
+
+        return response_json
+    } else {
+        return null
     }
 }
