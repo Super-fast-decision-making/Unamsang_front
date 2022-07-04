@@ -135,7 +135,7 @@
         <div class=" nav_right">
             <div class="log_box">
                 <div class="log_info">
-                    <a class="login_link" id="login_link" href="/login.html">로그인하기</a>
+                    <a class="login_link" id="login_link" href="/login.html">Login</a>
                     <button class="logout_button" id="logout_button" type="button"
                         onclick="userLogout()">Logout</button>
                 </div>
@@ -150,7 +150,7 @@
         </div>
         <div class="input_box">
             <div class="input_inner_box">
-                <input id="prompt" type="text" name="input_box" placeholder="Insert the keyworkds">
+                <input id="prompt" type="text" name="input_box" placeholder="Insert the keywords">
                 <button type="submit" onclick="handlePromptCreate()">CREATE</button>
             </div>
             <div class="hid_box" id="hid_box">
@@ -209,8 +209,8 @@
         //캐로셀 움직이는 식
 
         //i는 i번째 항 
-        function appendTempHtml(i, title, image, article_id, author, comments){
-                let temp_html=`
+        function appendTempHtml(i, title, image, article_id, author, comments) {
+            let temp_html = `
                     <div class="card-container">
                         <div class="card" >
                             <div class="carousel-img">${title}</div>
@@ -237,15 +237,15 @@
                     </div>
                 
                 `
-                $('#track').append(temp_html)
-                //댓글
-                for (let j=0;j<comments.length;j++){
-                    console.log("여기")
-                    console.log(comments.length)
-                    $(`#comment-list${i}`).append(`<li>${comments[j].comment}</li><hr style="margin-right: 15px">`)
-                }
-
+            $('#track').append(temp_html)
+            //댓글
+            for (let j = 0; j < comments.length; j++) {
+                console.log("여기")
+                console.log(comments.length)
+                $(`#comment-list${i}`).append(`<li>${comments[j].comment}</li><hr style="margin-right: 15px">`)
             }
+
+        }
         function mainModalOn(id) {
             document.getElementById('modal-bg' + id).style.display = "flex"
         };
@@ -254,14 +254,14 @@
         };
 
         function handleCommentCreate(id) {
-            var comment = document.getElementById("main-modal-comment" + id).value         
+            var comment = document.getElementById("main-modal-comment" + id).value
             let article_id = id
-            console.log(comment,article_id)
+            console.log(comment, article_id)
             postComment(comment, article_id)
 
         }
-        
-        let counter =1;
+
+        let counter = 1;
         const carouselWidth = document.querySelector('.carousel-container').offsetWidth;
         // document.querySelector('#next').addEventListener('click', () => {
         //     counter++;
@@ -272,19 +272,19 @@
         //     document.querySelector('#track').style.transform = `translateX(-${0}px)`;
         // })
 
-        let r_count=0
-        let l_count=0
+        let r_count = 0
+        let l_count = 0
 
-        document.querySelector('#next').addEventListener('click', () => {r_count++;})
-        document.querySelector('#prev').addEventListener('click', () => {l_count++;})
-
-
+        document.querySelector('#next').addEventListener('click', () => { r_count++; })
+        document.querySelector('#prev').addEventListener('click', () => { l_count++; })
 
 
 
-        changeWidth= carouselWidth*counter            
-            document.querySelector('#track').style.transform = `translateX(-${changeWidth}px)`;
-            document.querySelector('#track').style.transform = `translateX(-${0}px)`;
+
+
+        changeWidth = carouselWidth * counter
+        document.querySelector('#track').style.transform = `translateX(-${changeWidth}px)`;
+        document.querySelector('#track').style.transform = `translateX(-${0}px)`;
 
 
 
