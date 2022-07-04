@@ -152,7 +152,8 @@ window.onload = async function getArticles() {
     for (var i=0;i<=response_json.length;i++){
         let title=response_json[i]['title']
         let image=response_json[i]['image_location']
-        appendTempHtml(i, title, image)
+        let article_id =response_json[i]['id']
+        appendTempHtml(i, title, image, article_id)
     }
 
 
