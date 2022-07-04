@@ -1,6 +1,3 @@
-
-
-
 function openCity(evt, cityName) {
   // Declare all variables
   var i, tabcontent, tablinks;
@@ -22,8 +19,8 @@ function openCity(evt, cityName) {
   evt.currentTarget.className += " active";
 }
 
-// 마이페이지 아티클 불러오기 api.js
-window.onload = async function getMypage() {
+
+window.onload = async function getArticles() {
   const response = await fetch('http://127.0.0.1:8000/user/mypage/', {
     method: 'GET',
     headers: {
@@ -36,22 +33,6 @@ window.onload = async function getMypage() {
   console.log(response_json)
   console.log(response_json.length)//아티클 갯수
   a_length = response_json.length
-  // console.log(response_json[0]['image_location'])
-  return response_json
+  console.log(response_json[0]['image_location'])
+
 }
-
-
-// Mypage.js
-async function loadMypage() {
-  console.log("hereaosuid")
-}
-
-loadMypage();
-// getName();
-
-
-
-
-
-
-
