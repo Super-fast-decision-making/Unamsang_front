@@ -20,5 +20,19 @@ function openCity(evt, cityName) {
 }
 
 
+window.onload = async function getArticles() {
+  const response = await fetch('http://127.0.0.1:8000/user/mypage/', {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-type': 'application/json',
+      'Authorization': "Bearer " + localStorage.getItem("user_access_token")
+    },
+  })
+  response_json = await response.json()
+  console.log(response_json)
+  console.log(response_json.length)//아티클 갯수
+  a_length = response_json.length
+  console.log(response_json[0]['image_location'])
 
-
+}
