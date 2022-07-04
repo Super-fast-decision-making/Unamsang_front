@@ -170,10 +170,12 @@ window.onload = async function getArticles() {
 
 //코멘트 생성
 async function postComment(comment, article_id) {
+    console.log("여기까지 옴2")
     const commentData = {
         article: article_id,
         comment: comment,
     }
+    
     console.log(commentData)
     const response = await fetch('http://127.0.0.1:8000/article/comment/', {
         method: 'POST',

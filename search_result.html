@@ -24,6 +24,8 @@
 
     <script src="./static/js/main.js"></script>
     <script src="./static/js/search_result.js"></script>
+    <script src="./static/js/article_create.js"></script>
+    <script src="./static/js/api.js"></script>
     
     <style>
         body{
@@ -78,10 +80,11 @@
 
 <script>
     //여기서 id는 검색된 값 순서대로 id임!!
-    function appendTempHtml(id, title, img, author, comments){
+    function appendTempHtml(id, title, img, author, comments, article_id){
         console.log('c_length'+comments.length)
         // console.log('comments0'=comments)
             // console.log('comments'+comments[몇번째의 ]['comment'])
+
 
             let temp_html=`
                 <div id="search-card${id}" class="card" style="width: 18rem; height:20rem;float:left;margin-right:1rem;margin-bottom:20px">
@@ -102,8 +105,8 @@
 
                             </ol>
                             <div >
-                                <input class="form-control"  placeholder="댓글 달기..." id="modal-comment" >
-                                <button class="comment_button" onclick="handleCommentCreate(${id})">게시</button>
+                                <input class="form-control"  placeholder="댓글 달기..." id="search-modal-comment${article_id}" >
+                                <button class="comment_button" onclick="handleCommentCreate(${article_id})">게시</button>
                             </div>
                         </div>
                     </div>
@@ -126,7 +129,8 @@
         const search_results_list = document.getElementById("search-result-list");
 
         for (let i=0; i<len; i++){
-            appendTempHtml(i, search_results[i]['title'], search_results[i]['image_location'], search_results[i]['user'],  search_results[i]['comments']);
+            
+            appendTempHtml(i, search_results[i]['title'], search_results[i]['image_location'], search_results[i]['user'],  search_results[i]['comments'], search_results[i]['id']);
         }
               
         localStorage.removeItem('search_results');
