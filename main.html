@@ -122,9 +122,9 @@
         }
 
         .card-container :hover {
-            box-shadow: 10px 10px;
             transform: scale(1.02);
             transition: transform 0.5s;
+            box-shadow: 0 0 20px rgba(0,0,0,0.4);
         }
     </style>
 
@@ -229,7 +229,7 @@
         function appendTempHtml(i, title, image, article_id, author, comments) {
             let temp_html = `
                     <div class="card-container" style="padding:10px">
-                        <div class="card" style="overflow:hidden;">
+                        <div class="card" style="overflow:hidden; background-color:#1F2124;color:white">
                             <div class="carousel-img" style="font-size:1.5rem;font-weight:bold">${title}</div>
                             <img class="carouselimg" id="carouselimg${i}" src="${image}" style="object-fit:cover;" onclick=mainModalOn(${i})>
                         </div>
