@@ -4,7 +4,6 @@ const frontend_base_url = "http://127.0.0.1:5500"
 
 // 회원가입
 async function handleSignup() {
-
     const signupData = {
         username: document.getElementById("username").value,
         email: document.getElementById("email").value,
@@ -158,11 +157,13 @@ window.onload = async function getArticles() {
         let imgs = response_json[i]['image_location'].split('final')[0]
         document.getElementById("carousel-title" + i).innerHTML = 'title: ' + response_json[i]['title']
         document.getElementById("carousel-author" + i).innerHTML = 'author: ' + response_json[i]['user']
-        for (var j = 0; j <= 3; j++) {
+        for (var j = 0; j <= 3; j++) {//이미지뿌려주기
             document.getElementById("carouselimg" + i + "_" + (j + 1)).src = imgs + j + '.png'
         }
         document.getElementById("carouselimg" + i + "_5").src = response_json[i]['image_location']
         document.getElementById("carousel-id" + i).innerHTML = response_json[i]['id']
+        
+
     }
     loadRatings(response_json)
 
@@ -174,6 +175,7 @@ window.onload = async function getArticles() {
         document.getElementById("modal-author" + i).innerHTML = 'author: ' + response_json[i]['user']
     }
     loadComments(response_json)
+    
 }
 //코멘트 생성
 async function postComment(comment, article_id){
