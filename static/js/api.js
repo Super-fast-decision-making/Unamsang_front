@@ -62,14 +62,6 @@ async function handleLogin() {
     }
 }
 
-// 로그아웃
-function logout() {
-    localStorage.removeItem("user_access_token")
-    localStorage.removeItem("user_refresh_token")
-    localStorage.removeItem("payload")
-    window.location.replace(`http://127.0.0.1:5500/main.html`);
-}
-
 
 // 이미지 생성
 async function startImageGenerator(prompt) {
@@ -162,7 +154,7 @@ window.onload = async function getArticles() {
         }
         document.getElementById("carouselimg" + i + "_5").src = response_json[i]['image_location']
         document.getElementById("carousel-id" + i).innerHTML = response_json[i]['id']
-        
+
 
     }
     loadRatings(response_json)
@@ -175,10 +167,10 @@ window.onload = async function getArticles() {
         document.getElementById("modal-author" + i).innerHTML = 'author: ' + response_json[i]['user']
     }
     loadComments(response_json)
-    
+
 }
 //코멘트 생성
-async function postComment(comment, article_id){
+async function postComment(comment, article_id) {
     const commentData = {
         article: article_id,
         comment: comment,
@@ -206,9 +198,9 @@ async function postComment(comment, article_id){
 }
 
 //코멘트 불러오기
-function loadComments(response_json){
-    comment_len=response_json[0]['comments'].length
-    article_len=response_json.length
+function loadComments(response_json) {
+    comment_len = response_json[0]['comments'].length
+    article_len = response_json.length
 
     comment0 = response_json[0]['comments']
 
@@ -235,5 +227,27 @@ function loadRatings(response_json) {
         if (rating_avg != null) {
             document.getElementById("carousel-rating" + i).innerHTML = rating_avg
         }
+    }
+}
+
+// 유저 이름 가져오기
+async function getName() {
+
+    token = localStorage.getItem("user_access_token")
+
+    const response = await fetch(`http://127.0.0.1:8000/user/api/authonly/`, {
+        headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+            'Authorization': "Bearer " + localStorage.getItem("user_access_token")
+        },
+    })
+
+    if (response.status == 200) {
+        response_json = await response.json()
+
+        return response_json
+    } else {
+        return null
     }
 }
