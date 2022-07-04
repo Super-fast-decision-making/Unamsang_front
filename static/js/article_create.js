@@ -4,6 +4,8 @@ function handlePromptCreate() {
     const prompt = document.getElementById("prompt").value
     console.log(prompt)
     startImageGenerator(prompt)
+    document.querySelector(".main_title").style.display="none"
+    document.querySelector(".input_inner_box").style.display="none"
 
     const hidden_page = document.querySelector(".input_inner_box")
     hidden_page.classList.remove('hidden_box')
