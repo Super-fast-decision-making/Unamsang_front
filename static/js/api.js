@@ -63,6 +63,8 @@ async function handleLogin() {
 }
 
 
+
+
 // 이미지 생성
 async function startImageGenerator(prompt) {
     const promptData = {
@@ -144,19 +146,28 @@ window.onload = async function getArticles() {
     a_length = response_json.length
     console.log(response_json[0]['image_location'])
 
+    //메인페이지 캐로셀 생성
+    
+    console.log("여기"+response_json.length)
+    for (var i=0;i<=response_json.length;i++){
+        let title=response_json[i]['title']
+        let image=response_json[i]['image_location']
+        appendTempHtml(i, title, image)
+    }
+
 
     // loadArticles(response_json)
-    //로드 아티클
-    for (var i = 0; i <= 2; i++) {
-        let imgs = response_json[i]['image_location'].split('final')[0]
-        document.getElementById("carousel-title" + i).innerHTML = 'title: ' + response_json[i]['title']
-        document.getElementById("carousel-author" + i).innerHTML = 'author: ' + response_json[i]['user']
-        for (var j = 0; j <= 3; j++) {//이미지뿌려주기
-            document.getElementById("carouselimg" + i + "_" + (j + 1)).src = imgs + j + '.png'
-        }
-        document.getElementById("carouselimg" + i + "_5").src = response_json[i]['image_location']
-        document.getElementById("carousel-id" + i).innerHTML = response_json[i]['id']
-    }
+    // //로드 아티클
+    // for (var i = 0; i <= 2; i++) {
+    //     let imgs = response_json[i]['image_location'].split('final')[0]
+    //     document.getElementById("carousel-title" + i).innerHTML = 'title: ' + response_json[i]['title']
+    //     document.getElementById("carousel-author" + i).innerHTML = 'author: ' + response_json[i]['user']
+    //     for (var j = 0; j <= 3; j++) {//이미지뿌려주기
+    //         document.getElementById("carouselimg" + i + "_" + (j + 1)).src = imgs + j + '.png'
+    //     }
+    //     document.getElementById("carouselimg" + i + "_5").src = response_json[i]['image_location']
+    //     document.getElementById("carousel-id" + i).innerHTML = response_json[i]['id']
+    // }
     loadRatings(response_json)
     //로드모달
     // loadModals(response_json)
@@ -166,7 +177,10 @@ window.onload = async function getArticles() {
         document.getElementById("modal-author" + i).innerHTML = 'author: ' + response_json[i]['user']
     }
     loadComments(response_json)
+    loadMainPage(response_json)
 }
+    
+
 
 //코멘트 생성
 async function postComment(comment, article_id) {
@@ -231,7 +245,6 @@ function loadRatings(response_json) {
 
 // 유저 이름 가져오기
 async function getName() {
-
     token = localStorage.getItem("user_access_token")
 
     const response = await fetch(`http://127.0.0.1:8000/user/api/authonly/`, {
@@ -250,3 +263,6 @@ async function getName() {
         return null
     }
 }
+
+
+

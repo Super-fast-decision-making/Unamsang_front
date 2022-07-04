@@ -105,13 +105,7 @@
             </ol>
             <div id="carousel-inner" class="carousel-inner">
                 <div id="track" class="track">
-                    <div id="card-container" class="card-container">
-                        <div class="card">
-                            <div class="carousel-img0">1</div>
-                            <img class=carouselimg id=carouselimg0 src="">
 
-                        </div>
-                    </div>
                 </div>
 
             </div>
@@ -124,6 +118,7 @@
         </div>
     </div>
     <script>
+        console.log()
         //캐로셀 움직이는 식
         const carouselWidth = document.querySelector('.carousel-container').offsetWidth;
         document.querySelector('#next').addEventListener('click', () => {
@@ -132,26 +127,21 @@
         document.querySelector('#prev').addEventListener('click', () => {
             document.querySelector('#track').style.transform = `translateX(-${0}px)`;
         })
-
-        function appendTempHtml(){
+        //i는 i번째 항
+        function appendTempHtml(i, title, image){
                 let temp_html=`
                     <div class="card-container">
                         <div class="card">
-                            <div class="carousel-img0">1</div>
-                            <img class=carouselimg id=carouselimg0 src="">
+                            <div class="carousel-img">${title}</div>
+                            <img class=carouselimg id=carouselimg${i} src="${image}">
                         </div>
                     </div>
                 
                 `
                 $('#track').append(temp_html)
-                
-
             }
-        
-        appendTempHtml()
-        appendTempHtml()
-        appendTempHtml()
-        appendTempHtml()
+
+
 
 
 
