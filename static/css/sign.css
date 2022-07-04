@@ -1,10 +1,12 @@
 body {
     min-height: 100vh;
-    background: -webkit-gradient(linear, left bottom, right top, from(#92B5DB), to(#1D466C));
-    background: -webkit-linear-gradient(bottom left, #92B5DB 0%, #1D466C 100%);
-    background: -moz-linear-gradient(bottom left, #92B5DB 0%, #1D466C 100%);
-    background: -o-linear-gradient(bottom left, #92B5DB 0%, #1D466C 100%);
-    background: linear-gradient(to top right, #92B5DB 0%, #1D466C 100%);
+    background: -webkit-gradient(linear, left bottom, right top, from(#192c3e), to(#09141f));
+    background: -webkit-linear-gradient(bottom left, #192c3e 0%, #09141f 100%);
+    background: -moz-linear-gradient(bottom left, #192c3e 0%, #09141f 100%);
+    background: -o-linear-gradient(bottom left, #192c3e 0%, #09141f 100%);
+    background: linear-gradient(to top right, #192c3e 0%, #09141f 100%);
+    margin: 0;
+    padding: 0;
 }
 
 .input-form {
