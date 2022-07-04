@@ -18,7 +18,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap" rel="stylesheet">
     <script src="https://use.fortawesome.com/99966411.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.js"></script>
+    <!-- <script src="./static/js/main.js"></script> -->
     <script src="./static/js/mypage.js"></script>
+    <script src="./static/js/api.js"></script>
+    <script src="./static/js/main.js"></script>
     <style>
 
     </style>
@@ -38,16 +41,18 @@
         </div>
         <div class="nav_center">
             <form class="d-flex search_box" role="search">
-                <input class="form-control me-2 search_input" type="search" placeholder="" aria-label="Search"
+                <input class="form-control me-2 search_input" type="search" placeholder="Search" aria-label="Search"
                     id="words_for_search">
-                <button class="btn btn-outline-success search_button" type="button" onclick="search()">검색</button>
+                <button class="search_button" type="button" onclick="search()"><i
+                        class="fa fa-arrow-right"></i></button>
             </form>
         </div>
         <div class="nav_right">
             <div class="log_box">
                 <div class="log_info">
-                    <a class="login_link" id="login_link" href="/login.html">로그인하기</a>
-                    <button class="logout_button" id="logout_button" type="button" onclick="userLogout()">로그아웃</button>
+                    <a class="login_link" id="login_link" href="/login.html">Login</a>
+                    <button class="logout_button" id="logout_button" type="button"
+                        onclick="userLogout()">Logout</button>
                 </div>
             </div>
 
