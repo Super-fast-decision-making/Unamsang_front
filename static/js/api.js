@@ -159,6 +159,7 @@ window.onload = async function getArticles() {
     }
     loadRatings(response_json)
 
+
     //로드모달
     // loadModals(response_json)
     for (var i = 0; i <= 2; i++) {
@@ -169,6 +170,7 @@ window.onload = async function getArticles() {
     loadComments(response_json)
 
 }
+
 //코멘트 생성
 async function postComment(comment, article_id) {
     const commentData = {
@@ -216,6 +218,7 @@ function loadComments(response_json) {
     }
 }
 
+//  불러오기
 function loadRatings(response_json) {
     rating_len = response_json[0]['rating'].length
     article_len = response_json.length
