@@ -20,7 +20,7 @@ function openCity(evt, cityName) {
 }
 
 
-window.onload = async function getArticles() {
+async function getMyArticles() {
   const response = await fetch('http://127.0.0.1:8000/user/mypage/', {
     method: 'GET',
     headers: {
@@ -30,11 +30,20 @@ window.onload = async function getArticles() {
     },
   })
   response_json = await response.json()
-  console.log(response_json)
-  // console.log(response_json.length)//아티클 갯수
-  // a_length = response_json.length
-  // console.log(response_json[0]['image_location'])
-  console.log(response_json['article'][0]['title'])
+  // console.log(response_json)
+  // console.log(response_json['article'][0]['title'])
+  // console.log(response_json['article'][0]['image_location'])
+  // console.log(response_json['article'][0]['id'])
+  // console.log(response_json['article'][0]['user'])
 
+  console.log(response_json['article'].length)
+
+  for (var i = 0; i <= response_json['article'].length; i++) {
+    let title = response_json['article'][i]['title']
+    let image = response_json['article'][i]['image_location']
+    let article_id = response_json['article'][i]['id']
+    let username = response_json['article'][i]['username']
+    appendTempHtml(i, title, image)
+  }
 }
-
+getMyArticles();

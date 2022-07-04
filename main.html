@@ -120,9 +120,10 @@
             font-weight: 500;
             color: #ffffff;
         }
-        .card-container :hover{
+
+        .card-container :hover {
             box-shadow: 10px 10px;
-            transform:scale(1.02);        
+            transform: scale(1.02);
             transition: transform 0.5s;
         }
     </style>
@@ -231,12 +232,11 @@
                         <div class="card" style="overflow:hidden;">
                             <div class="carousel-img" style="font-size:1.5rem;font-weight:bold">${title}</div>
                             <img class="carouselimg" id="carouselimg${i}" src="${image}" style="object-fit:cover;" onclick=mainModalOn(${i})>
-
                         </div>
                     </div>
                 `
 
-            let temp_html2=`
+            let temp_html2 = `
                     <div id="modal-bg${i}" class="modal-bg" style="display:none;z-index:1000;">
                         <div class="modal" style="border-radius:5px;">
                             <div class="modal-left" style="overflow:hidden;"><img class="modal-img" id=modal-img src="${image}" style="object-fit:cover;""></div>
@@ -256,18 +256,18 @@
                     </div>                
                 `
 
-                $('#track').append(temp_html)
-                $('#idx_head').append(temp_html2)
-                //댓글
-                for (let j=0;j<comments.length;j++){
-                    console.log("여기")
-                    console.log(comments.length)
-                    $(`#comment-list${i}`).append(`<li>${comments[j].comment}</li><hr style="margin-right: 10px">`)
-                }
-
+            $('#track').append(temp_html)
+            $('#idx_head').append(temp_html2)
+            //댓글
+            for (let j = 0; j < comments.length; j++) {
+                console.log("여기")
+                console.log(comments.length)
+                $(`#comment-list${i}`).append(`<li>${comments[j].comment}</li><hr style="margin-right: 10px">`)
             }
 
-        
+        }
+
+
         function mainModalOn(id) {
             document.getElementById('modal-bg' + id).style.display = "flex"
         };
@@ -287,7 +287,7 @@
         const carouselWidth = document.querySelector('.carousel-container').offsetWidth;
         document.querySelector('#next').addEventListener('click', () => {
             counter++;
-            changeWidth= carouselWidth*counter            
+            changeWidth = carouselWidth * counter
             document.querySelector('#track').style.transform = `translateX(-${changeWidth}px)`;
         })
         document.querySelector('#prev').addEventListener('click', () => {

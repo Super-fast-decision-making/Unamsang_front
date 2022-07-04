@@ -6,11 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyPage|You Know What I'm Saying</title>
-    <link rel="stylesheet" type="text/css" href="./static/css/main.css">
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="./static/css/mypage.css">
+    <link rel="stylesheet" type="text/css" href="./static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="./static/css/navbar.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap" rel="stylesheet">
     <script src="https://use.fortawesome.com/99966411.js"></script>
-    <!-- <script src="./static/js/api.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.js"></script>
     <script src="./static/js/mypage.js"></script>
     <style>
 
@@ -22,21 +29,31 @@
 <body>
     <nav>
         <div class="nav_left">
-            <button><a href="/main.html">메인페이지(로고)</a></button>
-            <button><a href="/mypage.html">마이페이지</a></button>
-            <button><a href="/ranking.html">랭킹</a></button>
+            <div class="log_box">
+                <a class="logo_link" href="/main.html">유남생</a>
+            </div>
+            <!-- <div>
+                    <button><a href="/ranking.html">랭킹</a></button>
+                </div> -->
         </div>
-
-        <div class="nav_right">
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-                <button><a href="/login.html">로그아웃</a></button>
+        <div class="nav_center">
+            <form class="d-flex search_box" role="search">
+                <input class="form-control me-2 search_input" type="search" placeholder="" aria-label="Search"
+                    id="words_for_search">
+                <button class="btn btn-outline-success search_button" type="button" onclick="search()">검색</button>
             </form>
+        </div>
+        <div class="nav_right">
+            <div class="log_box">
+                <div class="log_info">
+                    <a class="login_link" id="login_link" href="/login.html">로그인하기</a>
+                    <button class="logout_button" id="logout_button" type="button" onclick="userLogout()">로그아웃</button>
+                </div>
+            </div>
 
         </div>
-
     </nav>
+
     <div class="wrapper">
         <div style="width:80%;height:100vh; border:1px solid whitesmoke; margin-bottom: 50px;">
             <!-- Tab links -->
@@ -49,12 +66,14 @@
             <!-- Tab content -->
             <div id="London" class="tabcontent">
                 <h3>my article</h3>
+
+                <div id="article" class="article">
+
+                </div>
             </div>
 
             <div id="Paris" class="tabcontent">
-                <h3>Paris</h3>
-                <p>Paris is the capital of France.</p>
-                <ol id="articles"></ol>
+
             </div>
 
             <div id="Tokyo" class="tabcontent">
@@ -63,6 +82,21 @@
             </div>
         </div>
     </div>
+    <script>
+        function appendTempHtml(i, title, image) {
+            console.log()
+            let temp_html = `
+            <div calss="card-containser">
+                <div class="card">
+                    <div>${title}</div>
+                    <img class=img id=img${i} src="${image}">
+                </div>
+            </div>        
+            `
+            $('#article').append(temp_html)
+        }
+    </script>
+
 </body>
 
 </html>
