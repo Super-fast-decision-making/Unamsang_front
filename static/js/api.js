@@ -185,6 +185,8 @@ window.onload = async function getArticles() {
 
 
 
+
+
 //코멘트 생성
 async function postComment(comment, article_id) {
 
@@ -232,6 +234,7 @@ async function loadComments(response_json) {
     }
 }
 
+
 //  불러오기
 function loadRatings(response_json) {
     rating_len = response_json[0]['rating'].length
@@ -273,9 +276,10 @@ async function getName() {
 async function postScore(score, id){
     const scoreData = {
         article: id,
-        score: score,
+        rating: score,
     }
     console.log('score:'+id+ score)
+    console.log(typeof(id))
     const response = await fetch('http://127.0.0.1:8000/article/rating/', {
         method: 'POST',
         headers: {
@@ -296,3 +300,5 @@ async function postScore(score, id){
     }
   
 }
+
+

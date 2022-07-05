@@ -237,7 +237,7 @@
                                 <button onclick=mainModalOff(${i}) style='background-color:transparent;border:none;'><i class="fa fa-x"></i></button>
                                 <span style='margin-left:15px'><h2 id="modal-title" >${title}</h2>
                                     ${author}
-                                    <select name="score" id="score" onclick="uploadScore(${article_id})">
+                                    <select name="score" id="score">
                                         <option disabled selected value>점수</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -245,6 +245,7 @@
                                         <option value="4">4</option>
                                         <option value="5">5</option>
                                     </select>
+                                    <button type="submit" class="fin-btn" onclick="uploadScore(${article_id})">입력</button>
                                     </span>
                                 <hr>
                                 <ol id="comment-list${i}" class="comment-list" style='list-style:none;margin-left:15px;padding:0;'>
