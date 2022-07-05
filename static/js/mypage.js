@@ -60,11 +60,34 @@ async function updateArticle(article_no, article_title, is_active, exposure_end_
       is_active: is_active,
       exposure_end_date, exposure_end_date
   }
-  console.log(articleData)
-  console.log(article_no)
-  console.log(`http://127.0.0.1:8000/article/${article_no}/`)
   const response = await fetch(`http://127.0.0.1:8000/article/${article_no}/`, {
       method: 'PUT',
+      headers: {
+          Accept: 'application/json',
+          'Content-type': 'application/json',
+          'Authorization': "Bearer " + localStorage.getItem("user_access_token")
+      },
+      body: JSON.stringify(articleData)
+  })
+  response_json = await response.json()
+  console.log(response_json)
+
+  if (response.status == 200) {
+      alert(response.status);
+      window.location.reload()
+  } else {
+      alert(response.status);
+  }
+}
+
+async function DeleteArticle(article_no, article_title) {
+  const articleData ={
+    title:article_title,
+    article_id:article_no
+}
+  console.log(`http://127.0.0.1:8000/article/${article_no}/`)
+  const response = await fetch(`http://127.0.0.1:8000/article/${article_no}/`, {
+      method: 'DELETE',
       headers: {
           Accept: 'application/json',
           'Content-type': 'application/json',
@@ -95,4 +118,11 @@ function handldArticleUpdate() {
   }
   let exposure_end_date = document.getElementById("u_exposure_end_date").value
   updateArticle(article_no, article_title, is_active, exposure_end_date)
+}
+
+function handleArticleDelete(){
+  let article_no = document.getElementById("article_id").innerText;
+  let article_title = document.getElementById("my-title").innerText;
+  DeleteArticle(article_no, article_title)
+
 }
