@@ -176,14 +176,7 @@ window.onload = async function getArticles() {
     // }
     loadRatings(response_json)
     //로드모달
-    // loadModals(response_json)
-    for (var i = 0; i <= 2; i++) {
-        document.getElementById('modal-img' + i).src = response_json[i]['image_location']
-        document.getElementById('modal-title' + i).innerHTML = response_json[i]['title']
-        document.getElementById("modal-author" + i).innerHTML = 'author: ' + response_json[i]['user']
-    }
     loadComments(response_json)
-    loadMainPage(response_json)
 }
 
 // 코멘트 생성
