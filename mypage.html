@@ -173,7 +173,7 @@
         console.log(document.getElementById("u_is_active").value)
 
         function appendTempHtml3(title, image, article_id){
-
+            //my_article붙이는 부분
                 let temp_html3 = `
                 <div id="mypage-card" class="card" style="width: 18rem; height:20rem;float:left;margin-right:1rem;margin-bottom:20px">
                     <img id="my-img" src="${image}" class="card-img-top"  onclick="modalOn()" style="width:100%;height:70%;border-radius:10px">
@@ -188,15 +188,27 @@
             `
                 $('#the_articles').append(temp_html3)
             }
-            function appendTempHtml4(comment, author, post_id) {
-                let temp_html4 = `
-                <div >
-                    <p style="background-color:white; display:">${comment} <span style="font-size:0.5rem">by.${author} post id:${post_id}</span></p>
-                <div>
-                <hr style="color:whitesmoke">
-            `
-                $('#the_comments').append(temp_html4)
-            }
+            //my_comment 붙이는 부분
+        function appendTempHtml4(comment, author, post_id) {
+            console.log('append four start')
+            let temp_html4 = `
+            <div >
+                <p style="background-color:white; display:">${comment} <span style="font-size:0.5rem">by.${author} post id:${post_id}</span></p>
+            <div>
+            <hr style="color:whitesmoke">`;
+
+            console.log(temp_html4)
+            $('#the_comments').append(temp_html4)
+        }
+            // function appendTempHtml4() {
+            //     let temp_html4 = `
+            //     <div >
+            //         <p style="background-color:white; display:"> <span style="font-size:0.5rem">by. post id:</span></p>
+            //     <div>
+            //     <hr style="color:whitesmoke">
+            // `
+            //     $('#the_comments').append(temp_html4)
+            // }
 
 
         function editModalOn(){

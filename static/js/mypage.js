@@ -18,7 +18,34 @@ function openCity(evt, cityName) {
   document.getElementById(cityName).style.display = "block";
   evt.currentTarget.className += " active";
 }
+// function myComment(comments){
+//   for (var i=0; i<= comments.length; i++) {
+//     let comment = comments[i]['comment']
+//     let author = comments[i]['user']
+//     let post_id = comments[i]['article']
+//     appendTempHtml4(comment, author, post_id)
+//   } 
+// }
+function myArticle(response_json){
 
+  let comments = response_json['comment']
+  let articles = response_json['article']
+
+  for (var i=0; i < articles.length; i++) {      
+    let a_title = articles[i]['title']
+    let image = articles[i]['image_location']
+    let article_id = articles[i]['id']
+    // let username = response_json['article'][i]['username']
+    console.log(a_title)
+    appendTempHtml3(a_title, image, article_id)
+  }
+  for (var i=0; i< comments.length; i++) {
+    let comment = comments[i]['comment']
+    let author = comments[i]['user']
+    let post_id = comments[i]['article']
+    appendTempHtml4(comment, author, post_id)
+  } 
+}
 
 window.onload = async function getMyArticles() {
   const response = await fetch('http://127.0.0.1:8000/user/mypage/', {
@@ -31,24 +58,14 @@ window.onload = async function getMyArticles() {
   })
   response_json = await response.json()
   console.log(response_json)
-  // console.log(response_json['article'].length)
-  // console.log(response_json['comment'].length)
-  console.log(response_json['article'][0]['title'])
+  // const comments = response_json['comment']
+  // const articles = response_json['article']
 
-  for (var i = 0; i <= response_json['article'].length; i++) {      
-      let a_title = response_json['article'][i]['title']
-      let image = response_json['article'][i]['image_location']
-      let article_id = response_json['article'][i]['id']
-      // let username = response_json['article'][i]['username']
-      appendTempHtml3(a_title, image, article_id)
-  }
-  for (var i=0; i<= response_json['comment'].length; i++) {
-    let comment = response_json['comment'][i]['comment']
-    let author = response_json['comment'][i]['user']
-    let post_id = response_json['comment'][i]['article']
 
-    appendTempHtml4(comment, author, post_id)
-  }      
+  myArticle(response_json)
+  // myComment(comments)
+
+   
 }
 
 
