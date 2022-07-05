@@ -122,6 +122,12 @@
             transition: transform 0.5s;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
         }
+
+        .comment-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
     </style>
 
 </head>
@@ -249,7 +255,7 @@
                                     <button type="submit" class="fin-btn" onclick="uploadScore(${article_id})">입력</button>
                                     </span>
                                 <hr>
-                                <ol id="comment-list${i}" class="comment-list" style='list-style:none;margin-left:15px;padding:0;'>
+                                <ol id="comment-list${article_id}" class="comment-list" style='list-style:none;margin-left:15px;padding:0;'>
                                     
                                 </ol>
                                 <div style="margin-bottom:16px">
@@ -319,7 +325,6 @@
             }
             document.querySelector('#track').style.transform = `translateX(-${(r_counter - l_counter)*carouselWidth}px)`;         
         })
-
 
         function uploadScore(id){
             // console.log(document.getElementById('score').value)
