@@ -97,32 +97,8 @@
                 </div>
                 `
 
-                // <div id="modal-bg${id}" class="modal-bg" style="display:none; z-index:1000">
-                //     <div class="modal">
-                //         <div class="modal-left"><img class="modal-img" id=modal-img${id} src="${img}"></div>
-                //         <div class="modal-right">
-                //             <button onclick=modalOff(${id}) ><i class="fa fa-x"></i></button>
-                //             <h2 id="modal-title${id}">${title}</h2>
-                //             <p id="modal-author">${author}</p>
-                //             <ol id="comment-list${id}" class="comment-list" style='list-style:none'>
-                //                 <li>코멘트1</li><hr style="margin-right: 15px">
-                //             </ol>
-                //             <div >
-                //                 <input class="form-control"  placeholder="댓글 달기..." id="search-modal-comment${article_id}" >
-                //                 <button class="comment_button" onclick="handleCommentCreate(${article_id})">게시</button>
-                //             </div>
-                //         </div>
-                //     </div>
-                // </div>
-            $('#row').append(temp_html5)
-            //댓글
-            for (let j = 0; j < comments.length; j++) {
-                $(`#comment-list${id}`).append(`<li>${comments[j].comment}</li><hr style="margin-right: 15px">`)
-            }
-        }
-        function appendTempHtml6(){
             let temp_html6=`
-                <div id="modal-bgi*" class="modal-bg" style="display:none;z-index:1000;">
+                <div id="modal-bgi*" class="modal-bg" style="display:flex;z-index:1000;">
                     <div class="modal" style="border-radius:5px;">
                         <div class="modal-left" style="overflow:hidden;"><img class="modal-img" id=modal-img src="image*" style="object-fit:cover;""></div>
                         <div class="modal-right" style="margin-top:10px">
@@ -151,11 +127,14 @@
                     </div>
                 </div>                
                 `
+            $('#row').append(temp_html5)
             $('#row').append(temp_html6)
-            
+            //댓글
+            for (let j = 0; j < comments.length; j++) {
+                $(`#comment-list${id}`).append(`<li>${comments[j].comment}</li><hr style="margin-right: 15px">`)
+            }
         }
-        appendTempHtml6()
-        appendTempHtml6()
+
 
         async function loadSearchResults() {
             var search_results = await JSON.parse(localStorage.getItem('search_results'));
