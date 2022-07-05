@@ -4,8 +4,8 @@ function handlePromptCreate() {
     const prompt = document.getElementById("prompt").value
     console.log(prompt)
     startImageGenerator(prompt)
-    document.querySelector(".main_title").style.display="none"
-    document.querySelector(".input_inner_box").style.display="none"
+    document.querySelector(".main_title").style.display = "none"
+    document.querySelector(".input_inner_box").style.display = "none"
 
     const hidden_page = document.querySelector(".input_inner_box")
     hidden_page.classList.remove('hidden_box')
@@ -44,14 +44,13 @@ function handleArticleCreate() {
     postArticle(title, img_url, is_active, exposure_end_date)
 }
 
-//댓글 생성
-function handleCommentCreate(id) {
-    var comment = document.getElementById("search-modal-comment" + id).value
-    let article_id = id
-    console.log(comment,article_id)
-    postComment(comment, article_id)
-
-}
+// //댓글 생성
+// async function handleCommentCreate(id) {
+//     var comment = document.getElementById("search-modal-comment" + id).value
+//     let article_id = id
+//     console.log(comment, article_id)
+//     await postComment(comment, article_id)
+// }
 
 
 //아티클 불러오기
