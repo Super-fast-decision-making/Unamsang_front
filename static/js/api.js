@@ -130,6 +130,7 @@ async function postArticle(title, img_url, is_active, exposure_end_date) {
 }
 
 
+
 //아티클 불러오기
 window.onload = async function getArticles() {
     const response = await fetch('http://127.0.0.1:8000/article/', {
