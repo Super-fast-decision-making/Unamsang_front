@@ -2,7 +2,7 @@
 
 function handlePromptCreate() {
     const prompt = document.getElementById("prompt").value
-    console.log(prompt)
+    // console.log(prompt)
     startImageGenerator(prompt)
     document.querySelector(".main_title").style.display = "none"
     document.querySelector(".input_inner_box").style.display = "none"
@@ -17,8 +17,8 @@ function handlePromptCreate() {
 
 //프리뷰 이미지 구현
 function showPromptImage(path) {
-    console.log(title)
-    console.log(path, 10)
+    // console.log(title)
+    // console.log(path, 10)
     document.getElementById("title").innerHTML = title;
     document.getElementById("main_img").src = path;
     const hid_text_box = document.querySelector(".hid_text_box")

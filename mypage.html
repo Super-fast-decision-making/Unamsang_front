@@ -170,7 +170,7 @@
         </div>
     </div>
     <script>
-        console.log(document.getElementById("u_is_active").value)
+
 
         function appendTempHtml3(title, image, article_id){
             //my_article붙이는 부분
@@ -190,14 +190,14 @@
             }
             //my_comment 붙이는 부분
         function appendTempHtml4(comment, author, post_id) {
-            console.log('append four start')
+
             let temp_html4 = `
             <div >
                 <p style="background-color:white; display:">${comment} <span style="font-size:0.5rem">by.${author} post id:${post_id}</span></p>
             <div>
             <hr style="color:whitesmoke">`;
 
-            console.log(temp_html4)
+
             $('#the_comments').append(temp_html4)
         }
             // function appendTempHtml4() {
