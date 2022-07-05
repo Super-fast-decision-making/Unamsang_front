@@ -152,7 +152,7 @@ window.onload = async function getArticles() {
     //메인페이지 캐로셀 생성
 
     console.log("여기" + response_json.length)
-    for (var i = 0; i <= response_json.length; i++) {
+    for (var i = 0; i < response_json.length; i++) {
         let title = response_json[i]['title']
         let image = response_json[i]['image_location']
         let article_id = response_json[i]['id']
@@ -174,16 +174,15 @@ window.onload = async function getArticles() {
     //     document.getElementById("carouselimg" + i + "_5").src = response_json[i]['image_location']
     //     document.getElementById("carousel-id" + i).innerHTML = response_json[i]['id']
     // }
-    loadRatings(response_json)
+    // loadRatings(response_json)
     //로드모달
     // loadModals(response_json)
-    for (var i = 0; i <= 2; i++) {
-        document.getElementById('modal-img' + i).src = response_json[i]['image_location']
-        document.getElementById('modal-title' + i).innerHTML = response_json[i]['title']
-        document.getElementById("modal-author" + i).innerHTML = 'author: ' + response_json[i]['user']
-    }
+    // for (var i = 0; i < 2; i++) {
+    //     document.getElementById('modal-img' + i).src = response_json[i]['image_location']
+    //     document.getElementById('modal-title' + i).innerHTML = response_json[i]['title']
+    //     document.getElementById("modal-author" + i).innerHTML = 'author: ' + response_json[i]['user']
+    // }
     loadComments(response_json)
-    loadMainPage(response_json)
 }
 
 // 코멘트 생성
@@ -242,18 +241,41 @@ async function postScore(score, id) {
 
 //코멘트 불러오기
 async function loadComments(response_json) {
+    const response_user = await getName();
+    const user = response_user.username
+
     comment_len = response_json[0]['comments'].length
     article_len = response_json.length
-    comment0 = response_json[0]['comments']
 
     for (let i = 0; i < article_len; i++) {
         comment_len = response_json[i]['comments'].length
+        article_id = response_json[i]['id']
         for (let j = 0; j < comment_len; j++) {
-            let comment_section = document.getElementById("comment-list" + i)
-            let newComment = document.createElement("li")
-            newComment.innerText = response_json[i]['comments'][j]['comment']
-            console.log(response_json[i]['comments'][j]['comment'])
-            comment_section.appendChild(newComment)
+            // let comment_section = document.getElementById("comment-list" + i)
+            // let newComment = document.createElement("li")
+            // newComment.innerText = response_json[i]['comments'][j]['comment']
+            // comment_section.appendChild(newComment)
+
+            let comment_section = document.getElementById("comment-list" + article_id)
+
+            comment_user = response_json[i]['comments'][j]['user']
+            newComment = response_json[i]['comments'][j]['comment']
+
+            let newComment_test = document.createElement("li")
+            newComment_test.setAttribute("class", "comment-card")
+
+            if (user == comment_user) {
+                newComment_test.innerHTML +=
+                    `<p>${newComment}</p>
+                    <span>
+                        <button id="" type="button" onclick="deleteComment">삭제</button>
+                        <button id="" type="button" onclick="updateComment">수정</button>
+                    </span>`
+            } else {
+                newComment_test.innerHTML +=
+                    `<p>${newComment}</p>`
+            }
+            comment_section.appendChild(newComment_test)
         }
     }
 }
@@ -264,12 +286,44 @@ function loadComments2(data) {
     comment = data.comment
     article_id = data.article
     article_len = response_json.length
+    console.log(response_json)
     target_num = article_len - article_id
 
-    let comment_section = document.getElementById("comment-list" + target_num)
-    let newComment = document.createElement("li")
-    newComment.innerText = comment
-    comment_section.appendChild(newComment)
+    let comment_section = document.getElementById("comment-list" + article_id)
+
+    let newComment_test = document.createElement("li")
+    newComment_test.setAttribute("class", "comment-card")
+    newComment_test.innerHTML +=
+        `<p>${comment}</p>
+        <span>
+            <button id="" type="button" onclick="deleteComment">삭제</button>
+            <button id="" type="button" onclick="updateComment">수정</button>
+        </span>
+        `
+    console.log(newComment_test)
+    comment_section.appendChild(newComment_test)
+
+    // 댓글
+    // let newComment = document.createElement("li")
+    // newComment.innerText = comment
+    // comment_section.appendChild(newComment)
+
+    // 수정 버튼
+    // let newComment_update_button = document.createElement("button")
+    // newComment_update_button.setAttribute("id", "comment")
+    // newComment_update_button.setAttribute("type", "button")
+    // newComment_update_button.setAttribute("onclick", "UpdateComment()")
+    // newComment_update_button.innerText = "update"
+    // comment_section.appendChild(newComment_update_button)
+
+    // 삭제 버튼
+    // let newComment_delete_button = document.createElement("button")
+    // newComment_delete_button.setAttribute("type", "button")
+    // newComment_delete_button.setAttribute("onclick", "UpdateComment()")
+    // newComment_delete_button.innerText = "delete"
+    // comment_section.appendChild(newComment_delete_button)
+
+    // 입력창 비우기
     document.getElementById("main-modal-comment" + article_id).value = ""
 }
 

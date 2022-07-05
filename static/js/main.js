@@ -57,6 +57,4 @@ async function checkLogin() {
   }
 }
 
-
 checkLogin()
-
