@@ -38,7 +38,7 @@ function userLogout() {
   localStorage.removeItem("user_access_token")
   localStorage.removeItem("user_refresh_token")
   localStorage.removeItem("payload")
-  window.location.replace(`http://127.0.0.1:5500/index.html`);
+  window.location.replace(`http://127.0.0.1:5500`);
 }
 
 
