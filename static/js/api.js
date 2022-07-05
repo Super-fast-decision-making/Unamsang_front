@@ -72,7 +72,7 @@ async function startImageGenerator(prompt) {
     const promptData = {
         prompt: prompt,
     }
-    console.log(promptData)
+    // console.log(promptData)
 
     const response = await fetch(`${backend_base_url}/article/text/`, {
         method: 'POST',
@@ -88,7 +88,7 @@ async function startImageGenerator(prompt) {
     image_name = response_json['images']
     title = response_json['title']
     let path = 'http://127.0.0.1:8000/' + image_name + '_finalgrid.png'
-    console.log(path)
+    // console.log(path)
 
     showPromptImage(path)
 
@@ -108,8 +108,8 @@ async function postArticle(title, img_url, is_active, exposure_end_date) {
         is_active: is_active,
         exposure_end_date: exposure_end_date,
     }
-    console.log(articleData)
-    console.log("*************")
+    // console.log(articleData)
+    // console.log("*************")
 
     const response = await fetch('http://127.0.0.1:8000/article/', {
         method: 'POST',
@@ -121,7 +121,7 @@ async function postArticle(title, img_url, is_active, exposure_end_date) {
         body: JSON.stringify(articleData)
     })
     response_json = await response.json()
-    console.log(response_json)
+    // console.log(response_json)
 
     if (response.status == 200) {
         alert(response.status);
@@ -144,13 +144,12 @@ window.onload = async function getArticles() {
         },
     })
     response_json = await response.json()
-    console.log(response_json)
-    console.log(response_json.length)//아티클 갯수
+    // console.log(response_json)
+    // console.log(response_json.length)//아티클 갯수
     a_length = response_json.length
-    console.log(response_json[0]['image_location'])
+    // console.log(response_json[0]['image_location'])
 
     //메인페이지 캐로셀 생성
-
     console.log("여기" + response_json.length)
     for (var i = 0; i < response_json.length; i++) {
         let title = response_json[i]['title']
@@ -160,7 +159,6 @@ window.onload = async function getArticles() {
         let comments = response_json[i]['comments']
         appendTempHtml(i, title, image, article_id, author, comments)
     }
-
 
     // loadArticles(response_json)
     // //로드 아티클
@@ -175,13 +173,7 @@ window.onload = async function getArticles() {
     //     document.getElementById("carousel-id" + i).innerHTML = response_json[i]['id']
     // }
     // loadRatings(response_json)
-    //로드모달
-    // loadModals(response_json)
-    // for (var i = 0; i < 2; i++) {
-    //     document.getElementById('modal-img' + i).src = response_json[i]['image_location']
-    //     document.getElementById('modal-title' + i).innerHTML = response_json[i]['title']
-    //     document.getElementById("modal-author" + i).innerHTML = 'author: ' + response_json[i]['user']
-    // }
+
     loadComments(response_json)
 }
 
@@ -217,8 +209,8 @@ async function postScore(score, id) {
         article: id,
         rating: score,
     }
-    console.log('score:' + id + score)
-    console.log(typeof (id))
+    // console.log('score:' + id + score)
+    // console.log(typeof (id))
     const response = await fetch('http://127.0.0.1:8000/article/rating/', {
         method: 'POST',
         headers: {
@@ -229,7 +221,7 @@ async function postScore(score, id) {
         body: JSON.stringify(scoreData)
     })
     response_json = await response.json()
-    console.log(response_json)
+    // console.log(response_json)
 
     if (response.status == 200) {
         alert(response.status);
@@ -282,7 +274,7 @@ async function loadComments(response_json) {
 
 //코멘트 불러오기2
 function loadComments2(data) {
-    console.log(data)
+    // console.log(data)
     comment = data.comment
     article_id = data.article
     article_len = response_json.length

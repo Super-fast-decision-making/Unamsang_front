@@ -290,22 +290,47 @@
             await postComment(comment, article_id)
         }
         //캐로셀 움직이기
-        let counter = 1;
+        //캐로셀 움직이는 식
+        //캐로셀 움직이는 식
+        //이거 저장//
+        // let counter = 1
+        // const carouselWidth = document.querySelector('.carousel-container').offsetWidth;
+        // document.querySelector('#next').addEventListener('click', () => {            
+        //     changeWidth = carouselWidth * counter
+        //     document.querySelector('#track').style.transform = `translateX(-${changeWidth}px)`;
+        //     counter++;
+        // })
+        // document.querySelector('#prev').addEventListener('click', () => {
+        //     document.querySelector('#track').style.transform = `translateX(-${0}px)`;
+        // })
+        //이거 저장//
+
+
+        let r_counter = 1
+        let l_counter = 1
+        
         const carouselWidth = document.querySelector('.carousel-container').offsetWidth;
-        document.querySelector('#next').addEventListener('click', () => {
-            counter++;
-            changeWidth = carouselWidth * counter
-            document.querySelector('#track').style.transform = `translateX(-${changeWidth}px)`;
+        document.querySelector('#next').addEventListener('click', () => {                               
+            r_counter++;
+            console.log(r_counter - l_counter)
+
+            document.querySelector('#track').style.transform = `translateX(-${(r_counter - l_counter)*carouselWidth}px)`;   
         })
         document.querySelector('#prev').addEventListener('click', () => {
-            document.querySelector('#track').style.transform = `translateX(-${0}px)`;
+            l_counter++;
+            console.log(r_counter - l_counter)
+            if ((r_counter - l_counter)*carouselWidth<=0){
+                (r_counter - l_counter)*carouselWidth==0;
+
+            }
+            document.querySelector('#track').style.transform = `translateX(-${(r_counter - l_counter)*carouselWidth}px)`;         
         })
 
-        function uploadScore(id) {
-            console.log(document.getElementById('score').value)
+        function uploadScore(id){
+            // console.log(document.getElementById('score').value)
             var score = document.getElementById('score').value
             //id=아티클 아이디
-            console.log(score, id)
+            // console.log(score, id)
             postScore(score, id)
         }
 
