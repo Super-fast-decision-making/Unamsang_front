@@ -56,7 +56,7 @@ async function handleLogin() {
         }).join(''));
 
         localStorage.setItem("payload", jsonPayload)
-        window.location.replace(`${frontend_base_url}/main.html`)
+        window.location.replace(`${frontend_base_url}/index.html`)
     } else {
         alert(response.status)
     }
@@ -185,9 +185,11 @@ window.onload = async function getArticles() {
 
 
 
+
+
 //코멘트 생성
 async function postComment(comment, article_id) {
-    console.log("여기까지 옴2")
+
     const commentData = {
         article: article_id,
         comment: comment,
@@ -215,7 +217,7 @@ async function postComment(comment, article_id) {
 }
 
 //코멘트 불러오기
-function loadComments(response_json) {
+async function loadComments(response_json) {
     comment_len = response_json[0]['comments'].length
     article_len = response_json.length
     comment0 = response_json[0]['comments']
@@ -231,6 +233,7 @@ function loadComments(response_json) {
         }
     }
 }
+
 
 //  불러오기
 function loadRatings(response_json) {
@@ -267,5 +270,35 @@ async function getName() {
     }
 }
 
+
+
+//점수 업로드 하기
+async function postScore(score, id){
+    const scoreData = {
+        article: id,
+        rating: score,
+    }
+    console.log('score:'+id+ score)
+    console.log(typeof(id))
+    const response = await fetch('http://127.0.0.1:8000/article/rating/', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+            'Authorization': "Bearer " + localStorage.getItem("user_access_token")
+        },
+        body: JSON.stringify(scoreData)
+    })
+    response_json = await response.json()
+    console.log(response_json)
+
+    if (response.status == 200) {
+        alert(response.status);
+        window.location.reload()
+    } else {
+        alert(response.status);
+    }
+  
+}
 
 
