@@ -3,7 +3,7 @@ async function search() {
   const words_for_search = document.getElementById("words_for_search").value;
 
   var url = new URL(backend_base_url + `/article/search/?words=${words_for_search}`);
-  console.log(words_for_search)
+  // console.log(words_for_search)
   const search_results = await fetch(url)
     .then(response => {
       var status_code = response.status;
@@ -45,7 +45,7 @@ function userLogout() {
 // 로그인 여부 확인
 async function checkLogin() {
   const response_json = await getName();
-  console.log(response_json)
+  // console.log(response_json)
   const user = response_json.username
   const login_link = document.getElementById('login_link')
 
