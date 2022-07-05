@@ -280,8 +280,6 @@ async function postScore(score, id) {
         article: id,
         rating: score,
     }
-    console.log('score:' + id + score)
-    console.log(typeof (id))
     const response = await fetch('http://127.0.0.1:8000/article/rating/', {
         method: 'POST',
         headers: {
@@ -292,14 +290,10 @@ async function postScore(score, id) {
         body: JSON.stringify(scoreData)
     })
     response_json = await response.json()
-    console.log(response_json)
 
-    if (response.status == 200) {
-        alert(response.status);
-        window.location.reload()
-    } else {
-        alert(response.status);
-    }
+    if (response.status == 201) {
+        alert("성공!!");
+    } 
 
 }
 
