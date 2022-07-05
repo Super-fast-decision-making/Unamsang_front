@@ -293,7 +293,9 @@ async function postScore(score, id) {
 
     if (response.status == 201) {
         alert("성공!!");
-    } 
+    } else {
+        alert(response.status);
+    }
 
 }
 
