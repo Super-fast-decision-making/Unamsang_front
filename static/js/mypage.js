@@ -31,17 +31,25 @@ window.onload = async function getMyArticles() {
   })
   response_json = await response.json()
   console.log(response_json)
-
-
   console.log(response_json['article'].length)
+  console.log(response_json['comment'].length)
 
-  for (var i = 0; i <= response_json['article'].length; i++) {
-      
+  for (var i = 0; i <= response_json['article'].length; i++) {      
       let title = response_json['article'][i]['title']
       let image = response_json['article'][i]['image_location']
       // let article_id = response_json['article'][i]['id']
       // let username = response_json['article'][i]['username']
       appendTempHtml3(title, image)
+  
+  for (var i=0; i<= response_json['comment'].length; i++) {
+    let comment = response_json['comment'][i]['comment']
+    let author = response_json['comment'][i]['user']
+    let post_id = response_json['comment'][i]['article']
+
+    appendTempHtml4(comment, author, post_id)
+  }
+
+  
       
   }
 }
