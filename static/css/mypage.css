@@ -46,14 +46,17 @@
 .modal-box {
   z-index: 900;
   background: transparent;
+  left:20vh;
+  width:100vh;
 }
 
 .modal-sandbox {
   position: fixed;
   width: 100vh;
   height: 100vh;
+  left:50vh;
   top: 0;
-  left: 0;
+
   background: transparent;
 }
 
@@ -71,7 +74,7 @@
 
 .modal-box {
   position: relative;
-  width: 80%;
+  width: 500px;
   /* max-width: 920px; */
   margin: 100px auto;
   animation-name: modalbox;
