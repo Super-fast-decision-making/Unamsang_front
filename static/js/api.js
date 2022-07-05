@@ -367,7 +367,7 @@ async function getName() {
 
 //점수 업로드 하기
 async function postScore(score, id) {
-    console.log(id+score)
+    console.log(id + score)
     const scoreData = {
         article: id,
         rating: score,
@@ -409,6 +409,26 @@ async function putComment(comment, article_id, comment_id) {
     response_json = await response.json()
     if (response.status == 200) {
         return response_json
+    } else {
+        alert(response.status);
+    }
+}
+
+
+// 댓글 삭제
+async function deleteComment(article_id, comment_id) {
+    const response = await fetch(`${backend_base_url}/article/comment/${comment_id}/`, {
+        method: 'DELETE',
+        headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+            'Authorization': "Bearer " + localStorage.getItem("user_access_token")
+        }
+    })
+    if (response.status == 204) {
+        const comment_card = document.getElementById('comment-card' + comment_id)
+        comment_card.remove()
+        alert("삭제되었습니다.");
     } else {
         alert(response.status);
     }
