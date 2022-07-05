@@ -100,12 +100,12 @@
             let temp_html6=`
                 <div id="s-modal-bg${id}" class="modal-bg" style="display:none;z-index:1000;">
                     <div class="modal" style="border-radius:5px;">
-                        <div class="modal-left" style="overflow:hidden;"><img class="modal-img" id=modal-img src="image*" style="object-fit:cover;""></div>
+                        <div class="modal-left" style="overflow:hidden;"><img class="modal-img" id=modal-img src="${img}" style="object-fit:cover;""></div>
                         <div class="modal-right" style="margin-top:10px">
                             <button onclick=searchModalOff() style='background-color:transparent;border:none;'><i class="fa fa-x"></i></button>
-                            <span style='margin-left:15px'><h2 id="modal-title" >title*</h2>
-                                author*
-                                <select name="score" id="score article_id*">
+                            <span style='margin-left:15px'><h2 id="modal-title" >${title}</h2>
+                                ${author}
+                                <select name="score" id="score">
                                     <option disabled selected value>점수</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
