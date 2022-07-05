@@ -1,6 +1,8 @@
 const backend_base_url = "http://127.0.0.1:8000"
 const frontend_base_url = "http://127.0.0.1:5500"
 
+// const frontend_base_url = "https://62c2e16d355a9e6915111cdf--lighthearted-khapse-2366de.netlify.app/"
+
 
 // 회원가입
 async function handleSignup() {
@@ -56,7 +58,7 @@ async function handleLogin() {
         }).join(''));
 
         localStorage.setItem("payload", jsonPayload)
-        window.location.replace(`${frontend_base_url}/main.html`)
+        window.location.replace(`${frontend_base_url}/index.html`)
     } else {
         alert(response.status)
     }
@@ -130,6 +132,7 @@ async function postArticle(title, img_url, is_active, exposure_end_date) {
 }
 
 
+
 //아티클 불러오기
 window.onload = async function getArticles() {
     const response = await fetch('http://127.0.0.1:8000/article/', {
@@ -183,8 +186,62 @@ window.onload = async function getArticles() {
     loadMainPage(response_json)
 }
 
+// 코멘트 생성
+async function postComment(comment, article_id) {
+    const commentData = {
+        article: article_id,
+        comment: comment,
+    }
+
+    const response = await fetch('http://127.0.0.1:8000/article/comment/', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+            'Authorization': "Bearer " + localStorage.getItem("user_access_token")
+        },
+        body: JSON.stringify(commentData)
+    }).then(response => response.json())
+        .then(data => {
+            loadComments2(data)
+        })
+    // if (response.status == 200) {
+    //     alert(response.status);
+    // } else {
+    //     alert(response.status);
+    // }
+}
+
+//점수 업로드 하기
+async function postScore(score, id){
+    const scoreData = {
+        article: id,
+        rating: score,
+    }
+    console.log('score:'+id+ score)
+    console.log(typeof(id))
+    const response = await fetch('http://127.0.0.1:8000/article/rating/', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+            'Authorization': "Bearer " + localStorage.getItem("user_access_token")
+        },
+        body: JSON.stringify(scoreData)
+    })
+    response_json = await response.json()
+    console.log(response_json)
+
+    if (response.status == 200) {
+        alert(response.status);
+        window.location.reload()
+    } else {
+        alert(response.status);
+    }  
+}
+
 //코멘트 불러오기
-function loadComments(response_json) {
+async function loadComments(response_json) {
     comment_len = response_json[0]['comments'].length
     article_len = response_json.length
     comment0 = response_json[0]['comments']
@@ -216,33 +273,7 @@ function loadComments2(data) {
     document.getElementById("main-modal-comment" + article_id).value = ""
 }
 
-// 코멘트 생성
-async function postComment(comment, article_id) {
-    const commentData = {
-        article: article_id,
-        comment: comment,
-    }
-
-    const response = await fetch('http://127.0.0.1:8000/article/comment/', {
-        method: 'POST',
-        headers: {
-            Accept: 'application/json',
-            'Content-type': 'application/json',
-            'Authorization': "Bearer " + localStorage.getItem("user_access_token")
-        },
-        body: JSON.stringify(commentData)
-    }).then(response => response.json())
-        .then(data => {
-            loadComments2(data)
-        })
-    // if (response.status == 200) {
-    //     alert(response.status);
-    // } else {
-    //     alert(response.status);
-    // }
-}
-
-//  불러오기
+// 평점 불러오기
 function loadRatings(response_json) {
     rating_len = response_json[0]['rating'].length
     article_len = response_json.length
@@ -277,5 +308,28 @@ async function getName() {
     }
 }
 
+//점수 업로드 하기
+async function postScore(score, id) {
+    const scoreData = {
+        article: id,
+        rating: score,
+    }
+    const response = await fetch('http://127.0.0.1:8000/article/rating/', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+            'Authorization': "Bearer " + localStorage.getItem("user_access_token")
+        },
+        body: JSON.stringify(scoreData)
+    })
+    response_json = await response.json()
+
+    if (response.status == 201) {
+        alert("성공!!");
+    } else {
+        alert(response.status);
+    }
+}
 
 

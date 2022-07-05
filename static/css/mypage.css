@@ -40,3 +40,83 @@
   display: flex;
   justify-content: center;
 }
+
+/* modal the tab */
+.modal,
+.modal-box {
+  z-index: 900;
+  background: transparent;
+}
+
+.modal-sandbox {
+  position: fixed;
+  width: 100vh;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: transparent;
+}
+
+.modal {
+  display: none; 
+  position: fixed;
+  width: 100vh;
+  height: 100vh;
+  /* left: 0; */
+  top: 0;
+  background: rgb(0,0,0);
+  background: rgba(0,0,0,.8);
+  overflow: auto;
+}
+
+.modal-box {
+  position: relative;
+  width: 80%;
+  /* max-width: 920px; */
+  margin: 100px auto;
+  animation-name: modalbox;
+  animation-duration: .4s;
+  animation-timing-function: cubic-bezier(0,0,.3,1.6);
+}
+
+.modal-header {
+  text-align: center;
+  padding: 20px 40px;
+  background: #0d233b;
+  color: #ffffff;
+}
+
+.modal-body {
+  text-align: center;
+  background: #ECEFF1;
+  padding: 60px 40px;
+}
+
+/* Close Button */
+.close-modal {
+  text-align: right;
+  cursor: pointer;
+}
+
+/* Animation */
+@-webkit-keyframes modalbox {
+  0% {
+    top: -250px; 
+    opacity: 0;
+  }
+  100% {
+    top: 0; 
+    opacity: 1;
+  }
+}
+
+@keyframes modalbox {
+  0% {
+    top: -250px; 
+    opacity: 0;
+  }
+  100% {
+    top: 0; 
+    opacity: 1;
+  }
+}

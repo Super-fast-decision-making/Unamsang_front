@@ -20,30 +20,78 @@ function openCity(evt, cityName) {
 }
 
 
-async function getMyArticles() {
+window.onload = async function getMyArticles() {
   const response = await fetch('http://127.0.0.1:8000/user/mypage/', {
-    method: 'GET',
-    headers: {
-      Accept: 'application/json',
-      'Content-type': 'application/json',
-      'Authorization': "Bearer " + localStorage.getItem("user_access_token")
-    },
+      method: 'GET',
+      headers: {
+          Accept: 'application/json',
+          'Content-type': 'application/json',
+          'Authorization': "Bearer " + localStorage.getItem("user_access_token")
+      },
   })
   response_json = await response.json()
-  // console.log(response_json)
-  // console.log(response_json['article'][0]['title'])
-  // console.log(response_json['article'][0]['image_location'])
-  // console.log(response_json['article'][0]['id'])
-  // console.log(response_json['article'][0]['user'])
-
+  console.log(response_json)
   console.log(response_json['article'].length)
+  console.log(response_json['comment'].length)
 
-  for (var i = 0; i <= response_json['article'].length; i++) {
-    let title = response_json['article'][i]['title']
-    let image = response_json['article'][i]['image_location']
-    let article_id = response_json['article'][i]['id']
-    let username = response_json['article'][i]['username']
-    appendTempHtml(i, title, image)
+  for (var i = 0; i <= response_json['article'].length; i++) {      
+      let title = response_json['article'][i]['title']
+      let image = response_json['article'][i]['image_location']
+      let article_id = response_json['article'][i]['id']
+      // let username = response_json['article'][i]['username']
+      appendTempHtml3(title, image, article_id)
+  }
+  for (var i=0; i<= response_json['comment'].length; i++) {
+    let comment = response_json['comment'][i]['comment']
+    let author = response_json['comment'][i]['user']
+    let post_id = response_json['comment'][i]['article']
+
+    appendTempHtml4(comment, author, post_id)
+  }      
+}
+
+
+
+
+async function updateArticle(article_no, article_title, is_active, exposure_end_date) {
+  const articleData ={
+      title:article_title,
+      is_active: is_active,
+      exposure_end_date, exposure_end_date
+  }
+  console.log(articleData)
+  console.log(article_no)
+  console.log(`http://127.0.0.1:8000/article/${article_no}/`)
+  const response = await fetch(`http://127.0.0.1:8000/article/${article_no}/`, {
+      method: 'PUT',
+      headers: {
+          Accept: 'application/json',
+          'Content-type': 'application/json',
+          'Authorization': "Bearer " + localStorage.getItem("user_access_token")
+      },
+      body: JSON.stringify(articleData)
+  })
+  response_json = await response.json()
+  console.log(response_json)
+
+  if (response.status == 200) {
+      alert(response.status);
+      window.location.reload()
+  } else {
+      alert(response.status);
   }
 }
-getMyArticles();
+
+
+function handldArticleUpdate() {
+  let article_no = document.getElementById("article_id").innerText;
+  let article_title = document.getElementById("my-title").innerText;
+  let is_active = document.getElementById("u_is_active").value
+  if (is_active == "on") {
+      is_active = true
+  } else if(is_active=="off"){
+      is_active = false
+  }
+  let exposure_end_date = document.getElementById("u_exposure_end_date").value
+  updateArticle(article_no, article_title, is_active, exposure_end_date)
+}
