@@ -202,6 +202,7 @@ async function postComment(comment, article_id) {
     }).then(response => response.json())
         .then(data => {
             loadComments2(data)
+
         })
     // if (response.status == 200) {
     //     alert(response.status);
