@@ -186,19 +186,13 @@ window.onload = async function getArticles() {
     loadMainPage(response_json)
 }
 
-
-
-
-
-//코멘트 생성
+// 코멘트 생성
 async function postComment(comment, article_id) {
-
     const commentData = {
         article: article_id,
         comment: comment,
     }
 
-    console.log(commentData)
     const response = await fetch('http://127.0.0.1:8000/article/comment/', {
         method: 'POST',
         headers: {
@@ -207,17 +201,17 @@ async function postComment(comment, article_id) {
             'Authorization': "Bearer " + localStorage.getItem("user_access_token")
         },
         body: JSON.stringify(commentData)
-    })
-    response_json = await response.json()
-    console.log(response_json)
-
-    if (response.status == 200) {
-        alert(response.status);
-        window.location.reload()
-    } else {
-        alert(response.status);
-    }
+    }).then(response => response.json())
+        .then(data => {
+            loadComments2(data)
+        })
+    // if (response.status == 200) {
+    //     alert(response.status);
+    // } else {
+    //     alert(response.status);
+    // }
 }
+
 //점수 업로드 하기
 async function postScore(score, id){
     const scoreData = {
@@ -264,8 +258,22 @@ async function loadComments(response_json) {
     }
 }
 
+//코멘트 불러오기2
+function loadComments2(data) {
+    console.log(data)
+    comment = data.comment
+    article_id = data.article
+    article_len = response_json.length
+    target_num = article_len - article_id
 
-//  불러오기
+    let comment_section = document.getElementById("comment-list" + target_num)
+    let newComment = document.createElement("li")
+    newComment.innerText = comment
+    comment_section.appendChild(newComment)
+    document.getElementById("main-modal-comment" + article_id).value = ""
+}
+
+// 평점 불러오기
 function loadRatings(response_json) {
     rating_len = response_json[0]['rating'].length
     article_len = response_json.length
@@ -300,8 +308,6 @@ async function getName() {
     }
 }
 
-
-
 //점수 업로드 하기
 async function postScore(score, id) {
     const scoreData = {
@@ -324,7 +330,6 @@ async function postScore(score, id) {
     } else {
         alert(response.status);
     }
-
 }
 
 
