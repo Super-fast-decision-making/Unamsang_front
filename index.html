@@ -292,17 +292,19 @@
         //캐로셀 오른쪽 왼쪽 버튼
         let r_counter = 1
         let l_counter = 1
-
         const carouselWidth = document.querySelector('.carousel-container').offsetWidth;
         document.querySelector('#next').addEventListener('click', () => {
-            counter++;
-            changeWidth = carouselWidth * counter
-            document.querySelector('#track').style.transform = `translateX(-${changeWidth}px)`;
+            r_counter++; console.log(r_counter - l_counter)
+            document.querySelector('#track').style.transform = `translateX(-${(r_counter - l_counter) * carouselWidth}px)`;
         })
         document.querySelector('#prev').addEventListener('click', () => {
-            document.querySelector('#track').style.transform = `translateX(-${0}px)`;
+            l_counter++;
+            console.log(r_counter - l_counter)
+            if ((r_counter - l_counter) * carouselWidth <= 0) {
+                (r_counter - l_counter) * carouselWidth == 0;
+            }
+            document.querySelector('#track').style.transform = `translateX(-${(r_counter - l_counter) * carouselWidth}px)`;
         })
-
         function uploadScore(id) {
             console.log(document.getElementById('score' + id).value)
             var score = document.getElementById('score' + id).value
