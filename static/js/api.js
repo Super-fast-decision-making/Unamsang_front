@@ -72,7 +72,7 @@ async function startImageGenerator(prompt) {
     const promptData = {
         prompt: prompt,
     }
-    // console.log(promptData)
+    console.log(promptData)
 
     const response = await fetch(`${backend_base_url}/article/text/`, {
         method: 'POST',
@@ -88,7 +88,7 @@ async function startImageGenerator(prompt) {
     image_name = response_json['images']
     title = response_json['title']
     let path = 'http://127.0.0.1:8000/' + image_name + '_finalgrid.png'
-    // console.log(path)
+    console.log(path)
 
     showPromptImage(path)
 
@@ -108,8 +108,8 @@ async function postArticle(title, img_url, is_active, exposure_end_date) {
         is_active: is_active,
         exposure_end_date: exposure_end_date,
     }
-    // console.log(articleData)
-    // console.log("*************")
+    console.log(articleData)
+    console.log("*************")
 
     const response = await fetch('http://127.0.0.1:8000/article/', {
         method: 'POST',
@@ -121,7 +121,7 @@ async function postArticle(title, img_url, is_active, exposure_end_date) {
         body: JSON.stringify(articleData)
     })
     response_json = await response.json()
-    // console.log(response_json)
+    console.log(response_json)
 
     if (response.status == 200) {
         alert(response.status);
@@ -144,13 +144,15 @@ window.onload = async function getArticles() {
         },
     })
     response_json = await response.json()
-    // console.log(response_json)
-    // console.log(response_json.length)//아티클 갯수
+    console.log(response_json)
+    console.log(response_json.length)//아티클 갯수
     a_length = response_json.length
-    // console.log(response_json[0]['image_location'])
+    console.log(response_json[0]['image_location'])
 
     //메인페이지 캐로셀 생성
+
     // console.log("여기" + response_json.length)
+
     for (var i = 0; i < response_json.length; i++) {
         let title = response_json[i]['title']
         let image = response_json[i]['image_location']
@@ -159,6 +161,7 @@ window.onload = async function getArticles() {
         let comments = response_json[i]['comments']
         appendTempHtml(i, title, image, article_id, author, comments)
     }
+
 
     // loadArticles(response_json)
     // //로드 아티클
@@ -173,7 +176,13 @@ window.onload = async function getArticles() {
     //     document.getElementById("carousel-id" + i).innerHTML = response_json[i]['id']
     // }
     // loadRatings(response_json)
-
+    //로드모달
+    // loadModals(response_json)
+    // for (var i = 0; i < 2; i++) {
+    //     document.getElementById('modal-img' + i).src = response_json[i]['image_location']
+    //     document.getElementById('modal-title' + i).innerHTML = response_json[i]['title']
+    //     document.getElementById("modal-author" + i).innerHTML = 'author: ' + response_json[i]['user']
+    // }
     loadComments(response_json)
 }
 
@@ -210,7 +219,9 @@ async function postScore(score, id) {
         rating: score,
     }
     console.log('score:' + id + score)
+
     // console.log(typeof (id))
+
     const response = await fetch('http://127.0.0.1:8000/article/rating/', {
         method: 'POST',
         headers: {
@@ -221,7 +232,7 @@ async function postScore(score, id) {
         body: JSON.stringify(scoreData)
     })
     response_json = await response.json()
-    // console.log(response_json)
+    console.log(response_json)
 
     if (response.status == 200) {
         alert(response.status);
@@ -252,16 +263,18 @@ async function loadComments(response_json) {
 
             comment_user = response_json[i]['comments'][j]['user']
             newComment = response_json[i]['comments'][j]['comment']
+            newComment_id = response_json[i]['comments'][j]['id']
 
             let newComment_test = document.createElement("li")
+            newComment_test.setAttribute("id", `comment-card${newComment_id}`)
             newComment_test.setAttribute("class", "comment-card")
 
             if (user == comment_user) {
                 newComment_test.innerHTML +=
-                    `<p>${newComment}</p>
+                    `<p id=${newComment_id}>${newComment}</p>
                     <span>
-                        <button id="" type="button" onclick="deleteComment">삭제</button>
-                        <button id="" type="button" onclick="updateComment">수정</button>
+                        <button id="deleteComment${newComment_id}" type="button" onclick="deleteComment(${article_id}, ${newComment_id})">삭제</button>
+                        <button id="updateComment${newComment_id}" type="button" onclick="updateComment(${article_id}, ${newComment_id})">수정</button>
                     </span>`
             } else {
                 newComment_test.innerHTML +=
@@ -274,8 +287,9 @@ async function loadComments(response_json) {
 
 //코멘트 불러오기2
 function loadComments2(data) {
-    // console.log(data)
+    console.log(data)
     comment = data.comment
+    comment_id = data.id
     article_id = data.article
     article_len = response_json.length
     console.log(response_json)
@@ -284,12 +298,13 @@ function loadComments2(data) {
     let comment_section = document.getElementById("comment-list" + article_id)
 
     let newComment_test = document.createElement("li")
+    newComment_test.setAttribute("id", `comment-card${comment_id}`)
     newComment_test.setAttribute("class", "comment-card")
     newComment_test.innerHTML +=
-        `<p>${comment}</p>
+        `<p id=${comment_id}>${comment}</p>
         <span>
-            <button id="" type="button" onclick="deleteComment">삭제</button>
-            <button id="" type="button" onclick="updateComment">수정</button>
+            <button id="deleteComment${comment_id}" type="button" onclick="deleteComment(${article_id}, ${comment_id})">삭제</button>
+            <button id="updateComment${comment_id}" type="button" onclick="updateComment(${article_id}, ${comment_id})">수정</button>
         </span>
         `
     console.log(newComment_test)
@@ -379,4 +394,26 @@ async function postScore(score, id) {
     }
 }
 
-
+// 댓글 수정
+async function putComment(comment, article_id, comment_id) {
+    const commentData = {
+        article: article_id,
+        comment: comment,
+    }
+    console.log(commentData)
+    const response = await fetch(`${backend_base_url}/article/comment/${comment_id}/`, {
+        method: 'PUT',
+        headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+            'Authorization': "Bearer " + localStorage.getItem("user_access_token")
+        },
+        body: JSON.stringify(commentData)
+    })
+    response_json = await response.json()
+    if (response.status == 200) {
+        return response_json
+    } else {
+        alert(response.status);
+    }
+}
