@@ -132,6 +132,7 @@ async function postArticle(title, img_url, is_active, exposure_end_date) {
 }
 
 
+
 //아티클 불러오기
 window.onload = async function getArticles() {
     const response = await fetch('http://127.0.0.1:8000/article/', {
@@ -216,6 +217,33 @@ async function postComment(comment, article_id) {
     } else {
         alert(response.status);
     }
+}
+//점수 업로드 하기
+async function postScore(score, id){
+    const scoreData = {
+        article: id,
+        rating: score,
+    }
+    console.log('score:'+id+ score)
+    console.log(typeof(id))
+    const response = await fetch('http://127.0.0.1:8000/article/rating/', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+            'Authorization': "Bearer " + localStorage.getItem("user_access_token")
+        },
+        body: JSON.stringify(scoreData)
+    })
+    response_json = await response.json()
+    console.log(response_json)
+
+    if (response.status == 200) {
+        alert(response.status);
+        window.location.reload()
+    } else {
+        alert(response.status);
+    }  
 }
 
 //코멘트 불러오기

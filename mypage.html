@@ -20,7 +20,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.js"></script>
     <!-- <script src="./static/js/main.js"></script> -->
     <script src="./static/js/mypage.js"></script>
+    <!-- <script src="./static/js/article_create.js"></script> -->
     <!-- <script src="./static/js/api.js"></script> -->
+    
     <!-- <script src="./static/js/main.js"></script> -->
     <style>
         .card {
@@ -45,7 +47,43 @@
         .title {
             font-size: 20px;
         }
+        .btn {
+            color:#0cffca;
+            background-color: initial;
+            border: 3.5px solid #0cffca;
+            border-radius: 20px;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+            color: #fff;
+            font-size: 16px;
+            /* padding: 12px 25px; */
+            /* position: absolute; */
+            /* letter-spacing: 1px; */
+        }
+        .btn-con :hover{
+            transform: scale(1.02);
+            transition: transform 0.5s;
+        }
+        
+
+
     </style>
+    <script>
+                
+        function handleArticleUpdate() {
+            const article_no = document.getElementById("article_id").innerText;
+            const article_title = document.getElementById("my-title").innerText;
+            let is_active = document.getElementById("u_is_active").value
+            if (is_active == "on") {
+                is_active = true
+            } else {
+                is_active = false
+            }
+            const exposure_end_date = document.getElementById("u_exposure_end_date").value
+            updateArticle(article_no, article_title, is_active, exposure_end_date)
+        }
+
+    </script>
+
 
 
 </head>
@@ -107,19 +145,49 @@
                 </div>
             </div>
         </div>
-        <script>
+    </div>
 
 
+    <!-- Modal -->
+    <div class="modal" id="modal-name" style="display:none; background-color: transparent;">
+        <div class="modal-sandbox" ></div>
+        <div class="modal-box">
+        <div class="modal-header" >
+            <div id="close-modal" class="close-modal" onclick="editModalOff()">&#10006;</div> 
+            <h1 >no.<span id="article_no">13</span> <span id="article_title">title</span></h1>
+            <button id=del_btn style="height:30px; width:100px">Delete</button>
+        </div>
+        <div class="modal-body">
+            <div>
+                <label for="공개 여부">공개 여부</label>
+                <input id="u_is_active" type="checkbox" name="공개 여부" value="true" checked>
+                <input id="u_is_active_hidden" type="hidden" name="공개 여부" value="false">
+            </div>
+            <div>
+                <label for="노출종료일">노출종료일</label>
+                <span style="width:10px"></span>
+                <input id="u_exposure_end_date" type="date" name="노출종료일">
+            </div>
+            <hr>
+            <button type="submit" onclick="handleArticleUpdate()" style="height:30px; width:100px">edit</button>
+        </div>
+        </div>
+    </div>
+    <script>
+        console.log(document.getElementById("u_is_active").value)
 
-            function appendTempHtml3(title, image) {
+        function appendTempHtml3(title, image, article_id){
 
                 let temp_html3 = `
                 <div id="mypage-card" class="card" style="width: 18rem; height:20rem;float:left;margin-right:1rem;margin-bottom:20px">
-                    <img id="search-img" src="${image}" class="card-img-top"  onclick="modalOn()" style="width:100%;height:70%;border-radius:10px">
+                    <img id="my-img" src="${image}" class="card-img-top"  onclick="modalOn()" style="width:100%;height:70%;border-radius:10px">
                     <div class="card-body"  onclick="modalOn()">
-                        <a ><p id="search-title" class="title">${title}</p></a>
-                        <p></p>
+                        <a ><p id="my-title" class="title">${title}</p><p style="font-size:0.7rem">article id:<span id="article_id">${article_id}</span></p></a>
+                        
                     </div>
+                    <div class="btn-con">
+                        <button class="btn" onclick="editModalOn()">edit/delete</button>
+                    </div>    
                 </div>      
             `
                 $('#the_articles').append(temp_html3)
@@ -135,7 +203,19 @@
             }
 
 
-        // appendTempHtml4()
+        function editModalOn(){
+            document.getElementById('modal-name').style.display = "flex";
+            let article_no = document.getElementById("article_id").innerText;
+            let article_title = document.getElementById("my-title").innerText;
+            document.getElementById('article_no').innerHTML=article_no;
+            document.getElementById('article_title').innerHTML=article_title;
+        }
+        function editModalOff(){
+            document.getElementById('modal-name').style.display = "none"
+        }
+
+        
+
 
 
 
