@@ -183,37 +183,6 @@ window.onload = async function getArticles() {
     loadMainPage(response_json)
 }
 
-
-
-//코멘트 생성
-async function postComment(comment, article_id) {
-    console.log("여기까지 옴2")
-    const commentData = {
-        article: article_id,
-        comment: comment,
-    }
-
-    console.log(commentData)
-    const response = await fetch('http://127.0.0.1:8000/article/comment/', {
-        method: 'POST',
-        headers: {
-            Accept: 'application/json',
-            'Content-type': 'application/json',
-            'Authorization': "Bearer " + localStorage.getItem("user_access_token")
-        },
-        body: JSON.stringify(commentData)
-    })
-    response_json = await response.json()
-    console.log(response_json)
-
-    if (response.status == 200) {
-        alert(response.status);
-        window.location.reload()
-    } else {
-        alert(response.status);
-    }
-}
-
 //코멘트 불러오기
 function loadComments(response_json) {
     comment_len = response_json[0]['comments'].length
@@ -230,6 +199,47 @@ function loadComments(response_json) {
             comment_section.appendChild(newComment)
         }
     }
+}
+
+//코멘트 불러오기2
+function loadComments2(data) {
+    console.log(data)
+    comment = data.comment
+    article_id = data.article
+    article_len = response_json.length
+    target_num = article_len - article_id
+
+    let comment_section = document.getElementById("comment-list" + target_num)
+    let newComment = document.createElement("li")
+    newComment.innerText = comment
+    comment_section.appendChild(newComment)
+    document.getElementById("main-modal-comment" + article_id).value = ""
+}
+
+// 코멘트 생성
+async function postComment(comment, article_id) {
+    const commentData = {
+        article: article_id,
+        comment: comment,
+    }
+
+    const response = await fetch('http://127.0.0.1:8000/article/comment/', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+            'Authorization': "Bearer " + localStorage.getItem("user_access_token")
+        },
+        body: JSON.stringify(commentData)
+    }).then(response => response.json())
+        .then(data => {
+            loadComments2(data)
+        })
+    // if (response.status == 200) {
+    //     alert(response.status);
+    // } else {
+    //     alert(response.status);
+    // }
 }
 
 //  불러오기

@@ -268,15 +268,14 @@
             document.getElementById('modal-bg' + id).style.display = "flex"
         };
         function mainModalOff(id) {
-            document.getElementById('modal-bg' + id).style.display = "none"
+            window.location.reload()
         };
 
-        function handleCommentCreate(id) {
+        async function handleCommentCreate(id) {
             var comment = document.getElementById("main-modal-comment" + id).value
             let article_id = id
             console.log(comment, article_id)
-            postComment(comment, article_id)
-
+            await postComment(comment, article_id)
         }
 
         let counter = 1;
