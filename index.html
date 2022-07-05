@@ -306,17 +306,16 @@
         const carouselWidth = document.querySelector('.carousel-container').offsetWidth;
         document.querySelector('#next').addEventListener('click', () => {                               
             r_counter++;
-            console.log("***************")
             console.log(r_counter - l_counter)
 
             document.querySelector('#track').style.transform = `translateX(-${(r_counter - l_counter)*carouselWidth}px)`;   
         })
         document.querySelector('#prev').addEventListener('click', () => {
             l_counter++;
-            console.log("***************")
             console.log(r_counter - l_counter)
-            if ((r_counter - l_counter)*carouselWidth<0){
+            if ((r_counter - l_counter)*carouselWidth<=0){
                 (r_counter - l_counter)*carouselWidth==0;
+
             }
             document.querySelector('#track').style.transform = `translateX(-${(r_counter - l_counter)*carouselWidth}px)`;         
         })
