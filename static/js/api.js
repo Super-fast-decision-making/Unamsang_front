@@ -151,7 +151,8 @@ window.onload = async function getArticles() {
 
     //메인페이지 캐로셀 생성
 
-    console.log("여기" + response_json.length)
+    // console.log("여기" + response_json.length)
+
     for (var i = 0; i < response_json.length; i++) {
         let title = response_json[i]['title']
         let image = response_json[i]['image_location']
@@ -218,7 +219,9 @@ async function postScore(score, id) {
         rating: score,
     }
     console.log('score:' + id + score)
-    console.log(typeof (id))
+
+    // console.log(typeof (id))
+
     const response = await fetch('http://127.0.0.1:8000/article/rating/', {
         method: 'POST',
         headers: {
@@ -368,6 +371,7 @@ async function getName() {
 
 //점수 업로드 하기
 async function postScore(score, id) {
+    console.log(id+score)
     const scoreData = {
         article: id,
         rating: score,
