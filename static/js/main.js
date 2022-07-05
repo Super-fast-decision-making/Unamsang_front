@@ -38,7 +38,7 @@ function userLogout() {
   localStorage.removeItem("user_access_token")
   localStorage.removeItem("user_refresh_token")
   localStorage.removeItem("payload")
-  window.location.replace(`http://127.0.0.1:5500/main.html`);
+  window.location.replace(`http://127.0.0.1:5500/index.html`);
 }
 
 
@@ -47,9 +47,6 @@ async function checkLogin() {
   const response_json = await getName();
   console.log(response_json)
   const user = response_json.username
-
-  // const username = document.getElementById('username')
-  // const logoutButton = document.getElementById('logout')
   const login_link = document.getElementById('login_link')
 
 
@@ -57,15 +54,6 @@ async function checkLogin() {
     logout_button.style.display = 'block'
     login_link.innerText = user
     login_link.setAttribute("href", "/mypage.html")
-
-
-    // } else {
-    //   // username.innerText = "로그인을 해주세요"
-    //   logoutButton.innerText = "로그인"
-    //   logoutButton.setAttribute = ("onclick", "")
-    //   const logout_link = document.createElement("a");
-    //   logout_link.setAttribute("href", "http://127.0.0.1:5500/login.html")
-    //   logout_link.innerText = '로그인'
   }
 }
 

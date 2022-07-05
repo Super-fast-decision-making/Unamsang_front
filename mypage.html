@@ -40,7 +40,6 @@
         }
 
         /* .row :hover {
-
             transform: scale(1.02);
             transition: transform 0.5s;
         } */
@@ -140,9 +139,10 @@
                 <div id="the_comments" class="article"></div>
 
 
-            <div id="Tokyo" class="tabcontent">
-                <h3>Tokyo</h3>
-                <p>Tokyo is the capital of Japan.</p>
+                <div id="Tokyo" class="tabcontent">
+                    <h3>Tokyo</h3>
+                    <p>Tokyo is the capital of Japan.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -178,7 +178,7 @@
 
         function appendTempHtml3(title, image, article_id){
 
-            let temp_html3 =`
+                let temp_html3 = `
                 <div id="mypage-card" class="card" style="width: 18rem; height:20rem;float:left;margin-right:1rem;margin-bottom:20px">
                     <img id="my-img" src="${image}" class="card-img-top"  onclick="modalOn()" style="width:100%;height:70%;border-radius:10px">
                     <div class="card-body"  onclick="modalOn()">
@@ -190,18 +190,18 @@
                     </div>    
                 </div>      
             `
-            $('#the_articles').append(temp_html3)
-        }
-        function appendTempHtml4(comment, author, post_id){
-            let temp_html4 =`
+                $('#the_articles').append(temp_html3)
+            }
+            function appendTempHtml4(comment, author, post_id) {
+                let temp_html4 = `
                 <div >
                     <p style="background-color:white; display:">${comment} <span style="font-size:0.5rem">by.${author} post id:${post_id}</span></p>
                 <div>
                 <hr style="color:whitesmoke">
             `
-            $('#the_comments').append(temp_html4)
-        }
-        
+                $('#the_comments').append(temp_html4)
+            }
+
 
         function editModalOn(){
             document.getElementById('modal-name').style.display = "flex";
@@ -219,7 +219,7 @@
 
 
 
-    </script>
+        </script>
 
 </body>
 

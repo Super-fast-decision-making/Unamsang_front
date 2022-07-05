@@ -1,6 +1,8 @@
 const backend_base_url = "http://127.0.0.1:8000"
 const frontend_base_url = "http://127.0.0.1:5500"
 
+// const frontend_base_url = "https://62c2e16d355a9e6915111cdf--lighthearted-khapse-2366de.netlify.app/"
+
 
 // 회원가입
 async function handleSignup() {
@@ -300,6 +302,29 @@ async function getName() {
 
 
 
+//점수 업로드 하기
+async function postScore(score, id) {
+    const scoreData = {
+        article: id,
+        rating: score,
+    }
+    const response = await fetch('http://127.0.0.1:8000/article/rating/', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+            'Authorization': "Bearer " + localStorage.getItem("user_access_token")
+        },
+        body: JSON.stringify(scoreData)
+    })
+    response_json = await response.json()
 
+    if (response.status == 201) {
+        alert("성공!!");
+    } else {
+        alert(response.status);
+    }
+
+}
 
 
