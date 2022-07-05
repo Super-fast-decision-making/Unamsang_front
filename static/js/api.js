@@ -1,6 +1,8 @@
 const backend_base_url = "http://127.0.0.1:8000"
 const frontend_base_url = "http://127.0.0.1:5500"
 
+// const frontend_base_url = "https://62c2e16d355a9e6915111cdf--lighthearted-khapse-2366de.netlify.app/"
+
 
 // 회원가입
 async function handleSignup() {
