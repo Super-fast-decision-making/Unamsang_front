@@ -1,9 +1,6 @@
 const backend_base_url = "http://127.0.0.1:8000"
 const frontend_base_url = "http://127.0.0.1:5500"
 
-// const frontend_base_url = "https://62c2e16d355a9e6915111cdf--lighthearted-khapse-2366de.netlify.app/"
-
-
 // 회원가입
 async function handleSignup() {
     const signupData = {
@@ -17,7 +14,7 @@ async function handleSignup() {
             'Content-type': 'application/json'
         },
         method: 'POST',
-        body: JSON.stringify(signupData) // js object를 json형식으로 바꿔주어야함.
+        body: JSON.stringify(signupData)
     })
     response_json = await response.json()
 
@@ -27,7 +24,6 @@ async function handleSignup() {
         alert(response.status)
     }
 }
-
 
 // 로그인
 async function handleLogin() {
@@ -50,7 +46,6 @@ async function handleLogin() {
         localStorage.setItem("user_access_token", response_json.access)
         localStorage.setItem("user_refresh_token", response_json.refresh)
 
-
         const base64Url = response_json.access.split('.')[1];
         const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
         const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
@@ -64,15 +59,19 @@ async function handleLogin() {
     }
 }
 
-
-
+// 로그아웃
+function userLogout() {
+    localStorage.removeItem("user_access_token")
+    localStorage.removeItem("user_refresh_token")
+    localStorage.removeItem("payload")
+    window.location.replace(`http://127.0.0.1:5500`);
+}
 
 // 이미지 생성
 async function startImageGenerator(prompt) {
     const promptData = {
         prompt: prompt,
     }
-    console.log(promptData)
 
     const response = await fetch(`${backend_base_url}/article/text/`, {
         method: 'POST',
@@ -87,7 +86,7 @@ async function startImageGenerator(prompt) {
     console.log(response_json)
     image_name = response_json['images']
     title = response_json['title']
-    let path = 'http://127.0.0.1:8000/' + image_name + '_finalgrid.png'
+    let path = `${backend_base_url}` + image_name + '_finalgrid.png'
     console.log(path)
 
     showPromptImage(path)
@@ -100,7 +99,7 @@ async function startImageGenerator(prompt) {
     }
 }
 
-//아티클 생성
+// 아티클 생성
 async function postArticle(title, img_url, is_active, exposure_end_date) {
     const articleData = {
         title: title,
@@ -108,10 +107,8 @@ async function postArticle(title, img_url, is_active, exposure_end_date) {
         is_active: is_active,
         exposure_end_date: exposure_end_date,
     }
-    console.log(articleData)
-    console.log("*************")
 
-    const response = await fetch('http://127.0.0.1:8000/article/', {
+    const response = await fetch(`${backend_base_url}/article/`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
@@ -121,7 +118,6 @@ async function postArticle(title, img_url, is_active, exposure_end_date) {
         body: JSON.stringify(articleData)
     })
     response_json = await response.json()
-    console.log(response_json)
 
     if (response.status == 200) {
         alert(response.status);
@@ -131,11 +127,9 @@ async function postArticle(title, img_url, is_active, exposure_end_date) {
     }
 }
 
-
-
-//아티클 불러오기
-window.onload = async function getArticles() {
-    const response = await fetch('http://127.0.0.1:8000/article/', {
+// 아티클 불러오기(메인)
+async function getArticles() {
+    const response = await fetch(`${backend_base_url}/article/`, {
         method: 'GET',
         headers: {
             Accept: 'application/json',
@@ -144,47 +138,41 @@ window.onload = async function getArticles() {
         },
     })
     response_json = await response.json()
-    console.log(response_json)
-    console.log(response_json.length)//아티클 갯수
-    a_length = response_json.length
-    console.log(response_json[0]['image_location'])
 
-    //메인페이지 캐로셀 생성
-    // console.log("여기" + response_json.length)
-    for (var i = 0; i < response_json.length; i++) {
-        let title = response_json[i]['title']
-        let image = response_json[i]['image_location']
-        let article_id = response_json[i]['id']
-        let author = response_json[i]['user']
-        let comments = response_json[i]['comments']
-        appendTempHtml(i, title, image, article_id, author, comments)
+    if (response.status == 200) {
+        return response_json
+    } else {
+        alert(response.status);
     }
-
-
-    // loadArticles(response_json)
-    // //로드 아티클
-    // for (var i = 0; i <= 2; i++) {
-    //     let imgs = response_json[i]['image_location'].split('final')[0]
-    //     document.getElementById("carousel-title" + i).innerHTML = 'title: ' + response_json[i]['title']
-    //     document.getElementById("carousel-author" + i).innerHTML = 'author: ' + response_json[i]['user']
-    //     for (var j = 0; j <= 3; j++) {//이미지뿌려주기
-    //         document.getElementById("carouselimg" + i + "_" + (j + 1)).src = imgs + j + '.png'
-    //     }
-    //     document.getElementById("carouselimg" + i + "_5").src = response_json[i]['image_location']
-    //     document.getElementById("carousel-id" + i).innerHTML = response_json[i]['id']
-    // }
-    // loadRatings(response_json)
-    //로드모달
-    // loadModals(response_json)
-    // for (var i = 0; i < 2; i++) {
-    //     document.getElementById('modal-img' + i).src = response_json[i]['image_location']
-    //     document.getElementById('modal-title' + i).innerHTML = response_json[i]['title']
-    //     document.getElementById("modal-author" + i).innerHTML = 'author: ' + response_json[i]['user']
-    // }
-    loadComments(response_json)
 }
 
-// 코멘트 생성
+// 코멘트 불러오기(즉시)
+function ResponseloadComments(data) {
+    comment = data.comment
+    comment_id = data.id
+    article_id = data.article
+    article_len = response_json.length
+    target_num = article_len - article_id
+
+    let comment_section = document.getElementById("comment-list" + article_id)
+
+    let newComment_test = document.createElement("li")
+    newComment_test.setAttribute("id", `comment-card${comment_id}`)
+    newComment_test.setAttribute("class", "comment-card")
+    newComment_test.innerHTML +=
+        `<p id=${comment_id}>${comment}</p>
+        <span>
+            <button id="deleteComment${comment_id}" type="button" onclick="deleteComment(${article_id}, ${comment_id})">삭제</button>
+            <button id="updateComment${comment_id}" type="button" onclick="updateComment(${article_id}, ${comment_id})">수정</button>
+        </span>
+        `
+    comment_section.appendChild(newComment_test)
+
+    // 입력창 비우기
+    document.getElementById("main-modal-comment" + article_id).value = ""
+}
+
+// 코멘트 생성(API)
 async function postComment(comment, article_id) {
     const commentData = {
         article: article_id,
@@ -201,7 +189,7 @@ async function postComment(comment, article_id) {
         body: JSON.stringify(commentData)
     }).then(response => response.json())
         .then(data => {
-            loadComments2(data)
+            ResponseloadComments(data)
 
         })
     // if (response.status == 200) {
@@ -211,15 +199,21 @@ async function postComment(comment, article_id) {
     // }
 }
 
-//점수 업로드 하기
+// 코멘트 작성
+async function handleCommentCreate(id) {
+    var comment = document.getElementById("main-modal-comment" + id).value
+    let article_id = id
+    console.log(comment, article_id)
+    await postComment(comment, article_id)
+}
+
+// 점수 업로드하기(API)
 async function postScore(score, id) {
     const scoreData = {
         article: id,
         rating: score,
     }
-    console.log('score:' + id + score)
-    // console.log(typeof (id))
-    const response = await fetch('http://127.0.0.1:8000/article/rating/', {
+    const response = await fetch(`${backend_base_url}/article/rating/`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
@@ -229,106 +223,19 @@ async function postScore(score, id) {
         body: JSON.stringify(scoreData)
     })
     response_json = await response.json()
-    console.log(response_json)
 
-    if (response.status == 200) {
-        alert(response.status);
-        window.location.reload()
+    if (response.status == 201) {
+        alert("평가 감사합니다.");
     } else {
         alert(response.status);
     }
 }
 
-//코멘트 불러오기
-async function loadComments(response_json) {
-    const response_user = await getName();
-    const user = response_user.username
-
-    comment_len = response_json[0]['comments'].length
-    article_len = response_json.length
-
-    for (let i = 0; i < article_len; i++) {
-        comment_len = response_json[i]['comments'].length
-        article_id = response_json[i]['id']
-        for (let j = 0; j < comment_len; j++) {
-            // let comment_section = document.getElementById("comment-list" + i)
-            // let newComment = document.createElement("li")
-            // newComment.innerText = response_json[i]['comments'][j]['comment']
-            // comment_section.appendChild(newComment)
-
-            let comment_section = document.getElementById("comment-list" + article_id)
-
-            comment_user = response_json[i]['comments'][j]['user']
-            newComment = response_json[i]['comments'][j]['comment']
-            newComment_id = response_json[i]['comments'][j]['id']
-
-            let newComment_test = document.createElement("li")
-            newComment_test.setAttribute("id", `comment-card${newComment_id}`)
-            newComment_test.setAttribute("class", "comment-card")
-
-            if (user == comment_user) {
-                newComment_test.innerHTML +=
-                    `<p id=${newComment_id}>${newComment}</p>
-                    <span>
-                        <button id="deleteComment${newComment_id}" type="button" onclick="deleteComment(${article_id}, ${newComment_id})">삭제</button>
-                        <button id="updateComment${newComment_id}" type="button" onclick="updateComment(${article_id}, ${newComment_id})">수정</button>
-                    </span>`
-            } else {
-                newComment_test.innerHTML +=
-                    `<p>${newComment}</p>`
-            }
-            comment_section.appendChild(newComment_test)
-        }
-    }
-}
-
-//코멘트 불러오기2
-function loadComments2(data) {
-    console.log(data)
-    comment = data.comment
-    comment_id = data.id
-    article_id = data.article
-    article_len = response_json.length
-    console.log(response_json)
-    target_num = article_len - article_id
-
-    let comment_section = document.getElementById("comment-list" + article_id)
-
-    let newComment_test = document.createElement("li")
-    newComment_test.setAttribute("id", `comment-card${comment_id}`)
-    newComment_test.setAttribute("class", "comment-card")
-    newComment_test.innerHTML +=
-        `<p id=${comment_id}>${comment}</p>
-        <span>
-            <button id="deleteComment${comment_id}" type="button" onclick="deleteComment(${article_id}, ${comment_id})">삭제</button>
-            <button id="updateComment${comment_id}" type="button" onclick="updateComment(${article_id}, ${comment_id})">수정</button>
-        </span>
-        `
-    console.log(newComment_test)
-    comment_section.appendChild(newComment_test)
-
-    // 댓글
-    // let newComment = document.createElement("li")
-    // newComment.innerText = comment
-    // comment_section.appendChild(newComment)
-
-    // 수정 버튼
-    // let newComment_update_button = document.createElement("button")
-    // newComment_update_button.setAttribute("id", "comment")
-    // newComment_update_button.setAttribute("type", "button")
-    // newComment_update_button.setAttribute("onclick", "UpdateComment()")
-    // newComment_update_button.innerText = "update"
-    // comment_section.appendChild(newComment_update_button)
-
-    // 삭제 버튼
-    // let newComment_delete_button = document.createElement("button")
-    // newComment_delete_button.setAttribute("type", "button")
-    // newComment_delete_button.setAttribute("onclick", "UpdateComment()")
-    // newComment_delete_button.innerText = "delete"
-    // comment_section.appendChild(newComment_delete_button)
-
-    // 입력창 비우기
-    document.getElementById("main-modal-comment" + article_id).value = ""
+// 점수 업로드하기
+function uploadScore(id) {
+    console.log(document.getElementById('score' + id).value)
+    var score = document.getElementById('score' + id).value
+    postScore(score, id)
 }
 
 // 평점 불러오기
@@ -359,39 +266,41 @@ async function getName() {
 
     if (response.status == 200) {
         response_json = await response.json()
-
         return response_json
     } else {
         return null
     }
 }
 
-//점수 업로드 하기
-async function postScore(score, id) {
-    console.log(id + score)
-    const scoreData = {
-        article: id,
-        rating: score,
-    }
-    const response = await fetch('http://127.0.0.1:8000/article/rating/', {
-        method: 'POST',
-        headers: {
-            Accept: 'application/json',
-            'Content-type': 'application/json',
-            'Authorization': "Bearer " + localStorage.getItem("user_access_token")
-        },
-        body: JSON.stringify(scoreData)
-    })
-    response_json = await response.json()
+// 로그인 여부 확인
+async function checkLogin() {
+    const response_json = await getName();
+    console.log(response_json)
+    const user = response_json.username
+    const login_link = document.getElementById('login_link')
 
-    if (response.status == 201) {
-        alert("성공!!");
-    } else {
-        alert(response.status);
+
+    if (user) {
+        logout_button.style.display = 'block'
+        login_link.innerText = user
+        login_link.setAttribute("href", "/mypage.html")
     }
 }
 
-// 댓글 수정
+// 댓글 수정 활성화
+function updateComment(article_id, comment_id) {
+    const comment_button = document.getElementById('comment_button' + article_id)
+
+    // 버튼 바꾸기
+    comment_button.setAttribute("onclick", `handleCommentUpdate(${article_id}, ${comment_id})`)
+    comment_button.innerText = "수정"
+
+    // 입력창 채우기
+    const target_comment = document.getElementById(comment_id).innerText
+    document.getElementById("main-modal-comment" + article_id).value = target_comment
+}
+
+// 댓글 수정(API)
 async function putComment(comment, article_id, comment_id) {
     const commentData = {
         article: article_id,
@@ -415,6 +324,24 @@ async function putComment(comment, article_id, comment_id) {
     }
 }
 
+// 댓글 수정
+async function handleCommentUpdate(article_id, comment_id) {
+
+    const comment = document.getElementById("main-modal-comment" + article_id).value
+    const response_json = await putComment(comment, article_id, comment_id);
+    let newComment = response_json.comment
+    console.log(response_json)
+
+    const target_comment = document.getElementById(comment_id)
+    target_comment.innerText = newComment
+
+    // 버튼 돌려놓기
+    const comment_button = document.getElementById('comment_button' + article_id)
+    comment_button.innerText = "게시"
+
+    // 입력창 비우기
+    document.getElementById("main-modal-comment" + article_id).value = ""
+}
 
 // 댓글 삭제
 async function deleteComment(article_id, comment_id) {
@@ -434,3 +361,27 @@ async function deleteComment(article_id, comment_id) {
         alert(response.status);
     }
 }
+
+// 검색하기
+async function search() {
+    const words_for_search = document.getElementById("words_for_search").value;
+
+    var url = new URL(backend_base_url + `/article/search/?words=${words_for_search}`);
+    console.log(words_for_search)
+    const search_results = await fetch(url)
+        .then(response => {
+            var status_code = response.status;
+            return Promise.resolve(response.json())
+                .then(data => ({ data, status_code }))
+        })
+
+    localStorage.setItem('search_results', JSON.stringify(search_results.data));
+
+    if (search_results.status_code == 200) {
+        window.location.replace(`${frontend_base_url}/search_result.html`);
+    } else {
+        alert(search_results.data.message)
+    }
+}
+
+checkLogin()
