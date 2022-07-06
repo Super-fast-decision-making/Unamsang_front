@@ -6,129 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>You Know What I'm Saying</title>
+
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
 
-
     <link rel="stylesheet" type="text/css" href="./static/css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap" rel="stylesheet">
     <script src="https://use.fortawesome.com/99966411.js"></script>
-    <script src="./static/js/article_create.js"></script>
+
     <script src="./static/js/api.js"></script>
+    <script src="./static/js/article_create.js"></script>
     <script src="./static/js/main.js"></script>
-    <style>
-        .log_box {
-            margin-left: 10px;
-            display: flex;
-            padding: 10px;
-
-        }
-
-        .logo_link {
-            line-height: 70px;
-            color: #ffffff;
-            font-size: 30px;
-        }
-
-        .nav_center {
-            display: flex;
-            align-items: center;
-
-        }
-
-        .search_box {
-            height: 35px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0px 10px 0px 10px;
-            background-color: #0d233b;
-            border: 3px solid #040a11;
-        }
-
-        .search_input {
-            border-radius: 5px;
-            height: 35px;
-            background-color: #0d233b;
-            border: 0;
-            text-align: center;
-        }
-
-        .search_input:focus {
-            outline: none;
-            background-color: initial;
-        }
-
-        .search_input::placeholder {
-            color: #9596a9;
-        }
-
-        .search_button {
-            margin-left: 10px;
-            color: #030823;
-            background-color: initial;
-            border: 0;
-            border-radius: 17px;
-            height: 35px;
-        }
-
-        .nav_right {
-            display: flex;
-            align-items: center;
-        }
-
-        .log_box {
-            padding: 10px;
-        }
-
-        .log_info {
-            display: flex;
-            justify-content: center;
-        }
-
-        .login_link {
-            color: #ffffff;
-            font-size: 20px;
-            font-weight: 600;
-            margin: 10px;
-            text-decoration: none;
-        }
-
-        .logout_button {
-            width: 90px;
-            height: 33px;
-            display: none;
-            margin: 10px;
-            font-size: 15px;
-            font-weight: 600;
-            color: #e6eadd;
-            background-color: initial;
-            border: 3px solid #000409;
-        }
-
-        .main_title {
-            margin: 40px auto 20px auto;
-            font-size: 60px;
-            font-weight: 500;
-            color: #ffffff;
-        }
-
-        .card-container :hover {
-            transform: scale(1.02);
-            transition: transform 0.5s;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-        }
-
-        .comment-card {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-    </style>
-
 </head>
 
 <body>
@@ -221,74 +112,7 @@
         </div>
     </div>
     <script>
-
-        //캐로셀 움직이는 식
-
-        //i는 i번째 항 
-        function appendTempHtml(i, title, image, article_id, author, comments) {
-            let temp_html = `
-                    <div class="card-container" style="padding:10px">
-                        <div class="card" style="overflow:hidden; background-color:#1F2124;color:white">
-                            <div class="carousel-img" style="font-size:1.5rem;font-weight:bold">${title}</div>
-                            <img class="carouselimg" id="carouselimg${i}" src="${image}" style="object-fit:cover;" onclick=mainModalOn(${i})>
-                        </div>
-                    </div>
-                `
-
-            let temp_html2 = `
-                    <div id="modal-bg${i}" class="modal-bg" style="display:none;z-index:1000;">
-                        <div class="modal" style="border-radius:5px;">
-                            <div class="modal-left" style="overflow:hidden;"><img class="modal-img" id=modal-img src="${image}" style="object-fit:cover;""></div>
-                            <div class="modal-right" style="margin-top:10px">
-                                <button onclick=mainModalOff(${i}) style='background-color:transparent;border:none;'><i class="fa fa-x"></i></button>
-                                <span style='margin-left:15px'><h2 id="modal-title" >${title}</h2>
-                                    ${author}
-                                    <select name="score" id="score${article_id}">
-                                        <option disabled selected value>점수</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
-                                    <button type="submit" class="fin-btn" onclick="uploadScore(${article_id})">입력</button>
-                                    </span>
-                                <hr>
-                                <ol id="comment-list${article_id}" class="comment-list" style='list-style:none;margin-left:15px;padding:0;'>
-                                    
-                                </ol>
-                                <div style="margin-bottom:16px">
-                                    <input class="form-control"  placeholder="댓글 달기..." id="main-modal-comment${article_id}" >
-                                    <button id="comment_button${article_id}" class="comment_button${article_id}" onclick="handleCommentCreate(${article_id})" style="background-color:#11264f; color:white">게시</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>                
-                `
-
-            $('#track').append(temp_html)
-            $('#idx_head').append(temp_html2)
-            //댓글
-            for (let j = 0; j < comments.length; j++) {
-                $(`#comment-list${i}`).append(`<li>${comments[j].comment}</li><hr style="margin-right: 10px">`)
-            }
-        }
-
-        //모달 
-        function mainModalOn(id) {
-            document.getElementById('modal-bg' + id).style.display = "flex"
-        };
-        function mainModalOff(id) {
-            window.location.reload()
-        };
-        //코멘트 작성
-        async function handleCommentCreate(id) {
-            var comment = document.getElementById("main-modal-comment" + id).value
-            let article_id = id
-            console.log(comment, article_id)
-            await postComment(comment, article_id)
-        }
-        //캐로셀 오른쪽 왼쪽 버튼
+        // 캐로셀 오른쪽 왼쪽 버튼
         let r_counter = 1
         let l_counter = 1
         const carouselWidth = document.querySelector('.carousel-container').offsetWidth;
@@ -298,20 +122,11 @@
         })
         document.querySelector('#prev').addEventListener('click', () => {
             l_counter++;
-            console.log(r_counter - l_counter)
             if ((r_counter - l_counter) * carouselWidth <= 0) {
                 (r_counter - l_counter) * carouselWidth == 0;
             }
             document.querySelector('#track').style.transform = `translateX(-${(r_counter - l_counter) * carouselWidth}px)`;
         })
-        function uploadScore(id) {
-            console.log(document.getElementById('score' + id).value)
-            var score = document.getElementById('score' + id).value
-            //id=아티클 아이디
-            console.log(score, id)
-            postScore(score, id)
-        }
-
     </script>
 </body>
 

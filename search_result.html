@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>You Know What I'm Saying</title>
+    <title>Search | You Know What I'm Saying</title>
+
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
@@ -13,33 +14,14 @@
         crossorigin="anonymous"></script>
 
     <link rel="stylesheet" type="text/css" href="./static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="./static/css/search_result.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap" rel="stylesheet">
     <script src="https://use.fortawesome.com/99966411.js"></script>
-    <link rel="stylesheet" type="text/css" href="./static/css/search_result.css">
-    <script src="./static/js/main.js"></script>
+
     <script src="./static/js/api.js"></script>
-    <script src="./static/js/main.js"></script>
-    <style>
-        .card {
-            font-family: "Varela Round", sans-serif;
-            background: #1F2124;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-            border-radius: 5px;
+    <script src="./static/js/search_result.js"></script>
 
-            width: calc(33.3333% - 40px);
-            /* 1/3 minus the margins (20+20) */
-            padding: 20px;
-            text-align: center;
-            color: white;
-            float: left;
-        }
-
-
-
-        .title {
-            font-size: 20px;
-        }
-    </style>
 </head>
 
 <body>
@@ -73,79 +55,7 @@
         <div id="row" class="row" style="width:57rem; height:100vh; padding-top:30px;">
         </div>
     </div>
-
-
-
-
     <script>
-        //여기서 id는 검색된 값 순서대로 id임!!
-        function appendTempHtml(id, title, img, author, comments, article_id) {
-            console.log('c_length' + comments.length)
-            // console.log('comments0'=comments)
-            // console.log('comments'+comments[몇번째의 ]['comment'])
-
-
-            let temp_html5 = `
-                <div id="search-card${id}" class="card" style="width: 18rem; height:20rem;float:left;margin-right:1rem;margin-bottom:20px">
-                    <img id="search-img${id}" src="${img}" class="card-img-top"  onclick="searchModalOn(${id})" style="width:100%;height:70%;border-radius:10px">
-                    <div class="card-body"  onclick="searchModalOn(${id})">
-                        <a ><p id="search-title${id}" class="title">${title} <span style="font-size:0.8rem">by. ${author}</span></p></a>                    
-                    </div>
-                </div>
-                `
-
-            let temp_html6=`
-                <div id="s-modal-bg${id}" class="modal-bg" style="display:none;z-index:1000;">
-                    <div class="modal" style="border-radius:5px;">
-                        <div class="modal-left" style="overflow:hidden;"><img class="modal-img" id=modal-img src="${img}" style="object-fit:cover;""></div>
-                        <div class="modal-right" style="margin-top:10px">
-                            <button onclick=searchModalOff() style='background-color:transparent;border:none;'><i class="fa fa-x"></i></button>
-                            <span style='margin-left:15px'><h2 id="modal-title" >${title}</h2>
-                                ${author}
-                                <select name="score" id="s-score${article_id}">
-                                    <option disabled selected value>점수</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                </select>
-                                <button type="submit" class="fin-btn" onclick="uploadScore(${article_id})">입력</button>
-                                </span>
-                            <hr>
-                            <ol id="s-comment-list${article_id}" class="comment-list" style='list-style:none;margin-left:15px;padding:0;'>
-                                
-                            </ol>
-                            <div style="margin-bottom:16px">
-                                <input class="form-control"  placeholder="댓글 달기..." id="s-modal-comment${article_id}" >
-                                <button id="s-comment_button${article_id}" class="comment_button" onclick="handleCommentCreate(${article_id})" style="background-color:#11264f; color:white">게시</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>                
-                `
-            $('#row').append(temp_html5)
-            $('#row').append(temp_html6)
-            //댓글
-            for (let j = 0; j < comments.length; j++) {
-                $(`#comment-list${id}`).append(`<li>${comments[j].comment}</li><hr style="margin-right: 15px">`)
-            }
-        }
-        function searchModalOn(id) {
-            document.getElementById('s-modal-bg' + id).style.display = "flex"
-        };
-        function searchModalOff(id) {
-            window.location.reload()
-        };
-        //코멘트 작성
-        async function handleCommentCreate(id) {
-            var comment = document.getElementById("s-modal-comment" + id).value
-            let article_id = id
-            console.log(comment, article_id)
-            await postComment(comment, article_id)
-        }
-
-
         async function loadSearchResults() {
             var search_results = await JSON.parse(localStorage.getItem('search_results'));
             console.log(search_results);
@@ -158,21 +68,10 @@
 
                 appendTempHtml(i, search_results[i]['title'], search_results[i]['image_location'], search_results[i]['user'], search_results[i]['comments'], search_results[i]['id']);
             }
-
             localStorage.removeItem('search_results');
         }
         loadSearchResults();
-
-
-
-
-
-
-    //id 갯수만큼 0,1,2
-
-
     </script>
-
 </body>
 
 </html>

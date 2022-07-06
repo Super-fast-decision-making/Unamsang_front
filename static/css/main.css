@@ -152,6 +152,114 @@ nav {
 
 }
 
+.log_box {
+    margin-left: 10px;
+    display: flex;
+    padding: 10px;
+
+}
+
+.logo_link {
+    line-height: 70px;
+    color: #ffffff;
+    font-size: 30px;
+}
+
+.nav_center {
+    display: flex;
+    align-items: center;
+
+}
+
+.search_box {
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 10px 0px 10px;
+    background-color: #0d233b;
+    border: 3px solid #040a11;
+}
+
+.search_input {
+    border-radius: 5px;
+    height: 35px;
+    background-color: #0d233b;
+    border: 0;
+    text-align: center;
+}
+
+.search_input:focus {
+    outline: none;
+    background-color: initial;
+}
+
+.search_input::placeholder {
+    color: #9596a9;
+}
+
+.search_button {
+    margin-left: 10px;
+    color: #030823;
+    background-color: initial;
+    border: 0;
+    border-radius: 17px;
+    height: 35px;
+}
+
+.nav_right {
+    display: flex;
+    align-items: center;
+}
+
+.log_box {
+    padding: 10px;
+}
+
+.log_info {
+    display: flex;
+    justify-content: center;
+}
+
+.login_link {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 10px;
+    text-decoration: none;
+}
+
+.logout_button {
+    width: 90px;
+    height: 33px;
+    display: none;
+    margin: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #e6eadd;
+    background-color: initial;
+    border: 3px solid #000409;
+}
+
+.main_title {
+    margin: 40px auto 20px auto;
+    font-size: 60px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.card-container :hover {
+    transform: scale(1.02);
+    transition: transform 0.5s;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.comment-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 /* 캐러셀 연구 */
 @import url('https://use.fortawesome.com/99966411.js');
 
@@ -184,7 +292,7 @@ nav {
     box-sizing: border-box;
 }
 
-.card {
+.main_card {
     width: 100%;
     height: 100%;
     background-color: #ffffff;
@@ -411,10 +519,4 @@ nav {
     font-size: 60px;
     font-weight: 500;
     color: #ffffff;
-}
-
-.card-container :hover {
-    box-shadow: 10px 10px;
-    transform: scale(1.02);
-    transition: transform 0.5s;
 }
